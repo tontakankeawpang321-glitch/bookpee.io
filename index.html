@@ -299,15 +299,17 @@
                 for (let i = books.length + 1; i <= 1000; i++) {
                     const randomCat = categories[Math.floor(Math.random() * categories.length)];
                     const randomImg = images[Math.floor(Math.random() * images.length)];
+                    const title = `หนังสือแปล #${i}`;
                     books.push({
                         id: i,
-                        title: `หนังสือแปล #${i}`,
+                        title: title,
                         author: "ผู้แต่งนิรนาม",
                         category: randomCat,
                         image: randomImg,
                         desc: "คำอธิบายหนังสือ...",
                         reads: (Math.random() * 50).toFixed(1) + 'k',
-                        link: `https://example.com/read/${i}`
+                        link: `https://example.com/read/${i}`,
+                        video_link: `https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`
                     });
                 }
                 // ===================================================================
@@ -335,7 +337,8 @@
             document.getElementById('modalBookTitle').innerText = book.title;
             
             document.getElementById('btnRead').href = book.link;
-            document.getElementById('btnVideo').href = `https://www.youtube.com/results?search_query=${encodeURIComponent(book.title + ' audio book')}`;
+            // ใช้ video_link จากข้อมูลหนังสือ ถ้าไม่มีให้ใช้ลิงค์ค้นหาอัตโนมัติเป็น fallback
+            document.getElementById('btnVideo').href = book.video_link || `https://www.youtube.com/results?search_query=${encodeURIComponent(book.title + ' audio book')}`;
             
             selectionModal.classList.remove('hidden');
         }
