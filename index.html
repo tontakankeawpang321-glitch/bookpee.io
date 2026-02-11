@@ -21,29 +21,18 @@
                         body: ['Sarabun', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#1e293b',    /* Slate 800 */
-                        'accent': '#3b82f6',     /* Blue 500 */
+                        'primary': '#1e293b',
+                        'accent': '#3b82f6',
                         'paper': '#ffffff',
-                        'cream': '#f8fafc',      /* Slate 50 */
-                        'gold': '#d4af37',
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
-                        'nav': '0 -4px 20px rgba(0,0,0,0.03)',
+                        'cream': '#f8fafc',
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.4s ease-out forwards',
-                        'slide-up': 'slideUp 0.3s ease-out forwards',
+                        'fade-fast': 'fadeIn 0.2s ease-out forwards', /* Faster animation */
                     },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -55,121 +44,101 @@
             background-color: #f8fafc;
             color: #334155;
             -webkit-tap-highlight-color: transparent;
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 24px 24px; /* Dot pattern background */
+            /* Simple background, no complex patterns for performance */
         }
         
         .glass-header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            background: rgba(255, 255, 255, 0.95);
+            /* Removed backdrop-filter for better mobile performance */
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        /* --- Beautiful Card Style --- */
+        /* --- Optimized Card Style --- */
         .book-card {
             background-color: #ffffff;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-width: 1px;
+            border-style: solid;
+            /* Simple shadow for performance */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            /* Only animate transform on GPU */
+            transition: transform 0.2s ease; 
             position: relative;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
 
-        .book-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #e2e8f0;
+        /* --- Alternating Border Colors (Cool Effect) --- */
+        /* 1st card: Blue */
+        .book-card-wrapper:nth-child(3n+1) .book-card {
+            border-color: #bfdbfe; /* Blue-200 */
+        }
+        .book-card-wrapper:nth-child(3n+1) .category-badge {
+            background-color: #eff6ff; /* Blue-50 */
+            color: #1d4ed8;
+            border: 1px solid #dbeafe;
         }
 
-        .book-card img {
-            transition: transform 0.6s ease;
+        /* 2nd card: Purple */
+        .book-card-wrapper:nth-child(3n+2) .book-card {
+            border-color: #e9d5ff; /* Purple-200 */
+        }
+        .book-card-wrapper:nth-child(3n+2) .category-badge {
+            background-color: #faf5ff; /* Purple-50 */
+            color: #7e22ce;
+            border: 1px solid #f3e8ff;
         }
 
-        .book-card:hover img {
-            transform: scale(1.05);
+        /* 3rd card: Orange/Gold */
+        .book-card-wrapper:nth-child(3n+3) .book-card {
+            border-color: #fed7aa; /* Orange-200 */
+        }
+        .book-card-wrapper:nth-child(3n+3) .category-badge {
+            background-color: #fff7ed; /* Orange-50 */
+            color: #c2410c;
+            border: 1px solid #ffedd5;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+        /* Hover only on devices that support it to prevent sticky hover on mobile */
+        @media (hover: hover) {
+            .book-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
         }
 
-        .search-input {
-            transition: all 0.2s;
-        }
+        /* Optimized Search Input */
         .search-input:focus {
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
             border-color: #3b82f6;
-        }
-
-        /* Filter Buttons */
-        .filter-btn {
-            transition: all 0.2s;
-        }
-        .filter-btn.active {
-            background-color: #1e293b;
-            color: white;
-            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
-            border: 1px solid #1e293b;
-        }
-        .filter-btn:not(.active):hover {
-            background-color: #ffffff;
-            border-color: #cbd5e1;
-            transform: translateY(-1px);
+            outline: none;
         }
 
         /* Pagination */
         .pagination-btn {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            border-radius: 8px;
             background: #ffffff;
             border: 1px solid #e2e8f0;
             color: #64748b;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .pagination-btn:hover:not(:disabled) {
-            background-color: #f8fafc;
-            color: #1e293b;
-            border-color: #cbd5e1;
+            font-size: 0.875rem;
         }
         .pagination-btn.active {
             background: #1e293b;
             color: #ffffff;
             border-color: #1e293b;
-            box-shadow: 0 4px 10px rgba(30, 41, 59, 0.2);
         }
 
-        /* Bottom Nav */
+        /* Bottom Nav - Removed Blur for Performance */
         .bottom-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #ffffff; 
             border-top: 1px solid #e2e8f0;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
-        }
-        .nav-item {
-            position: relative;
-            color: #94a3b8;
-            transition: color 0.3s;
+            padding-bottom: env(safe-area-inset-bottom);
         }
         .nav-item.active {
             color: #1e293b;
@@ -177,166 +146,160 @@
         .nav-item.active::after {
             content: '';
             position: absolute;
-            top: -14px;
+            top: -8px;
             left: 50%;
             transform: translateX(-50%);
             width: 40px;
-            height: 3px;
+            height: 2px;
             background: #1e293b;
-            border-radius: 0 0 4px 4px;
         }
         
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        
+        /* Modal Optimization */
+        #selectionModal {
+            /* Use simple transparency instead of blur */
+            background-color: rgba(0, 0, 0, 0.7); 
+        }
+        
+        /* Prevent layout shift */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col font-sans overflow-x-hidden selection:bg-slate-200">
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 glass-header">
+    <header class="sticky top-0 z-50 glass-header shadow-sm">
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <!-- Logo -->
-            <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('home'); window.scrollTo(0,0)">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white text-xl shadow-lg group-hover:rotate-6 transition-transform">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home'); window.scrollTo(0,0)">
+                <div class="w-9 h-9 rounded-lg bg-slate-900 flex items-center justify-center text-white text-lg shadow-md">
                     <i class="fa-solid fa-book-open"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-bold text-slate-800 tracking-tight leading-none">INTER<span class="text-blue-600">LIB</span></h1>
-                    <p class="text-[10px] text-slate-500 font-medium tracking-wider uppercase">Library of Translation</p>
                 </div>
             </div>
 
             <!-- Search -->
             <div class="relative w-full md:w-96">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
                 </div>
                 <input 
                     type="text" 
                     id="searchInput"
-                    placeholder="ค้นหาชื่อหนังสือ, ผู้แต่ง..." 
-                    class="search-input w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 placeholder-slate-400 outline-none"
+                    placeholder="ค้นหาชื่อหนังสือ..." 
+                    class="search-input w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400"
                 >
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 pt-8 pb-32 flex-grow relative z-10">
+    <main class="container mx-auto px-3 pt-6 pb-28 flex-grow relative z-10">
         
         <!-- === HOME VIEW === -->
-        <div id="homeView" class="animate-fade-in">
-            <!-- Welcome Section -->
-            <section class="text-center mb-10">
-                <span class="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold mb-3 border border-blue-100 uppercase tracking-wider">
-                    Digital Collection
-                </span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-2">
-                    คลังหนังสือแปลไทย
-                </h2>
-                <p class="text-slate-500 text-sm md:text-base max-w-lg mx-auto mb-6">
-                    รวบรวมวรรณกรรมชั้นนำจากทั่วโลก แปลไทยให้อ่านฟรี
-                </p>
+        <div id="homeView">
+            <!-- Simple Header -->
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-slate-800 pl-1">คลังหนังสือ</h2>
                 
-                <!-- Filters -->
-                <div class="flex flex-wrap justify-center gap-2" id="categoryFilters">
-                    <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium border border-transparent" data-filter="all">ทั้งหมด</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-slate-600 border border-slate-200" data-filter="จีน">จีน</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-slate-600 border border-slate-200" data-filter="อังกฤษ">อังกฤษ</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-slate-600 border border-slate-200" data-filter="สหรัฐ">สหรัฐ</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-slate-600 border border-slate-200" data-filter="ญี่ปุ่น">ญี่ปุ่น</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white text-slate-600 border border-slate-200" data-filter="เกาหลี">เกาหลี</button>
-                </div>
-            </section>
-
-            <!-- Status Bar -->
-            <div class="flex justify-between items-center mb-6 px-1">
-                <span id="resultCount" class="text-xs font-bold text-slate-400 uppercase tracking-wide">กำลังโหลด...</span>
-                <div class="flex items-center gap-2 bg-white px-3 py-1 rounded-lg border border-slate-100 shadow-sm">
-                    <span class="text-xs text-slate-400">หน้า</span>
-                    <span id="pageInfo" class="text-sm font-bold text-slate-800">1</span>
+                <!-- Simple Page Indicator -->
+                <div class="text-xs text-slate-500 bg-white px-2 py-1 rounded border border-slate-200">
+                    หน้า <span id="pageInfo" class="font-bold text-slate-800">1</span>
                 </div>
             </div>
+            
+            <!-- Filters (Scrollable) -->
+            <div class="flex overflow-x-auto pb-4 mb-2 gap-2 no-scrollbar" id="categoryFilters">
+                <button class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-white whitespace-nowrap" data-filter="all">ทั้งหมด</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="จีน">จีน</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="อังกฤษ">อังกฤษ</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="สหรัฐ">สหรัฐ</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="ญี่ปุ่น">ญี่ปุ่น</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="เกาหลี">เกาหลี</button>
+            </div>
 
-            <!-- Grid -->
-            <div id="bookGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 min-h-[400px]">
+            <!-- Grid (3 Columns on Mobile) -->
+            <div id="bookGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6 min-h-[400px]">
                 <div class="col-span-full text-center py-20 text-slate-400">
                     <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-2 text-slate-300"></i>
-                    <p class="text-sm">กำลังเชื่อมต่อข้อมูล...</p>
+                    <p class="text-xs">กำลังโหลด...</p>
                 </div>
             </div>
             
             <!-- Pagination -->
-            <div id="paginationContainer" class="mt-12 flex flex-wrap justify-center items-center gap-2">
+            <div id="paginationContainer" class="mt-8 flex flex-wrap justify-center items-center gap-2">
                 <!-- Injected by JS -->
             </div>
 
             <!-- No Results -->
-            <div id="noResults" class="hidden text-center py-24">
-                <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300"></i>
+            <div id="noResults" class="hidden text-center py-20">
+                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
                 </div>
-                <h3 class="text-lg font-bold text-slate-700">ไม่พบหนังสือที่ค้นหา</h3>
-                <p class="text-slate-400 text-sm">ลองค้นหาด้วยคำอื่นดูนะครับ</p>
+                <p class="text-slate-400 text-sm">ไม่พบหนังสือ</p>
             </div>
         </div>
 
         <!-- === FAVORITES VIEW === -->
-        <div id="favoritesView" class="hidden animate-fade-in">
-            <div class="flex items-center justify-between mb-8 border-b border-slate-200 pb-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-50 to-white border border-rose-100 flex items-center justify-center shadow-sm">
-                        <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold text-slate-800">รายการโปรด</h2>
-                        <p class="text-sm text-slate-500">หนังสือที่คุณบันทึกเก็บไว้</p>
-                    </div>
+        <div id="favoritesView" class="hidden">
+            <div class="flex items-center gap-3 mb-6 px-1 border-b border-slate-200 pb-4">
+                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center">
+                    <i class="fa-solid fa-heart text-rose-500 text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800">รายการโปรด</h2>
+                    <p class="text-xs text-slate-500">หนังสือที่บันทึกไว้</p>
                 </div>
             </div>
 
-            <div id="favGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div id="favGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
                 <!-- Injected by JS -->
             </div>
 
-            <div id="noFavs" class="hidden flex flex-col items-center justify-center py-24 text-center">
-                <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-4 border border-slate-100">
-                    <i class="fa-regular fa-heart text-3xl text-slate-300"></i>
+            <div id="noFavs" class="hidden flex flex-col items-center justify-center py-20 text-center">
+                <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 border border-slate-100">
+                    <i class="fa-regular fa-heart text-2xl text-slate-300"></i>
                 </div>
-                <h3 class="text-lg font-bold text-slate-700">ยังไม่มีรายการโปรด</h3>
-                <p class="text-slate-400 text-sm mb-6 max-w-xs mx-auto">กดหัวใจที่มุมขวาบนของปกหนังสือเพื่อบันทึกไว้อ่านภายหลัง</p>
-                <button onclick="switchTab('home')" class="px-6 py-2.5 bg-slate-800 text-white rounded-xl text-sm font-medium hover:bg-slate-900 transition-all shadow-lg shadow-slate-200">
+                <p class="text-slate-400 text-sm mb-4">ยังไม่มีรายการโปรด</p>
+                <button onclick="switchTab('home')" class="px-5 py-2 bg-slate-800 text-white rounded-lg text-xs font-medium">
                     ไปเลือกหนังสือ
                 </button>
             </div>
         </div>
     </main>
 
-    <!-- Modal (Action Sheet Style) -->
-    <div id="selectionModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
-        <div class="bg-white rounded-3xl p-0 w-full max-w-sm relative shadow-2xl transform transition-all animate-slide-up overflow-hidden" onclick="event.stopPropagation()">
-            <!-- Cover Header -->
-            <div class="h-24 bg-slate-100 relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/10"></div>
-                <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 hover:bg-white text-slate-600 transition-colors shadow-sm z-10">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
+    <!-- Modal (Optimized for Speed) -->
+    <div id="selectionModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <!-- Removed animate-slide-up for instant open, used fade-fast -->
+        <div class="bg-white rounded-2xl p-0 w-full max-w-sm relative shadow-2xl overflow-hidden animate-fade-fast" onclick="event.stopPropagation()">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-            <div class="px-6 pb-8 -mt-12 text-center relative">
+            <div class="p-6 text-center">
                 <!-- Book Cover -->
-                <div class="inline-block p-1 bg-white rounded-xl shadow-lg mb-4">
-                    <img id="modalBookImage" src="" alt="Cover" class="w-24 h-36 object-cover rounded-lg border border-slate-100">
+                <div class="inline-block p-1 bg-white rounded-lg shadow-md mb-4 border border-slate-100">
+                    <img id="modalBookImage" src="" alt="Cover" class="w-20 h-32 object-cover rounded">
                 </div>
                 
-                <h3 id="modalBookTitle" class="text-xl font-bold text-slate-800 mb-2 font-serif px-2">ชื่อหนังสือ</h3>
-                <p class="text-slate-500 text-xs font-medium tracking-wide uppercase mb-8">เลือกรูปแบบการรับชม</p>
+                <h3 id="modalBookTitle" class="text-lg font-bold text-slate-800 mb-1 px-2 line-clamp-2">ชื่อหนังสือ</h3>
+                <p class="text-slate-400 text-xs mb-6">เลือกรูปแบบการรับชม</p>
                 
-                <div class="space-y-3">
-                    <a id="btnRead" href="#" target="_blank" class="group flex items-center justify-center gap-3 w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-blue-100 hover:shadow-blue-200">
-                        <i class="fa-solid fa-book-open text-blue-200 group-hover:text-white transition-colors"></i> 
+                <div class="flex flex-col gap-3">
+                    <a id="btnRead" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm">
+                        <i class="fa-solid fa-book-open text-blue-200"></i> 
                         <span>อ่านแบบหนังสือ</span>
                     </a>
-                    <a id="btnVideo" href="#" target="_blank" class="group flex items-center justify-center gap-3 w-full py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
+                    <a id="btnVideo" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold">
                         <i class="fa-brands fa-youtube text-red-500"></i>
                         <span>ดูแบบวิดีโอ</span>
                     </a>
@@ -346,18 +309,18 @@
     </div>
 
     <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 left-0 w-full bottom-nav z-50 pb-safe">
-        <div class="flex justify-around items-center h-16 max-w-md mx-auto">
-            <button id="nav-home" class="nav-item active flex-1 h-full flex flex-col items-center justify-center hover:bg-slate-50/50 transition-colors" onclick="switchTab('home')">
-                <i class="fa-solid fa-house text-xl mb-1.5"></i>
-                <span class="text-[10px] font-bold tracking-wide">หน้าหลัก</span>
+    <nav class="fixed bottom-0 left-0 w-full bottom-nav z-50">
+        <div class="flex justify-around items-center h-14 max-w-md mx-auto">
+            <button id="nav-home" class="nav-item active flex-1 h-full flex flex-col items-center justify-center" onclick="switchTab('home')">
+                <i class="fa-solid fa-house text-lg mb-1"></i>
+                <span class="text-[10px] font-bold">หน้าหลัก</span>
             </button>
             
-            <div class="w-px h-8 bg-slate-200"></div>
+            <div class="w-px h-6 bg-slate-200"></div>
 
-            <button id="nav-fav" class="nav-item flex-1 h-full flex flex-col items-center justify-center hover:bg-slate-50/50 transition-colors" onclick="switchTab('favorites')">
-                <i class="fa-solid fa-heart text-xl mb-1.5"></i>
-                <span class="text-[10px] font-bold tracking-wide">รายการโปรด</span>
+            <button id="nav-fav" class="nav-item flex-1 h-full flex flex-col items-center justify-center" onclick="switchTab('favorites')">
+                <i class="fa-solid fa-heart text-lg mb-1"></i>
+                <span class="text-[10px] font-bold">รายการโปรด</span>
             </button>
         </div>
     </nav>
@@ -378,7 +341,7 @@
         const searchInput = document.getElementById('searchInput');
         const noResults = document.getElementById('noResults');
         const noFavs = document.getElementById('noFavs');
-        const resultCount = document.getElementById('resultCount');
+        const resultCount = document.getElementById('resultCount'); // Keeps logic working, though element might be hidden/removed
         const paginationContainer = document.getElementById('paginationContainer');
         const pageInfo = document.getElementById('pageInfo');
         const homeView = document.getElementById('homeView');
@@ -390,7 +353,6 @@
         // --- Init & Fetch ---
         async function init() {
             try {
-                // Fetch from books.json as requested
                 const response = await fetch('books.json');
                 if (!response.ok) throw new Error('Failed to load books.json');
                 const jsonData = await response.json();
@@ -403,52 +365,53 @@
                 console.error("Error loading books:", error);
                 bookGrid.innerHTML = `
                     <div class="col-span-full text-center py-20 text-rose-500">
-                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-3"></i>
-                        <p class="font-bold">ไม่สามารถโหลดข้อมูลได้</p>
-                        <p class="text-xs text-slate-400 mt-2">กรุณาตรวจสอบการเชื่อมต่อ หรือรันผ่าน Local Server</p>
+                        <p class="font-bold text-sm">โหลดข้อมูลไม่สำเร็จ</p>
+                        <p class="text-xs text-slate-400 mt-1">กรุณาลองใหม่อีกครั้ง</p>
                     </div>
                 `;
             }
         }
 
-        // --- Render Functions ---
+        // --- Render Functions (Optimized) ---
         function createBookCard(book) {
             const liked = isLiked(book.id);
             const heartClass = liked ? 'fa-solid text-rose-500' : 'fa-regular text-slate-400';
-            const btnBg = liked ? 'bg-rose-50 border-rose-100' : 'bg-white border-slate-100';
-
+            
+            // Note the 'book-card-wrapper' class used for nth-child styling in CSS
             return `
-                <div class="book-card group cursor-pointer" onclick="openModal(${book.id})">
-                    <!-- Image Wrapper -->
-                    <div class="relative w-full aspect-[2/3] overflow-hidden bg-slate-100 border-b border-slate-100">
-                        <img src="${book.image}" alt="${book.title}" loading="lazy" class="w-full h-full object-cover">
-                        
-                        <!-- Badges -->
-                        <div class="absolute top-2 left-2 flex gap-1">
-                            <span class="bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded-md text-[10px] font-bold text-slate-700 shadow-sm border border-slate-100">
-                                ${book.category}
-                            </span>
-                        </div>
+                <div class="book-card-wrapper h-full" onclick="openModal(${book.id})">
+                    <div class="book-card group cursor-pointer relative">
+                        <!-- Image -->
+                        <div class="relative w-full aspect-[2/3] bg-slate-50 border-b border-slate-100">
+                            <img src="${book.image}" alt="${book.title}" loading="lazy" class="w-full h-full object-cover">
+                            
+                            <!-- Category Badge -->
+                            <div class="absolute top-1 left-1">
+                                <span class="category-badge px-1.5 py-0.5 rounded text-[9px] font-bold shadow-sm">
+                                    ${book.category}
+                                </span>
+                            </div>
 
-                        <!-- Like Button -->
-                        <button onclick="event.stopPropagation(); toggleFavorite(${book.id})" 
-                            class="like-btn like-btn-${book.id} absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-all hover:scale-110 z-10 ${btnBg}">
-                            <i class="${heartClass} fa-heart text-sm transition-colors"></i>
-                        </button>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="p-3.5 flex flex-col flex-grow bg-white">
-                        <h3 class="text-sm font-bold text-slate-800 leading-snug mb-1 line-clamp-2 min-h-[2.5rem] font-body">${book.title}</h3>
-                        <p class="text-[11px] text-slate-500 mb-3 truncate font-medium">${book.author}</p>
+                            <!-- Like Button -->
+                            <button onclick="event.stopPropagation(); toggleFavorite(${book.id})" 
+                                class="like-btn like-btn-${book.id} absolute top-1 right-1 w-7 h-7 rounded-full flex items-center justify-center bg-white/90 shadow-sm z-10">
+                                <i class="${heartClass} fa-heart text-xs"></i>
+                            </button>
+                        </div>
                         
-                        <div class="mt-auto pt-3 border-t border-slate-50 flex items-center justify-between">
-                            <span class="text-[10px] text-slate-400 flex items-center gap-1.5 font-medium">
-                                <i class="fa-solid fa-eye text-blue-400"></i> ${book.reads}
-                            </span>
-                             <span class="text-[10px] font-bold text-slate-600 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100 group-hover:bg-slate-800 group-hover:text-white transition-colors">
-                                เลือก
-                            </span>
+                        <!-- Content -->
+                        <div class="p-2 flex flex-col flex-grow">
+                            <h3 class="text-xs font-bold text-slate-800 leading-tight mb-1 line-clamp-2 h-8 font-body">${book.title}</h3>
+                            <p class="text-[10px] text-slate-500 mb-2 truncate">${book.author}</p>
+                            
+                            <div class="mt-auto flex items-center justify-between border-t border-slate-50 pt-2">
+                                <span class="text-[9px] text-slate-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-eye text-blue-400"></i> ${book.reads}
+                                </span>
+                                <span class="text-[9px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
+                                    เลือก
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -460,8 +423,6 @@
             
             if (filteredBooks.length === 0) {
                 noResults.classList.remove('hidden');
-                resultCount.innerText = "ไม่พบข้อมูล";
-                pageInfo.innerText = "0";
                 paginationContainer.innerHTML = "";
                 return;
             } else {
@@ -473,14 +434,15 @@
             const currentBatch = filteredBooks.slice(startIndex, endIndex);
             
             currentBatch.forEach(book => {
-                const div = document.createElement('div');
-                div.innerHTML = createBookCard(book);
-                bookGrid.appendChild(div.firstElementChild);
+                const div = document.createElement('div'); // Wrapper handled inside createBookCard string for grid
+                // But wait, the grid is on the container. We need the wrapper to be the direct child.
+                // createBookCard returns string. 
+                // Let's adjust:
+                bookGrid.insertAdjacentHTML('beforeend', createBookCard(book));
             });
 
             const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
-            resultCount.innerText = `แสดง ${startIndex + 1}-${Math.min(endIndex, filteredBooks.length)} จาก ${filteredBooks.length}`;
-            pageInfo.innerText = `${currentPage} / ${totalPages}`;
+            if(pageInfo) pageInfo.innerText = `${currentPage} / ${totalPages}`;
 
             renderPagination();
         }
@@ -496,9 +458,7 @@
             }
 
             favorites.forEach(book => {
-                const div = document.createElement('div');
-                div.innerHTML = createBookCard(book);
-                favGrid.appendChild(div.firstElementChild);
+                favGrid.insertAdjacentHTML('beforeend', createBookCard(book));
             });
         }
 
@@ -532,14 +492,14 @@
                 favoritesView.classList.add('hidden');
                 navHome.classList.add('active');
                 navFav.classList.remove('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: 'auto' }); // 'auto' is faster than smooth
             } else {
                 homeView.classList.add('hidden');
                 favoritesView.classList.remove('hidden');
                 navHome.classList.remove('active');
                 navFav.classList.add('active');
                 renderFavorites();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: 'auto' });
             }
         }
 
@@ -567,11 +527,9 @@
                 const liked = isLiked(id);
                 
                 if (liked) {
-                    icon.className = 'fa-solid fa-heart text-rose-500 text-sm transition-colors';
-                    btn.className = btn.className.replace('bg-white', 'bg-rose-50').replace('border-slate-100', 'border-rose-100');
+                    icon.className = 'fa-solid fa-heart text-rose-500 text-xs transition-colors';
                 } else {
-                    icon.className = 'fa-regular fa-heart text-slate-400 text-sm transition-colors';
-                    btn.className = btn.className.replace('bg-rose-50', 'bg-white').replace('border-rose-100', 'border-slate-100');
+                    icon.className = 'fa-regular fa-heart text-slate-400 text-xs transition-colors';
                 }
             });
         }
@@ -591,7 +549,7 @@
                 return btn;
             };
 
-            paginationContainer.appendChild(createBtn('<i class="fa-solid fa-chevron-left text-xs"></i>', () => changePage(currentPage - 1), currentPage === 1));
+            paginationContainer.appendChild(createBtn('<i class="fa-solid fa-chevron-left text-[10px]"></i>', () => changePage(currentPage - 1), currentPage === 1));
 
             let startPage = Math.max(1, currentPage - 1);
             let endPage = Math.min(totalPages, currentPage + 1);
@@ -606,13 +564,13 @@
             if (endPage < totalPages - 1) paginationContainer.appendChild(createBtn('...', () => {}, true));
             if (endPage < totalPages) paginationContainer.appendChild(createBtn(totalPages, () => changePage(totalPages)));
 
-            paginationContainer.appendChild(createBtn('<i class="fa-solid fa-chevron-right text-xs"></i>', () => changePage(currentPage + 1), currentPage === totalPages));
+            paginationContainer.appendChild(createBtn('<i class="fa-solid fa-chevron-right text-[10px]"></i>', () => changePage(currentPage + 1), currentPage === totalPages));
         }
 
         function changePage(page) {
             currentPage = page;
             renderBooks();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'auto' });
         }
 
         function filterBooks() {
@@ -630,11 +588,11 @@
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('active', 'bg-slate-800', 'text-white', 'border-transparent');
+                    b.classList.remove('active', 'bg-slate-800', 'text-white');
                     b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
                 });
                 btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-                btn.classList.add('active', 'bg-slate-800', 'text-white', 'border-transparent');
+                btn.classList.add('active', 'bg-slate-800', 'text-white');
                 currentFilter = btn.dataset.filter;
                 filterBooks();
             });
