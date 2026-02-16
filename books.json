@@ -1,60 +1,57 @@
 [
   {
     "id": 1,
-    "title": "สามก๊ก ฉบับแปลใหม่",
-    "author": "หลอกว้านจง",
+    "title": "สามก๊ก ฉบับอ่านง่าย",
+    "author": "หลัวกว้านจง",
+    "image": "https://example.com/images/romance-three-kingdoms.jpg",
     "category": "จีน",
-    "image": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=500&auto=format&fit=crop&q=60",
-    "desc": "วรรณกรรมจีนอิงประวัติศาสตร์ ที่เต็มไปด้วยกลยุทธ์และเล่ห์เหลี่ยมการเมือง",
-    "reads": "12.5k",
-    "link": "https://example.com/read/1",
+    "reads": 12450,
+    "link": "https://example.com/read/romance-three-kingdoms",
+    "comic_link": "",
     "video_link": ""
   },
   {
     "id": 2,
     "title": "Sherlock Holmes",
     "author": "Arthur Conan Doyle",
+    "image": "https://example.com/images/sherlock.jpg",
     "category": "อังกฤษ",
-    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&auto=format&fit=crop&q=60",
-    "desc": "เรื่องราวการสืบสวนของยอดนักสืบอัจฉริยะและคู่หูหมอวัตสัน",
-    "reads": "8.2k",
-    "link": "https://example.com/read/2",
+    "reads": 8750,
+    "link": "https://example.com/read/sherlock",
+    "comic_link": "",
     "video_link": ""
   },
   {
     "id": 3,
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
-    "category": "อังกฤษ",
-    "image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop&q=60",
-    "desc": "ภาพสะท้อนความรัก ความหวัง และความล่มสลายในยุคแจ๊ส",
-    "reads": "45k",
-    "link": "https://example.com/read/3",
-    "video_link": "https://www.youtube.com/results?search_query=The+Great+Gatsby+Analysis"
+    "image": "https://example.com/images/gatsby.jpg",
+    "category": "สหรัฐ",
+    "reads": 6420,
+    "link": "https://example.com/read/gatsby",
+    "comic_link": "",
+    "video_link": ""
   },
   {
     "id": 4,
-    "title": "โตเกียวไม่มีขา",
-    "author": "Yoshimoto",
-    "category": "อังกฤษ",
-    "image": "https://images.unsplash.com/photo-1495640388908-05fa852fb310?w=500&auto=format&fit=crop&q=60",
-    "desc": "เรื่องราวชีวิตเหงาๆ ในเมืองใหญ่ที่เต็มไปด้วยผู้คน",
-    "reads": "5.1k",
-    "link": "https://example.com/read/4",
-    "video_link": "https://www.youtube.com/results?search_query=Tokyo+No+Ka"
+    "title": "นารูโตะ ตำนานวายุสลาตัน",
+    "author": "Masashi Kishimoto",
+    "image": "https://example.com/images/naruto.jpg",
+    "category": "ญี่ปุ่น",
+    "reads": 21500,
+    "link": "https://example.com/read/naruto",
+    "comic_link": "https://example.com/comic/naruto",
+    "video_link": "https://example.com/video/naruto"
   },
   {
     "id": 5,
     "title": "Solo Leveling",
-    "author": "Chu-Gong",
-    "category": "อังกฤษ",
-    "image": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&auto=format&fit=crop&q=60",
-    "desc": "การผจญภัยของฮันเตอร์ผู้ก้าวข้ามขีดจำกัดของตนเอง",
-    "reads": "99k",
-    "link": "https://example.com/read/5",
-    "video_link": "https://www.youtube.com/results?search_query=Solo+Leveling+Review"
+    "author": "Chugong",
+    "image": "https://example.com/images/solo.jpg",
+    "category": "เกาหลี",
+    "reads": 18320,
+    "link": "https://example.com/read/solo",
+    "comic_link": "https://example.com/comic/solo",
+    "video_link": ""
   }
 ]
-
-
-
