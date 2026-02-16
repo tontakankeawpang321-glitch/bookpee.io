@@ -19,7 +19,7 @@
     "desc": "เรื่องราวการสืบสวนของยอดนักสืบอัจฉริยะและคู่หูหมอวัตสัน",
     "reads": "8.2k",
     "link": "https://example.com/read/2",
-    "video_link": "https://www.youtube.com/results?search_query=Sherlock+Holmes+Audiobook"
+    "video_link": ""
   },
   {
     "id": 3,
@@ -55,5 +55,6 @@
     "video_link": "https://www.youtube.com/results?search_query=Solo+Leveling+Review"
   }
 ]
+
 
 
