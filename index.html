@@ -295,16 +295,15 @@
                 <p class="text-slate-400 text-xs mb-6">เลือกรูปแบบการรับชม</p>
                 
                 <div class="flex flex-col gap-3">
-                    <a id="btnRead" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm">
+                    <a id="btnRead" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all">
                         <i class="fa-solid fa-book-open text-blue-200"></i> 
                         <span>อ่านแบบหนังสือ</span>
                     </a>
-                 <a id="btnVideo" href="#" target="_blank" 
-   class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold">
-    <i class="fa-solid fa-book-open text-indigo-500"></i>
-    <span>แบบหนังสือการ์ตูน</span>
-</a>
-
+                    
+                    <a id="btnVideo" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
+                        <i id="btnVideoIcon" class="fa-solid fa-book-open text-indigo-500"></i>
+                        <span id="btnVideoText">แบบหนังสือการ์ตูน</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -343,7 +342,7 @@
         const searchInput = document.getElementById('searchInput');
         const noResults = document.getElementById('noResults');
         const noFavs = document.getElementById('noFavs');
-        const resultCount = document.getElementById('resultCount'); // Keeps logic working, though element might be hidden/removed
+        const resultCount = document.getElementById('resultCount');
         const paginationContainer = document.getElementById('paginationContainer');
         const pageInfo = document.getElementById('pageInfo');
         const homeView = document.getElementById('homeView');
@@ -379,7 +378,6 @@
             const liked = isLiked(book.id);
             const heartClass = liked ? 'fa-solid text-rose-500' : 'fa-regular text-slate-400';
             
-            // Note the 'book-card-wrapper' class used for nth-child styling in CSS
             return `
                 <div class="book-card-wrapper h-full" onclick="openModal(${book.id})">
                     <div class="book-card group cursor-pointer relative">
@@ -436,10 +434,6 @@
             const currentBatch = filteredBooks.slice(startIndex, endIndex);
             
             currentBatch.forEach(book => {
-                const div = document.createElement('div'); // Wrapper handled inside createBookCard string for grid
-                // But wait, the grid is on the container. We need the wrapper to be the direct child.
-                // createBookCard returns string. 
-                // Let's adjust:
                 bookGrid.insertAdjacentHTML('beforeend', createBookCard(book));
             });
 
@@ -472,8 +466,46 @@
             document.getElementById('modalBookImage').src = book.image;
             document.getElementById('modalBookTitle').innerText = book.title;
             
-            document.getElementById('btnRead').href = book.link;
-            document.getElementById('btnVideo').href = book.video_link || `https://www.youtube.com/results?search_query=${encodeURIComponent(book.title + ' audio book')}`;
+            // Setup Read Button
+            const btnRead = document.getElementById('btnRead');
+            if (book.link) {
+                btnRead.href = book.link;
+            } else {
+                btnRead.href = '#';
+            }
+
+            // Setup Comic/Video Button (Modified Logic)
+            const btnVideo = document.getElementById('btnVideo');
+            const btnVideoIcon = document.getElementById('btnVideoIcon');
+            const btnVideoText = document.getElementById('btnVideoText');
+
+            // Reset base classes to active state first
+            btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
+            btnVideoIcon.className = "fa-solid fa-book-open text-indigo-500";
+            btnVideo.onclick = null; // Remove disable click handler
+
+            if (book.video_link && book.video_link.trim() !== "") {
+                // Case: Has Link -> Activate
+                btnVideo.href = book.video_link;
+                btnVideoText.innerText = "แบบหนังสือการ์ตูน";
+            } else {
+                // Case: No Link -> Disable
+                btnVideo.removeAttribute('href');
+                
+                // Change Styles to Disabled Look
+                btnVideo.classList.remove('bg-white', 'border-slate-200', 'active:bg-slate-50', 'text-slate-700');
+                btnVideo.classList.add('bg-slate-100', 'border-slate-100', 'text-slate-400', 'cursor-not-allowed', 'opacity-60');
+                
+                // Change Icon Color
+                btnVideoIcon.classList.remove('text-indigo-500');
+                btnVideoIcon.classList.add('text-slate-400');
+                
+                // Change Text (Optional)
+                // btnVideoText.innerText = "ไม่พบหนังสือการ์ตูน"; 
+
+                // Prevent Default Click just in case
+                btnVideo.onclick = (e) => e.preventDefault();
+            }
             
             selectionModal.classList.remove('hidden');
         }
@@ -494,7 +526,7 @@
                 favoritesView.classList.add('hidden');
                 navHome.classList.add('active');
                 navFav.classList.remove('active');
-                window.scrollTo({ top: 0, behavior: 'auto' }); // 'auto' is faster than smooth
+                window.scrollTo({ top: 0, behavior: 'auto' }); 
             } else {
                 homeView.classList.add('hidden');
                 favoritesView.classList.remove('hidden');
