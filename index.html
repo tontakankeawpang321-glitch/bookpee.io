@@ -295,14 +295,22 @@
                 <p class="text-slate-400 text-xs mb-6">เลือกรูปแบบการรับชม</p>
                 
                 <div class="flex flex-col gap-3">
+                    <!-- Read Button -->
                     <a id="btnRead" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all">
                         <i class="fa-solid fa-book-open text-blue-200"></i> 
                         <span>อ่านแบบหนังสือ</span>
                     </a>
                     
+                    <!-- Comic Button (Renamed from btnVideo to btnComic for clarity) -->
+                    <a id="btnComic" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
+                        <i id="btnComicIcon" class="fa-solid fa-images text-indigo-500"></i>
+                        <span>แบบหนังสือการ์ตูน</span>
+                    </a>
+
+                    <!-- Video Button (New) -->
                     <a id="btnVideo" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
-                        <i id="btnVideoIcon" class="fa-solid fa-book-open text-indigo-500"></i>
-                        <span id="btnVideoText">แบบหนังสือการ์ตูน</span>
+                        <i id="btnVideoIcon" class="fa-solid fa-play text-red-500"></i>
+                        <span>แบบวิดีโอ</span>
                     </a>
                 </div>
             </div>
@@ -466,44 +474,55 @@
             document.getElementById('modalBookImage').src = book.image;
             document.getElementById('modalBookTitle').innerText = book.title;
             
-            // Setup Read Button
+            // --- 1. Read Button Logic ---
             const btnRead = document.getElementById('btnRead');
-            if (book.link) {
+            if (book.link && book.link.trim() !== "") {
                 btnRead.href = book.link;
+                // Enable Style
+                btnRead.className = "flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all";
+                btnRead.onclick = null;
             } else {
-                btnRead.href = '#';
+                btnRead.removeAttribute('href');
+                // Disable Style
+                btnRead.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-70";
+                btnRead.onclick = (e) => e.preventDefault();
             }
 
-            // Setup Comic/Video Button (Modified Logic)
+            // --- 2. Comic Button Logic (Check comic_link) ---
+            const btnComic = document.getElementById('btnComic');
+            const btnComicIcon = document.getElementById('btnComicIcon');
+
+            // Reset to active base style
+            btnComic.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
+            btnComicIcon.className = "fa-solid fa-images text-indigo-500";
+            btnComic.onclick = null;
+
+            if (book.comic_link && book.comic_link.trim() !== "") {
+                btnComic.href = book.comic_link;
+            } else {
+                btnComic.removeAttribute('href');
+                // Disable Style
+                btnComic.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
+                btnComicIcon.className = "fa-solid fa-images text-slate-400";
+                btnComic.onclick = (e) => e.preventDefault();
+            }
+
+            // --- 3. Video Button Logic (Check video_link) ---
             const btnVideo = document.getElementById('btnVideo');
             const btnVideoIcon = document.getElementById('btnVideoIcon');
-            const btnVideoText = document.getElementById('btnVideoText');
 
-            // Reset base classes to active state first
+            // Reset to active base style
             btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
-            btnVideoIcon.className = "fa-solid fa-book-open text-indigo-500";
-            btnVideo.onclick = null; // Remove disable click handler
+            btnVideoIcon.className = "fa-solid fa-play text-red-500";
+            btnVideo.onclick = null;
 
             if (book.video_link && book.video_link.trim() !== "") {
-                // Case: Has Link -> Activate
                 btnVideo.href = book.video_link;
-                btnVideoText.innerText = "แบบหนังสือการ์ตูน";
             } else {
-                // Case: No Link -> Disable
                 btnVideo.removeAttribute('href');
-                
-                // Change Styles to Disabled Look
-                btnVideo.classList.remove('bg-white', 'border-slate-200', 'active:bg-slate-50', 'text-slate-700');
-                btnVideo.classList.add('bg-slate-100', 'border-slate-100', 'text-slate-400', 'cursor-not-allowed', 'opacity-60');
-                
-                // Change Icon Color
-                btnVideoIcon.classList.remove('text-indigo-500');
-                btnVideoIcon.classList.add('text-slate-400');
-                
-                // Change Text (Optional)
-                // btnVideoText.innerText = "ไม่พบหนังสือการ์ตูน"; 
-
-                // Prevent Default Click just in case
+                // Disable Style
+                btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
+                btnVideoIcon.className = "fa-solid fa-play text-slate-400";
                 btnVideo.onclick = (e) => e.preventDefault();
             }
             
