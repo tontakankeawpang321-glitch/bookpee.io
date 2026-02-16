@@ -8,7 +8,7 @@
     "desc": "วรรณกรรมจีนอิงประวัติศาสตร์ ที่เต็มไปด้วยกลยุทธ์และเล่ห์เหลี่ยมการเมือง",
     "reads": "12.5k",
     "link": "https://example.com/read/1",
-    "video_link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    "video_link": ""
   },
   {
     "id": 2,
@@ -55,4 +55,5 @@
     "video_link": "https://www.youtube.com/results?search_query=Solo+Leveling+Review"
   }
 ]
+
 
