@@ -266,9 +266,10 @@
         let currentFilter = 'all';
         let filteredBooks = [];
         let currentPage = 1;
-        const itemsPerPage = 15;
+        const itemsPerPage = 10; // ปรับเป็น 10 เล่มต่อหน้าตามที่ต้องการ
         let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || [];
         let currentTab = 'home';
+        let searchTimeout = null; // เพิ่มตัวแปรหน่วงเวลาสำหรับระบบค้นหา
 
         // --- Elements ---
         const bookGrid = document.getElementById('bookGrid');
@@ -597,7 +598,13 @@
             renderBooks();
         }
 
-        searchInput.addEventListener('input', filterBooks);
+        // ใช้ Debounce ป้องกันการค้นหาทำงานถี่เกินไป (เพิ่มประสิทธิภาพสำหรับข้อมูลเยอะๆ)
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                filterBooks();
+            }, 300); // รอผู้ใช้พิมพ์เสร็จ 0.3 วินาทีถึงจะเริ่มค้นหา
+        });
         
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
