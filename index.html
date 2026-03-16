@@ -266,10 +266,11 @@
         let currentFilter = 'all';
         let filteredBooks = [];
         let currentPage = 1;
-        const itemsPerPage = 10; // ปรับเป็น 10 เล่มต่อหน้าตามที่ต้องการ
+        const itemsPerPage = 10; 
         let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || [];
+        let localViews = JSON.parse(localStorage.getItem('interlib_views')) || {}; // เพิ่มตัวแปรเก็บ View ลง LocalStorage
         let currentTab = 'home';
-        let searchTimeout = null; // เพิ่มตัวแปรหน่วงเวลาสำหรับระบบค้นหา
+        let searchTimeout = null; 
 
         // --- Elements ---
         const bookGrid = document.getElementById('bookGrid');
@@ -285,21 +286,32 @@
         const navFav = document.getElementById('nav-fav');
         const selectionModal = document.getElementById('selectionModal');
 
+        // --- Utility Functions for Views ---
+        // แปลงยอดวิวจาก Text ใน JSON เป็นตัวเลข (เช่น '1.2k' -> 1200)
+        function parseReadsCount(reads) {
+            if (!reads) return 0;
+            const str = String(reads).toLowerCase();
+            if (str.endsWith('k')) return parseFloat(str) * 1000;
+            if (str.endsWith('m')) return parseFloat(str) * 1000000;
+            return parseInt(str) || 0;
+        }
+
+        // แปลงตัวเลขกลับเป็นรูปแบบตัวย่อเพื่อให้แสดงผลสวยงาม
+        function formatReadsCount(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'm';
+            if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+            return num.toString();
+        }
+
         // --- Init & Fetch ---
         async function init() {
             try {
-                // พยายามดึงข้อมูลจากไฟล์ books.json
                 const response = await fetch('books.json');
                 if (!response.ok) throw new Error('ไม่พบไฟล์ books.json (HTTP ' + response.status + ')');
                 
-                // อ่านข้อมูลดิบเป็น Text ออกมาก่อนเพื่อทำความสะอาด
                 let textData = await response.text();
-                
-                // ใช้ Regular Expression ในการลบ Trailing Comma ออกไปก่อนแปลง
-                // มันจะทำการค้นหาเครื่องหมายลูกน้ำที่มีวงเล็บปีกกาปิดตามหลัง แล้วลบลูกน้ำนั้นทิ้ง
                 textData = textData.replace(/,\s*([\]}])/g, '$1');
                 
-                // แปลง Text ที่ถูกคลีนให้กลายเป็นข้อมูล JSON ปกติ
                 const jsonData = JSON.parse(textData);
                 books = [...jsonData];
                 
@@ -309,7 +321,6 @@
             } catch (error) {
                 console.error("เกิดข้อผิดพลาด:", error);
                 
-                // แจ้งเตือนข้อผิดพลาดบนหน้าเว็บให้ชัดเจน
                 let errorMessage = "เกิดข้อผิดพลาดในการโหลดข้อมูล";
                 if (error instanceof SyntaxError) {
                     errorMessage = "ไฟล์ books.json มีรูปแบบผิดพลาดขั้นรุนแรง (โปรดตรวจสอบเครื่องหมายปีกกาและลูกน้ำ)";
@@ -332,13 +343,14 @@
             const liked = isLiked(book.id);
             const heartClass = liked ? 'fa-solid text-rose-500' : 'fa-regular text-slate-400';
             
-            // ลบเครื่องหมาย " และ \ ออกจากชื่อผู้แต่ง ป้องกันการแสดงผลผิดพลาด
             const authorText = book.author ? book.author.replace(/["\\]/g, '') : "ไม่ระบุผู้แต่ง"; 
-            
-            // ใช้ค่า Default หากใน JSON ไม่มีฟิลด์ category หรือ reads มาให้
-            const readsText = book.reads || "0";
             const categoryText = book.category || "ทั่วไป";
             const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
+            
+            // นำยอดวิวตั้งต้นมาบวกกับยอดวิวปัจจุบัน (Local)
+            const baseReads = parseReadsCount(book.reads);
+            const totalReads = baseReads + (localViews[book.id] || 0);
+            const displayReads = formatReadsCount(totalReads);
             
             return `
                 <div class="book-card-wrapper h-full" onclick="openModal(${book.id})">
@@ -368,7 +380,7 @@
                             
                             <div class="mt-auto flex items-center justify-between border-t border-slate-50 pt-2">
                                 <span class="text-[9px] text-slate-400 flex items-center gap-1">
-                                    <i class="fa-solid fa-eye text-blue-400"></i> ${readsText}
+                                    <i class="fa-solid fa-eye text-blue-400"></i> <span class="view-count-${book.id}">${displayReads}</span>
                                 </span>
                                 <span class="text-[9px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
                                     อ่าน
@@ -420,10 +432,21 @@
             });
         }
 
-        // --- Modal Logic ---
+        // --- Modal Logic & View Tracking ---
         function openModal(bookId) {
             const book = books.find(b => b.id === bookId);
             if (!book) return;
+
+            // บันทึกและอัปเดตยอดวิวเพิ่มขึ้น 1
+            localViews[bookId] = (localViews[bookId] || 0) + 1;
+            localStorage.setItem('interlib_views', JSON.stringify(localViews));
+            
+            // อัปเดตตัวเลขแสดงผลวิวบนการ์ดหนังสือทันที (ทั้งในหน้าหลักและหน้ารายการโปรด)
+            const baseReads = parseReadsCount(book.reads);
+            const newTotal = baseReads + localViews[bookId];
+            document.querySelectorAll(`.view-count-${bookId}`).forEach(el => {
+                el.innerText = formatReadsCount(newTotal);
+            });
 
             const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
             document.getElementById('modalBookImage').src = imgUrl;
@@ -588,12 +611,11 @@
             renderBooks();
         }
 
-        // ใช้ Debounce ป้องกันการค้นหาทำงานถี่เกินไป (เพิ่มประสิทธิภาพสำหรับข้อมูลเยอะๆ)
         searchInput.addEventListener('input', () => {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 filterBooks();
-            }, 300); // รอผู้ใช้พิมพ์เสร็จ 0.3 วินาทีถึงจะเริ่มค้นหา
+            }, 300); 
         });
         
         document.querySelectorAll('.filter-btn').forEach(btn => {
