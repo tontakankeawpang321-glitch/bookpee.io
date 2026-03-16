@@ -27,7 +27,7 @@
                         'cream': '#f8fafc',
                     },
                     animation: {
-                        'fade-fast': 'fadeIn 0.2s ease-out forwards', /* Faster animation */
+                        'fade-fast': 'fadeIn 0.2s ease-out forwards',
                     },
                     keyframes: {
                         fadeIn: {
@@ -44,25 +44,20 @@
             background-color: #f8fafc;
             color: #334155;
             -webkit-tap-highlight-color: transparent;
-            /* Simple background, no complex patterns for performance */
         }
         
         .glass-header {
             background: rgba(255, 255, 255, 0.95);
-            /* Removed backdrop-filter for better mobile performance */
             border-bottom: 1px solid #e2e8f0;
         }
 
-        /* --- Optimized Card Style --- */
         .book-card {
             background-color: #ffffff;
             border-radius: 12px;
             overflow: hidden;
             border-width: 1px;
             border-style: solid;
-            /* Simple shadow for performance */
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            /* Only animate transform on GPU */
             transition: transform 0.2s ease; 
             position: relative;
             height: 100%;
@@ -70,38 +65,13 @@
             flex-direction: column;
         }
 
-        /* --- Alternating Border Colors (Cool Effect) --- */
-        /* 1st card: Blue */
-        .book-card-wrapper:nth-child(3n+1) .book-card {
-            border-color: #bfdbfe; /* Blue-200 */
-        }
-        .book-card-wrapper:nth-child(3n+1) .category-badge {
-            background-color: #eff6ff; /* Blue-50 */
-            color: #1d4ed8;
-            border: 1px solid #dbeafe;
-        }
+        .book-card-wrapper:nth-child(3n+1) .book-card { border-color: #bfdbfe; }
+        .book-card-wrapper:nth-child(3n+1) .category-badge { background-color: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
+        .book-card-wrapper:nth-child(3n+2) .book-card { border-color: #e9d5ff; }
+        .book-card-wrapper:nth-child(3n+2) .category-badge { background-color: #faf5ff; color: #7e22ce; border: 1px solid #f3e8ff; }
+        .book-card-wrapper:nth-child(3n+3) .book-card { border-color: #fed7aa; }
+        .book-card-wrapper:nth-child(3n+3) .category-badge { background-color: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
 
-        /* 2nd card: Purple */
-        .book-card-wrapper:nth-child(3n+2) .book-card {
-            border-color: #e9d5ff; /* Purple-200 */
-        }
-        .book-card-wrapper:nth-child(3n+2) .category-badge {
-            background-color: #faf5ff; /* Purple-50 */
-            color: #7e22ce;
-            border: 1px solid #f3e8ff;
-        }
-
-        /* 3rd card: Orange/Gold */
-        .book-card-wrapper:nth-child(3n+3) .book-card {
-            border-color: #fed7aa; /* Orange-200 */
-        }
-        .book-card-wrapper:nth-child(3n+3) .category-badge {
-            background-color: #fff7ed; /* Orange-50 */
-            color: #c2410c;
-            border: 1px solid #ffedd5;
-        }
-
-        /* Hover only on devices that support it to prevent sticky hover on mobile */
         @media (hover: hover) {
             .book-card:hover {
                 transform: translateY(-4px);
@@ -109,65 +79,36 @@
             }
         }
 
-        /* Optimized Search Input */
-        .search-input:focus {
-            border-color: #3b82f6;
-            outline: none;
-        }
+        .search-input:focus { border-color: #3b82f6; outline: none; }
 
-        /* Pagination */
         .pagination-btn {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            color: #64748b;
-            font-size: 0.875rem;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px; background: #ffffff;
+            border: 1px solid #e2e8f0; color: #64748b; font-size: 0.875rem;
         }
         .pagination-btn.active {
-            background: #1e293b;
-            color: #ffffff;
-            border-color: #1e293b;
+            background: #1e293b; color: #ffffff; border-color: #1e293b;
         }
 
-        /* Bottom Nav - Removed Blur for Performance */
         .bottom-nav {
             background: #ffffff; 
             border-top: 1px solid #e2e8f0;
             padding-bottom: env(safe-area-inset-bottom);
         }
-        .nav-item.active {
-            color: #1e293b;
-        }
+        .nav-item.active { color: #1e293b; }
         .nav-item.active::after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: #1e293b;
+            content: ''; position: absolute; top: -8px; left: 50%;
+            transform: translateX(-50%); width: 40px; height: 2px; background: #1e293b;
         }
         
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
         
-        /* Modal Optimization */
-        #selectionModal {
-            /* Use simple transparency instead of blur */
-            background-color: rgba(0, 0, 0, 0.7); 
-        }
+        #selectionModal { background-color: rgba(0, 0, 0, 0.7); }
         
-        /* Prevent layout shift */
         .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
         }
     </style>
 </head>
@@ -206,27 +147,20 @@
         
         <!-- === HOME VIEW === -->
         <div id="homeView">
-            <!-- Simple Header -->
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-slate-800 pl-1"> ศูนย์รวมหนังสือต่างประเทศแปลไทย</h2>
-                
-                <!-- Simple Page Indicator -->
+                <h2 class="text-xl font-bold text-slate-800 pl-1">ศูนย์รวมหนังสือแปล</h2>
                 <div class="text-xs text-slate-500 bg-white px-2 py-1 rounded border border-slate-200">
                     หน้า <span id="pageInfo" class="font-bold text-slate-800">1</span>
                 </div>
             </div>
             
-            <!-- Filters (Wrapped Choice Style) -->
             <div class="flex flex-wrap justify-center gap-2 mb-4" id="categoryFilters">
                 <button class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-white whitespace-nowrap" data-filter="all">ทั้งหมด</button>
-                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="จีน">จีน</button>
                 <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="อังกฤษ">อังกฤษ</button>
-                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="สหรัฐ">สหรัฐ</button>
+                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="จีน">จีน</button>
                 <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="ญี่ปุ่น">ญี่ปุ่น</button>
-                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="เกาหลี">เกาหลี</button>
             </div>
 
-            <!-- Grid (3 Columns on Mobile) -->
             <div id="bookGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6 min-h-[400px]">
                 <div class="col-span-full text-center py-20 text-slate-400">
                     <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-2 text-slate-300"></i>
@@ -234,12 +168,8 @@
                 </div>
             </div>
             
-            <!-- Pagination -->
-            <div id="paginationContainer" class="mt-8 flex flex-wrap justify-center items-center gap-2">
-                <!-- Injected by JS -->
-            </div>
+            <div id="paginationContainer" class="mt-8 flex flex-wrap justify-center items-center gap-2"></div>
 
-            <!-- No Results -->
             <div id="noResults" class="hidden text-center py-20">
                 <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
                     <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
@@ -260,9 +190,7 @@
                 </div>
             </div>
 
-            <div id="favGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
-                <!-- Injected by JS -->
-            </div>
+            <div id="favGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6"></div>
 
             <div id="noFavs" class="hidden flex flex-col items-center justify-center py-20 text-center">
                 <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 border border-slate-100">
@@ -276,9 +204,8 @@
         </div>
     </main>
 
-    <!-- Modal (Optimized for Speed) -->
+    <!-- Modal (Dialog) -->
     <div id="selectionModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-        <!-- Removed animate-slide-up for instant open, used fade-fast -->
         <div class="bg-white rounded-2xl p-0 w-full max-w-sm relative shadow-2xl overflow-hidden animate-fade-fast" onclick="event.stopPropagation()">
             <!-- Close Button -->
             <button onclick="closeModal()" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 z-10">
@@ -295,22 +222,23 @@
                 <p class="text-slate-400 text-xs mb-6">เลือกรูปแบบการรับชม</p>
                 
                 <div class="flex flex-col gap-3">
-                    <!-- Read Button -->
-                    <a id="btnRead" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all">
-                        <i class="fa-solid fa-book-open text-blue-200"></i> 
-                        <span>อ่านแบบหนังสือ</span>
-                    </a>
                     
-                    <!-- Comic Button (Renamed from btnVideo to btnComic for clarity) -->
-                    <a id="btnComic" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
-                        <i id="btnComicIcon" class="fa-solid fa-images text-indigo-500"></i>
-                        <span>แบบหนังสือการ์ตูน</span>
+                    <!-- 1. Thai Translation Button (thaihtml) -->
+                    <a id="btnThai" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all">
+                        <i id="btnThaiIcon" class="fa-solid fa-language text-blue-200"></i>
+                        <span>อ่านฉบับแปลไทย</span>
                     </a>
 
-                    <!-- Video Button (New) -->
+                    <!-- 2. Original Book Button (html) -->
+                    <a id="btnOriginal" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
+                        <i id="btnOriginalIcon" class="fa-solid fa-book text-slate-500"></i> 
+                        <span>อ่านฉบับต้นฉบับ</span>
+                    </a>
+
+                    <!-- 3. Video Button (video_link) -->
                     <a id="btnVideo" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
                         <i id="btnVideoIcon" class="fa-solid fa-play text-red-500"></i>
-                        <span>แบบวิดีโอ</span>
+                        <span>พอตแคส</span>
                     </a>
                 </div>
             </div>
@@ -324,9 +252,7 @@
                 <i class="fa-solid fa-house text-lg mb-1"></i>
                 <span class="text-[10px] font-bold">หน้าหลัก</span>
             </button>
-            
             <div class="w-px h-6 bg-slate-200"></div>
-
             <button id="nav-fav" class="nav-item flex-1 h-full flex flex-col items-center justify-center" onclick="switchTab('favorites')">
                 <i class="fa-solid fa-heart text-lg mb-1"></i>
                 <span class="text-[10px] font-bold">รายการโปรด</span>
@@ -350,7 +276,6 @@
         const searchInput = document.getElementById('searchInput');
         const noResults = document.getElementById('noResults');
         const noFavs = document.getElementById('noFavs');
-        const resultCount = document.getElementById('resultCount');
         const paginationContainer = document.getElementById('paginationContainer');
         const pageInfo = document.getElementById('pageInfo');
         const homeView = document.getElementById('homeView');
@@ -361,42 +286,79 @@
 
         // --- Init & Fetch ---
         async function init() {
+            // Mock data based on new JSON structure for Preview
+            const mockData = [
+                {
+                    "id": 20,
+                    "title": "Paradise Lost",
+                    "author": "Milton",
+                    "category": "อังกฤษ",
+                    "reads": "1.2k",
+                    "image": "https://www.gutenberg.org/cache/epub/20/pg20.cover.medium.jpg",
+                    "html": "https://www.gutenberg.org/ebooks/20/pg20.cover.medium.jpg",
+                    "thaihtml": "https://example.com/thai-translation",
+                    "video_link": ""
+                },
+                {
+                    "id": 21,
+                    "title": "สามก๊ก (Romance of the Three Kingdoms)",
+                    "author": "Luo Guanzhong",
+                    "category": "จีน",
+                    "reads": "5.5k",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Romance_of_the_Three_Kingdoms_cover.jpg/440px-Romance_of_the_Three_Kingdoms_cover.jpg",
+                    "html": "https://example.com/original-cn",
+                    "thaihtml": "",
+                    "video_link": "https://youtube.com/watch?v=example"
+                },
+                {
+                    "id": 22,
+                    "title": "หนังสือตัวอย่าง (มีเฉพาะต้นฉบับ)",
+                    "author": "John Doe",
+                    "category": "อังกฤษ",
+                    "reads": "300",
+                    "image": "https://via.placeholder.com/150x225/e2e8f0/64748b?text=Cover",
+                    "html": "https://example.com/original",
+                    "thaihtml": "",
+                    "video_link": ""
+                }
+            ];
+
             try {
+                // พยายามดึงข้อมูลจากไฟล์ books.json ก่อน
                 const response = await fetch('books.json');
                 if (!response.ok) throw new Error('Failed to load books.json');
                 const jsonData = await response.json();
-                
                 books = [...jsonData];
-                filteredBooks = [...books];
-                renderBooks();
-
             } catch (error) {
-                console.error("Error loading books:", error);
-                bookGrid.innerHTML = `
-                    <div class="col-span-full text-center py-20 text-rose-500">
-                        <p class="font-bold text-sm">โหลดข้อมูลไม่สำเร็จ</p>
-                        <p class="text-xs text-slate-400 mt-1">กรุณาลองใหม่อีกครั้ง</p>
-                    </div>
-                `;
+                console.warn("ไม่พบไฟล์ books.json หรือเกิดข้อผิดพลาด ใช้ Mock Data สำหรับทดสอบแทน", error);
+                books = [...mockData];
             }
+            
+            filteredBooks = [...books];
+            renderBooks();
         }
 
-        // --- Render Functions (Optimized) ---
+        // --- Render Functions ---
         function createBookCard(book) {
             const liked = isLiked(book.id);
             const heartClass = liked ? 'fa-solid text-rose-500' : 'fa-regular text-slate-400';
+            // ป้องกัน undefined (รองรับกรณีใช้โครงสร้างเก่า)
+            const authorText = book.author ? book.author.replace(/"/g, '') : "ไม่ระบุผู้แต่ง"; 
+            const readsText = book.reads || "0";
+            const categoryText = book.category || "ทั่วไป";
+            const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
             
             return `
                 <div class="book-card-wrapper h-full" onclick="openModal(${book.id})">
                     <div class="book-card group cursor-pointer relative">
                         <!-- Image -->
                         <div class="relative w-full aspect-[2/3] bg-slate-50 border-b border-slate-100">
-                            <img src="${book.image}" alt="${book.title}" loading="lazy" class="w-full h-full object-cover">
+                            <img src="${imgUrl}" alt="${book.title}" loading="lazy" class="w-full h-full object-cover">
                             
                             <!-- Category Badge -->
                             <div class="absolute top-1 left-1">
                                 <span class="category-badge px-1.5 py-0.5 rounded text-[9px] font-bold shadow-sm">
-                                    ${book.category}
+                                    ${categoryText}
                                 </span>
                             </div>
 
@@ -410,14 +372,14 @@
                         <!-- Content -->
                         <div class="p-2 flex flex-col flex-grow">
                             <h3 class="text-xs font-bold text-slate-800 leading-tight mb-1 line-clamp-2 h-8 font-body">${book.title}</h3>
-                            <p class="text-[10px] text-slate-500 mb-2 truncate">${book.author}</p>
+                            <p class="text-[10px] text-slate-500 mb-2 truncate">${authorText}</p>
                             
                             <div class="mt-auto flex items-center justify-between border-t border-slate-50 pt-2">
                                 <span class="text-[9px] text-slate-400 flex items-center gap-1">
-                                    <i class="fa-solid fa-eye text-blue-400"></i> ${book.reads}
+                                    <i class="fa-solid fa-eye text-blue-400"></i> ${readsText}
                                 </span>
                                 <span class="text-[9px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
-                                    เลือก
+                                    อ่าน
                                 </span>
                             </div>
                         </div>
@@ -466,61 +428,58 @@
             });
         }
 
-        // --- Modal Logic ---
+        // --- Modal Logic (Updated for New JSON Structure) ---
         function openModal(bookId) {
             const book = books.find(b => b.id === bookId);
             if (!book) return;
 
-            document.getElementById('modalBookImage').src = book.image;
+            const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
+            document.getElementById('modalBookImage').src = imgUrl;
             document.getElementById('modalBookTitle').innerText = book.title;
             
-            // --- 1. Read Button Logic ---
-            const btnRead = document.getElementById('btnRead');
-            if (book.link && book.link.trim() !== "") {
-                btnRead.href = book.link;
-                // Enable Style
-                btnRead.className = "flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all";
-                btnRead.onclick = null;
+            // --- 1. Thai Translation Button (thaihtml) ---
+            const btnThai = document.getElementById('btnThai');
+            const btnThaiIcon = document.getElementById('btnThaiIcon');
+
+            if (book.thaihtml && book.thaihtml.trim() !== "") {
+                btnThai.href = book.thaihtml;
+                btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all";
+                btnThaiIcon.className = "fa-solid fa-language text-blue-200";
+                btnThai.onclick = null;
             } else {
-                btnRead.removeAttribute('href');
-                // Disable Style
-                btnRead.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-70";
-                btnRead.onclick = (e) => e.preventDefault();
+                btnThai.removeAttribute('href');
+                btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-70";
+                btnThaiIcon.className = "fa-solid fa-language text-slate-400";
+                btnThai.onclick = (e) => e.preventDefault();
             }
 
-            // --- 2. Comic Button Logic (Check comic_link) ---
-            const btnComic = document.getElementById('btnComic');
-            const btnComicIcon = document.getElementById('btnComicIcon');
+            // --- 2. Original Book Button (html) ---
+            const btnOriginal = document.getElementById('btnOriginal');
+            const btnOriginalIcon = document.getElementById('btnOriginalIcon');
 
-            // Reset to active base style
-            btnComic.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
-            btnComicIcon.className = "fa-solid fa-images text-indigo-500";
-            btnComic.onclick = null;
-
-            if (book.comic_link && book.comic_link.trim() !== "") {
-                btnComic.href = book.comic_link;
+            if (book.html && book.html.trim() !== "") {
+                btnOriginal.href = book.html;
+                btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
+                btnOriginalIcon.className = "fa-solid fa-book text-slate-500";
+                btnOriginal.onclick = null;
             } else {
-                btnComic.removeAttribute('href');
-                // Disable Style
-                btnComic.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
-                btnComicIcon.className = "fa-solid fa-images text-slate-400";
-                btnComic.onclick = (e) => e.preventDefault();
+                btnOriginal.removeAttribute('href');
+                btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
+                btnOriginalIcon.className = "fa-solid fa-book text-slate-400";
+                btnOriginal.onclick = (e) => e.preventDefault();
             }
 
-            // --- 3. Video Button Logic (Check video_link) ---
+            // --- 3. Video Button (video_link) ---
             const btnVideo = document.getElementById('btnVideo');
             const btnVideoIcon = document.getElementById('btnVideoIcon');
 
-            // Reset to active base style
-            btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
-            btnVideoIcon.className = "fa-solid fa-play text-red-500";
-            btnVideo.onclick = null;
-
             if (book.video_link && book.video_link.trim() !== "") {
                 btnVideo.href = book.video_link;
+                btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
+                btnVideoIcon.className = "fa-solid fa-play text-red-500";
+                btnVideo.onclick = null;
             } else {
                 btnVideo.removeAttribute('href');
-                // Disable Style
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
                 btnVideoIcon.className = "fa-solid fa-play text-slate-400";
                 btnVideo.onclick = (e) => e.preventDefault();
@@ -629,7 +588,8 @@
         function filterBooks() {
             const query = searchInput.value.toLowerCase();
             filteredBooks = books.filter(book => {
-                return (book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query)) &&
+                const authorStr = book.author ? book.author.toLowerCase() : "";
+                return (book.title.toLowerCase().includes(query) || authorStr.includes(query)) &&
                        (currentFilter === 'all' || book.category === currentFilter);
             });
             currentPage = 1;
