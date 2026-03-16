@@ -287,54 +287,44 @@
 
         // --- Init & Fetch ---
         async function init() {
-            // Mock data based on new JSON structure for Preview
-            const mockData = [
-                {
-                    "id": 51,
-                    "title": "Anne of the Island",
-                    "author": "\"Montgomery",
-                    "image": "https://www.gutenberg.org/cache/epub/51/pg51.cover.medium.jpg",
-                    "html": "https://www.gutenberg.org/cache/epub/51/pg51-images.html",
-                    "thaihtml": "",
-                    "video_link": ""
-                },
-                {
-                    "id": 20,
-                    "title": "Paradise Lost",
-                    "author": "Milton",
-                    "category": "อังกฤษ",
-                    "reads": "1.2k",
-                    "image": "https://www.gutenberg.org/cache/epub/20/pg20.cover.medium.jpg",
-                    "html": "https://www.gutenberg.org/ebooks/20/pg20.cover.medium.jpg",
-                    "thaihtml": "https://example.com/thai-translation",
-                    "video_link": ""
-                },
-                {
-                    "id": 21,
-                    "title": "สามก๊ก (Romance of the Three Kingdoms)",
-                    "author": "Luo Guanzhong",
-                    "category": "จีน",
-                    "reads": "5.5k",
-                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Romance_of_the_Three_Kingdoms_cover.jpg/440px-Romance_of_the_Three_Kingdoms_cover.jpg",
-                    "html": "https://example.com/original-cn",
-                    "thaihtml": "",
-                    "video_link": "https://youtube.com/watch?v=example"
-                }
-            ];
-
             try {
-                // พยายามดึงข้อมูลจากไฟล์ books.json ก่อน
+                // พยายามดึงข้อมูลจากไฟล์ books.json
                 const response = await fetch('books.json');
-                if (!response.ok) throw new Error('Failed to load books.json');
-                const jsonData = await response.json();
+                if (!response.ok) throw new Error('ไม่พบไฟล์ books.json (HTTP ' + response.status + ')');
+                
+                // อ่านข้อมูลดิบเป็น Text ออกมาก่อนเพื่อทำความสะอาด
+                let textData = await response.text();
+                
+                // ใช้ Regular Expression ในการลบ Trailing Comma ออกไปก่อนแปลง
+                // มันจะทำการค้นหาเครื่องหมายลูกน้ำที่มีวงเล็บปีกกาปิดตามหลัง แล้วลบลูกน้ำนั้นทิ้ง
+                textData = textData.replace(/,\s*([\]}])/g, '$1');
+                
+                // แปลง Text ที่ถูกคลีนให้กลายเป็นข้อมูล JSON ปกติ
+                const jsonData = JSON.parse(textData);
                 books = [...jsonData];
+                
+                filteredBooks = [...books];
+                renderBooks();
+
             } catch (error) {
-                console.warn("ไม่พบไฟล์ books.json หรือเกิดข้อผิดพลาด ใช้ Mock Data สำหรับทดสอบแทน", error);
-                books = [...mockData];
+                console.error("เกิดข้อผิดพลาด:", error);
+                
+                // แจ้งเตือนข้อผิดพลาดบนหน้าเว็บให้ชัดเจน
+                let errorMessage = "เกิดข้อผิดพลาดในการโหลดข้อมูล";
+                if (error instanceof SyntaxError) {
+                    errorMessage = "ไฟล์ books.json มีรูปแบบผิดพลาดขั้นรุนแรง (โปรดตรวจสอบเครื่องหมายปีกกาและลูกน้ำ)";
+                }
+
+                bookGrid.innerHTML = `
+                    <div class="col-span-full text-center py-20 text-rose-500">
+                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-3 opacity-80"></i>
+                        <p class="font-bold text-lg">${errorMessage}</p>
+                        <p class="text-sm text-slate-500 mt-2">โปรดตรวจสอบโค้ดในไฟล์ <b>books.json</b> ของคุณอีกครั้ง</p>
+                        <p class="text-xs text-slate-400 mt-1 break-all">${error.message}</p>
+                    </div>
+                `;
+                paginationContainer.innerHTML = '';
             }
-            
-            filteredBooks = [...books];
-            renderBooks();
         }
 
         // --- Render Functions ---
