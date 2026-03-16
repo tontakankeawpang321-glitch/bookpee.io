@@ -266,9 +266,10 @@
         let currentFilter = 'all';
         let filteredBooks = [];
         let currentPage = 1;
-        const itemsPerPage = 15;
+        const itemsPerPage = 10; // ปรับเป็น 10 เล่มต่อหน้าตามที่ต้องการ
         let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || [];
         let currentTab = 'home';
+        let searchTimeout = null; // เพิ่มตัวแปรหน่วงเวลาสำหรับระบบค้นหา
 
         // --- Elements ---
         const bookGrid = document.getElementById('bookGrid');
@@ -288,6 +289,15 @@
         async function init() {
             // Mock data based on new JSON structure for Preview
             const mockData = [
+                {
+                    "id": 51,
+                    "title": "Anne of the Island",
+                    "author": "\"Montgomery",
+                    "image": "https://www.gutenberg.org/cache/epub/51/pg51.cover.medium.jpg",
+                    "html": "https://www.gutenberg.org/cache/epub/51/pg51-images.html",
+                    "thaihtml": "",
+                    "video_link": ""
+                },
                 {
                     "id": 20,
                     "title": "Paradise Lost",
@@ -309,17 +319,6 @@
                     "html": "https://example.com/original-cn",
                     "thaihtml": "",
                     "video_link": "https://youtube.com/watch?v=example"
-                },
-                {
-                    "id": 22,
-                    "title": "หนังสือตัวอย่าง (มีเฉพาะต้นฉบับ)",
-                    "author": "John Doe",
-                    "category": "อังกฤษ",
-                    "reads": "300",
-                    "image": "https://via.placeholder.com/150x225/e2e8f0/64748b?text=Cover",
-                    "html": "https://example.com/original",
-                    "thaihtml": "",
-                    "video_link": ""
                 }
             ];
 
@@ -342,8 +341,11 @@
         function createBookCard(book) {
             const liked = isLiked(book.id);
             const heartClass = liked ? 'fa-solid text-rose-500' : 'fa-regular text-slate-400';
-            // ป้องกัน undefined (รองรับกรณีใช้โครงสร้างเก่า)
-            const authorText = book.author ? book.author.replace(/"/g, '') : "ไม่ระบุผู้แต่ง"; 
+            
+            // ลบเครื่องหมาย " และ \ ออกจากชื่อผู้แต่ง ป้องกันการแสดงผลผิดพลาด
+            const authorText = book.author ? book.author.replace(/["\\]/g, '') : "ไม่ระบุผู้แต่ง"; 
+            
+            // ใช้ค่า Default หากใน JSON ไม่มีฟิลด์ category หรือ reads มาให้
             const readsText = book.reads || "0";
             const categoryText = book.category || "ทั่วไป";
             const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
@@ -428,7 +430,7 @@
             });
         }
 
-        // --- Modal Logic (Updated for New JSON Structure) ---
+        // --- Modal Logic ---
         function openModal(bookId) {
             const book = books.find(b => b.id === bookId);
             if (!book) return;
@@ -596,7 +598,13 @@
             renderBooks();
         }
 
-        searchInput.addEventListener('input', filterBooks);
+        // ใช้ Debounce ป้องกันการค้นหาทำงานถี่เกินไป (เพิ่มประสิทธิภาพสำหรับข้อมูลเยอะๆ)
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                filterBooks();
+            }, 300); // รอผู้ใช้พิมพ์เสร็จ 0.3 วินาทีถึงจะเริ่มค้นหา
+        });
         
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
