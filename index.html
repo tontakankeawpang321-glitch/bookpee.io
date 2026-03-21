@@ -459,35 +459,8 @@
 
         // --- Modal Logic & View Tracking ---
 
-        function openCachedWindow(url, htmlContent) {
-            const newWin = window.open('', '_blank');
-            if (newWin) {
-                let absoluteUrl;
-                try {
-                    absoluteUrl = new URL(url, window.location.href).href;
-                } catch(e) {
-                    absoluteUrl = window.location.href;
-                }
-                
-                const baseTag = `<base href="${absoluteUrl}">`;
-                let finalHtml = htmlContent;
-                
-                if (finalHtml.match(/<head[^>]*>/i)) {
-                    finalHtml = finalHtml.replace(/(<head[^>]*>)/i, '$1\n    ' + baseTag);
-                } else {
-                    finalHtml = `<head>\n    ${baseTag}\n</head>\n` + finalHtml;
-                }
-                
-                newWin.document.open();
-                newWin.document.write(finalHtml);
-                newWin.document.close();
-            } else {
-                window.open(url, '_blank');
-            }
-        }
-
-        // อัปเดตฟังก์ชันนี้เพื่อจัดการปัญหา CORS ด้วย Proxy
-        async function handleLinkClick(e, url, btnId, shouldCache = true) {
+        // ฟังก์ชันจัดการเมื่อคลิกลิงก์ (แสดง UI โหลด และป้องกันการกดปุ่มอื่น แต่ไม่ทำ Cache เพื่อเลี่ยงการติด CORS)
+        function handleLinkClick(e, url, btnId) {
             e.preventDefault();
             
             const btn = document.getElementById(btnId);
@@ -501,6 +474,7 @@
             const btnOriginal = document.getElementById('btnOriginal');
             const btnVideo = document.getElementById('btnVideo');
             
+            // ป้องกันการกดปุ่มอื่น และลดความสว่างของปุ่มที่ไม่ได้กด
             [btnThai, btnOriginal, btnVideo].forEach(b => {
                 b.style.pointerEvents = 'none';
                 if(b.id !== btnId && b.hasAttribute('href')) {
@@ -508,6 +482,7 @@
                 }
             });
 
+            // แสดงสถานะหมุนโหลด
             icon.className = 'fa-solid fa-spinner fa-spin text-current';
             span.innerText = 'รอโหลดสักครู่...';
 
@@ -520,77 +495,15 @@
                 span.innerText = originalText;
             };
 
-            if (!shouldCache) {
-                setTimeout(() => {
-                    window.open(url, '_blank');
-                    restoreUI();
-                }, 600);
-                return;
-            }
-
-            try {
-                const cacheKey = 'interlib_content_' + url;
-                let content = localStorage.getItem(cacheKey);
+            // หน่วงเวลาเล็กน้อยเพื่อให้เห็น UI จากนั้นเปิดลิงก์ทันที
+            setTimeout(() => {
+                window.open(url, '_blank');
                 
-                if (content) {
-                    // โหลดจากแคชที่มีอยู่
-                    setTimeout(() => {
-                        openCachedWindow(url, content);
-                        restoreUI();
-                    }, 300); 
-                } else {
-                    // ขั้นตอนการดึงข้อมูลเพื่อทำแคชใหม่ (เพิ่ม Proxy เพื่อแก้ปัญหา CORS)
-                    let fetchSuccess = false;
-                    
-                    try {
-                        // 1. ลองดึงตรงๆ ก่อน เผื่อเว็บปลายทางอนุญาต CORS
-                        const response = await fetch(url);
-                        if (response.ok) {
-                            content = await response.text();
-                            fetchSuccess = true;
-                        } else {
-                            throw new Error('Direct fetch HTTP Error');
-                        }
-                    } catch (directErr) {
-                        // 2. ถ้าดึงตรงๆ ไม่ได้ (มักจะติด CORS แบบในภาพ) ให้ผ่าน AllOrigins Proxy
-                        console.warn('Direct fetch blocked by CORS, trying via Proxy...');
-                        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-                        
-                        const proxyResponse = await fetch(proxyUrl);
-                        if (proxyResponse.ok) {
-                            const proxyData = await proxyResponse.json();
-                            if (proxyData.contents) {
-                                content = proxyData.contents;
-                                fetchSuccess = true;
-                            } else {
-                                throw new Error('Proxy returned empty content');
-                            }
-                        } else {
-                            throw new Error('Proxy fetch failed');
-                        }
-                    }
-
-                    // บันทึกและเปิด
-                    if (fetchSuccess) {
-                        try {
-                            localStorage.setItem(cacheKey, content);
-                        } catch (err) {
-                            console.warn('LocalStorage limit reached');
-                        }
-                        openCachedWindow(url, content);
-                    } else {
-                        throw new Error('All fetching methods failed');
-                    }
-                    
-                    restoreUI();
-                }
-            } catch (error) {
-                console.warn('Fetch completely failed, fallback to normal open:', error);
+                // หลังจากสั่งเปิดแล้วให้รอสักพักเพื่อคืนค่าปุ่มกลับมาเหมือนเดิม
                 setTimeout(() => {
-                    window.open(url, '_blank');
                     restoreUI();
-                }, 600);
-            }
+                }, 500);
+            }, 600);
         }
 
         function openModal(bookId) {
@@ -632,7 +545,7 @@
                 btnThai.href = book.thaihtml;
                 btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all";
                 btnThaiIcon.className = "fa-solid fa-language text-blue-200";
-                btnThai.onclick = (e) => handleLinkClick(e, book.thaihtml, 'btnThai', true);
+                btnThai.onclick = (e) => handleLinkClick(e, book.thaihtml, 'btnThai');
             } else {
                 btnThai.removeAttribute('href');
                 btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-70";
@@ -645,7 +558,7 @@
                 btnOriginal.href = book.html;
                 btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
                 btnOriginalIcon.className = "fa-solid fa-book text-slate-500";
-                btnOriginal.onclick = (e) => handleLinkClick(e, book.html, 'btnOriginal', true);
+                btnOriginal.onclick = (e) => handleLinkClick(e, book.html, 'btnOriginal');
             } else {
                 btnOriginal.removeAttribute('href');
                 btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
@@ -658,7 +571,7 @@
                 btnVideo.href = book.video_link;
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
                 btnVideoIcon.className = "fa-solid fa-play text-red-500";
-                btnVideo.onclick = (e) => handleLinkClick(e, book.video_link, 'btnVideo', false);
+                btnVideo.onclick = (e) => handleLinkClick(e, book.video_link, 'btnVideo');
             } else {
                 btnVideo.removeAttribute('href');
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
