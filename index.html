@@ -464,6 +464,121 @@
         }
 
         // --- Modal Logic & View Tracking ---
+
+        // ฟังก์ชันเปิดแท็บใหม่ด้วยข้อมูล HTML ที่แคชไว้
+        function openCachedWindow(url, htmlContent) {
+            const newWin = window.open('', '_blank');
+            if (newWin) {
+                // ใส่ base tag เพื่อให้รูปภาพ หรือลิงก์ภายใน HTML ที่เป็น relative path ยังทำงานได้
+                let absoluteUrl;
+                try {
+                    absoluteUrl = new URL(url, window.location.href).href;
+                } catch(e) {
+                    absoluteUrl = window.location.href;
+                }
+                
+                const baseTag = `<base href="${absoluteUrl}">`;
+                let finalHtml = htmlContent;
+                
+                // แทรก <base> ไว้ใน <head> เพื่อซ่อมแซมเส้นทางรูปภาพและลิงก์
+                if (finalHtml.match(/<head[^>]*>/i)) {
+                    finalHtml = finalHtml.replace(/(<head[^>]*>)/i, '$1\n    ' + baseTag);
+                } else {
+                    finalHtml = `<head>\n    ${baseTag}\n</head>\n` + finalHtml;
+                }
+                
+                newWin.document.open();
+                newWin.document.write(finalHtml);
+                newWin.document.close();
+            } else {
+                // ถ้าโดนเบราว์เซอร์บล็อค popup ให้ใช้วิธีเปิดปกติ
+                window.open(url, '_blank');
+            }
+        }
+
+        // ฟังก์ชันจัดการเมื่อคลิกลิงก์ (แสดง UI โหลด, แคชข้อมูล และป้องกันการกดปุ่มอื่น)
+        async function handleLinkClick(e, url, btnId, shouldCache = true) {
+            e.preventDefault();
+            
+            const btn = document.getElementById(btnId);
+            const icon = document.getElementById(btnId + 'Icon');
+            const span = btn.querySelector('span');
+            
+            const originalIconClass = icon.className;
+            const originalText = span.innerText;
+            
+            const btnThai = document.getElementById('btnThai');
+            const btnOriginal = document.getElementById('btnOriginal');
+            const btnVideo = document.getElementById('btnVideo');
+            
+            // ป้องกันการกดปุ่มอื่น และลดความสว่างของปุ่มที่ไม่ได้กด
+            [btnThai, btnOriginal, btnVideo].forEach(b => {
+                b.style.pointerEvents = 'none';
+                if(b.id !== btnId && b.hasAttribute('href')) {
+                    b.classList.add('opacity-40', 'transition-opacity');
+                }
+            });
+
+            // เปลี่ยนไอคอนและข้อความเป็นสถานะกำลังโหลด
+            icon.className = 'fa-solid fa-spinner fa-spin text-current';
+            span.innerText = 'รอโหลดสักครู่...';
+
+            // ฟังก์ชันคืนค่า UI กลับเป็นเหมือนเดิม
+            const restoreUI = () => {
+                [btnThai, btnOriginal, btnVideo].forEach(b => {
+                    b.style.pointerEvents = '';
+                    b.classList.remove('opacity-40', 'transition-opacity');
+                });
+                icon.className = originalIconClass;
+                span.innerText = originalText;
+            };
+
+            // หากเป็นวิดีโอหรือไม่ต้องการแคช ให้เปิดปกติ
+            if (!shouldCache) {
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                    restoreUI();
+                }, 600);
+                return;
+            }
+
+            try {
+                const cacheKey = 'interlib_content_' + url;
+                let content = localStorage.getItem(cacheKey);
+                
+                if (content) {
+                    // 1. มีแคชแล้ว: โหลดจาก Local Storage ทันที (เร็วมาก)
+                    setTimeout(() => {
+                        openCachedWindow(url, content);
+                        restoreUI();
+                    }, 300); // หน่วงนิดหน่อยให้เห็น UI อนิเมชัน
+                } else {
+                    // 2. ยังไม่มีแคช: ไปดึงข้อมูลมาจาก URL (Fetch)
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error('Network error');
+                    content = await response.text();
+                    
+                    // ลองบันทึกลง Local Storage
+                    try {
+                        localStorage.setItem(cacheKey, content);
+                    } catch (err) {
+                        console.warn('LocalStorage limit reached or error');
+                        // ถ้าพื้นที่เต็ม ก็ยังข้ามไปอ่านได้ปกติ แค่ไม่บันทึกแคช
+                    }
+                    
+                    openCachedWindow(url, content);
+                    restoreUI();
+                }
+            } catch (error) {
+                // กรณีเกิดข้อผิดพลาด เช่น โดนบล็อค CORS (ข้ามโดเมน) หรือเน็ตหลุด ให้สลับไปใช้วิธีเปิดปกติ
+                console.warn('Fetch error, fallback to normal open:', error);
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                    restoreUI();
+                }, 600);
+            }
+        }
+
         function openModal(bookId) {
             const book = books.find(b => b.id === bookId);
             if (!book) return;
@@ -481,15 +596,32 @@
             document.getElementById('modalBookImage').src = imgUrl;
             document.getElementById('modalBookTitle').innerText = book.title;
             
-            // --- 1. Thai Translation Button (thaihtml) ---
+            // --- อ้างอิงปุ่มต่างๆ ---
             const btnThai = document.getElementById('btnThai');
             const btnThaiIcon = document.getElementById('btnThaiIcon');
+            const btnThaiSpan = btnThai.querySelector('span');
 
+            const btnOriginal = document.getElementById('btnOriginal');
+            const btnOriginalIcon = document.getElementById('btnOriginalIcon');
+            const btnOriginalSpan = btnOriginal.querySelector('span');
+
+            const btnVideo = document.getElementById('btnVideo');
+            const btnVideoIcon = document.getElementById('btnVideoIcon');
+            const btnVideoSpan = btnVideo.querySelector('span');
+
+            // รีเซ็ต pointer-events และ opacity เผื่อสถานะปุ่มค้างจากรอบก่อนหน้า
+            [btnThai, btnOriginal, btnVideo].forEach(b => {
+                b.style.pointerEvents = '';
+                b.classList.remove('opacity-40', 'transition-opacity');
+            });
+
+            // --- 1. Thai Translation Button (thaihtml) ---
+            btnThaiSpan.innerText = 'อ่านฉบับแปลไทย';
             if (book.thaihtml && book.thaihtml.trim() !== "") {
                 btnThai.href = book.thaihtml;
                 btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all";
                 btnThaiIcon.className = "fa-solid fa-language text-blue-200";
-                btnThai.onclick = null;
+                btnThai.onclick = (e) => handleLinkClick(e, book.thaihtml, 'btnThai', true);
             } else {
                 btnThai.removeAttribute('href');
                 btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-70";
@@ -498,14 +630,12 @@
             }
 
             // --- 2. Original Book Button (html) ---
-            const btnOriginal = document.getElementById('btnOriginal');
-            const btnOriginalIcon = document.getElementById('btnOriginalIcon');
-
+            btnOriginalSpan.innerText = 'อ่านฉบับต้นฉบับ';
             if (book.html && book.html.trim() !== "") {
                 btnOriginal.href = book.html;
                 btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
                 btnOriginalIcon.className = "fa-solid fa-book text-slate-500";
-                btnOriginal.onclick = null;
+                btnOriginal.onclick = (e) => handleLinkClick(e, book.html, 'btnOriginal', true);
             } else {
                 btnOriginal.removeAttribute('href');
                 btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
@@ -514,14 +644,12 @@
             }
 
             // --- 3. Video Button (video_link) ---
-            const btnVideo = document.getElementById('btnVideo');
-            const btnVideoIcon = document.getElementById('btnVideoIcon');
-
+            btnVideoSpan.innerText = 'พอตแคส';
             if (book.video_link && book.video_link.trim() !== "") {
                 btnVideo.href = book.video_link;
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
                 btnVideoIcon.className = "fa-solid fa-play text-red-500";
-                btnVideo.onclick = null;
+                btnVideo.onclick = (e) => handleLinkClick(e, book.video_link, 'btnVideo', false);
             } else {
                 btnVideo.removeAttribute('href');
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
