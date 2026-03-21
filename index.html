@@ -154,11 +154,9 @@
                 </div>
             </div>
             
+            <!-- Category Filters (Generated Dynamically) -->
             <div class="flex flex-wrap justify-center gap-2 mb-4" id="categoryFilters">
-                <button class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-white whitespace-nowrap" data-filter="all">ทั้งหมด</button>
-                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="อังกฤษ">อังกฤษ</button>
-                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="จีน">จีน</button>
-                <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="ญี่ปุ่น">ญี่ปุ่น</button>
+                <!-- หมวดหมู่จะถูกสร้างด้วย Javascript อัตโนมัติ -->
             </div>
 
             <div id="bookGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6 min-h-[400px]">
@@ -266,9 +264,9 @@
         let currentFilter = 'all';
         let filteredBooks = [];
         let currentPage = 1;
-        const itemsPerPage = 10; 
+        const itemsPerPage = 20; // ปรับให้แสดง 20 เล่มต่อหน้าตามที่ขอ
         let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || [];
-        let localViews = JSON.parse(localStorage.getItem('interlib_views')) || {}; // เพิ่มตัวแปรเก็บ View ลง LocalStorage
+        let localViews = JSON.parse(localStorage.getItem('interlib_views')) || {}; 
         let currentTab = 'home';
         let searchTimeout = null; 
 
@@ -285,9 +283,9 @@
         const navHome = document.getElementById('nav-home');
         const navFav = document.getElementById('nav-fav');
         const selectionModal = document.getElementById('selectionModal');
+        const categoryFiltersContainer = document.getElementById('categoryFilters');
 
         // --- Utility Functions for Views ---
-        // แปลงยอดวิวจาก Text ใน JSON เป็นตัวเลข (เช่น '1.2k' -> 1200)
         function parseReadsCount(reads) {
             if (!reads) return 0;
             const str = String(reads).toLowerCase();
@@ -296,7 +294,6 @@
             return parseInt(str) || 0;
         }
 
-        // แปลงตัวเลขกลับเป็นรูปแบบตัวย่อเพื่อให้แสดงผลสวยงาม
         function formatReadsCount(num) {
             if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'm';
             if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
@@ -315,6 +312,8 @@
                 const jsonData = JSON.parse(textData);
                 books = [...jsonData];
                 
+                generateCategoryFilters(); // สร้างปุ่มหมวดหมู่อัตโนมัติ
+
                 filteredBooks = [...books];
                 renderBooks();
 
@@ -338,6 +337,39 @@
             }
         }
 
+        // --- Auto Generate Category Filters ---
+        function generateCategoryFilters() {
+            // ดึงหมวดหมู่ทั้งหมดที่ไม่ซ้ำกัน
+            const uniqueCategories = [...new Set(books.map(b => b.category || "ทั่วไป"))].filter(c => c.trim() !== "").sort();
+
+            // สร้างปุ่ม "ทั้งหมด"
+            let html = `<button class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-white whitespace-nowrap" data-filter="all">ทั้งหมด</button>`;
+            
+            // สร้างปุ่มตามหมวดหมู่ที่พบ
+            uniqueCategories.forEach(category => {
+                html += `<button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="${category}">${category}</button>`;
+            });
+
+            categoryFiltersContainer.innerHTML = html;
+
+            // ผูก Event Listener ให้กับปุ่มที่เพิ่งสร้างขึ้นมา
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // จัดการสไตล์ของปุ่ม
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active', 'bg-slate-800', 'text-white');
+                        b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                    });
+                    btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                    btn.classList.add('active', 'bg-slate-800', 'text-white');
+                    
+                    // สั่งกรองข้อมูล
+                    currentFilter = btn.dataset.filter;
+                    filterBooks();
+                });
+            });
+        }
+
         // --- Render Functions ---
         function createBookCard(book) {
             const liked = isLiked(book.id);
@@ -347,7 +379,6 @@
             const categoryText = book.category || "ทั่วไป";
             const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
             
-            // นำยอดวิวตั้งต้นมาบวกกับยอดวิวปัจจุบัน (Local)
             const baseReads = parseReadsCount(book.reads);
             const totalReads = baseReads + (localViews[book.id] || 0);
             const displayReads = formatReadsCount(totalReads);
@@ -437,11 +468,9 @@
             const book = books.find(b => b.id === bookId);
             if (!book) return;
 
-            // บันทึกและอัปเดตยอดวิวเพิ่มขึ้น 1
             localViews[bookId] = (localViews[bookId] || 0) + 1;
             localStorage.setItem('interlib_views', JSON.stringify(localViews));
             
-            // อัปเดตตัวเลขแสดงผลวิวบนการ์ดหนังสือทันที (ทั้งในหน้าหลักและหน้ารายการโปรด)
             const baseReads = parseReadsCount(book.reads);
             const newTotal = baseReads + localViews[bookId];
             document.querySelectorAll(`.view-count-${bookId}`).forEach(el => {
@@ -604,8 +633,9 @@
             const query = searchInput.value.toLowerCase();
             filteredBooks = books.filter(book => {
                 const authorStr = book.author ? book.author.toLowerCase() : "";
+                const cat = book.category || "ทั่วไป"; // จัดการกรณีที่ไม่มีหมวดหมู่
                 return (book.title.toLowerCase().includes(query) || authorStr.includes(query)) &&
-                       (currentFilter === 'all' || book.category === currentFilter);
+                       (currentFilter === 'all' || cat === currentFilter);
             });
             currentPage = 1;
             renderBooks();
@@ -616,19 +646,6 @@
             searchTimeout = setTimeout(() => {
                 filterBooks();
             }, 300); 
-        });
-        
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('active', 'bg-slate-800', 'text-white');
-                    b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-                });
-                btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-                btn.classList.add('active', 'bg-slate-800', 'text-white');
-                currentFilter = btn.dataset.filter;
-                filterBooks();
-            });
         });
 
         // Start
