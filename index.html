@@ -264,7 +264,7 @@
         let currentFilter = 'all';
         let filteredBooks = [];
         let currentPage = 1;
-        const itemsPerPage = 20; // ปรับให้แสดง 20 เล่มต่อหน้าตามที่ขอ
+        const itemsPerPage = 20; 
         let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || [];
         let localViews = JSON.parse(localStorage.getItem('interlib_views')) || {}; 
         let currentTab = 'home';
@@ -339,23 +339,18 @@
 
         // --- Auto Generate Category Filters ---
         function generateCategoryFilters() {
-            // ดึงหมวดหมู่ทั้งหมดที่ไม่ซ้ำกัน
             const uniqueCategories = [...new Set(books.map(b => b.category || "ทั่วไป"))].filter(c => c.trim() !== "").sort();
 
-            // สร้างปุ่ม "ทั้งหมด"
             let html = `<button class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-white whitespace-nowrap" data-filter="all">ทั้งหมด</button>`;
             
-            // สร้างปุ่มตามหมวดหมู่ที่พบ
             uniqueCategories.forEach(category => {
                 html += `<button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="${category}">${category}</button>`;
             });
 
             categoryFiltersContainer.innerHTML = html;
 
-            // ผูก Event Listener ให้กับปุ่มที่เพิ่งสร้างขึ้นมา
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // จัดการสไตล์ของปุ่ม
                     document.querySelectorAll('.filter-btn').forEach(b => {
                         b.classList.remove('active', 'bg-slate-800', 'text-white');
                         b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
@@ -363,7 +358,6 @@
                     btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
                     btn.classList.add('active', 'bg-slate-800', 'text-white');
                     
-                    // สั่งกรองข้อมูล
                     currentFilter = btn.dataset.filter;
                     filterBooks();
                 });
@@ -465,11 +459,9 @@
 
         // --- Modal Logic & View Tracking ---
 
-        // ฟังก์ชันเปิดแท็บใหม่ด้วยข้อมูล HTML ที่แคชไว้
         function openCachedWindow(url, htmlContent) {
             const newWin = window.open('', '_blank');
             if (newWin) {
-                // ใส่ base tag เพื่อให้รูปภาพ หรือลิงก์ภายใน HTML ที่เป็น relative path ยังทำงานได้
                 let absoluteUrl;
                 try {
                     absoluteUrl = new URL(url, window.location.href).href;
@@ -480,7 +472,6 @@
                 const baseTag = `<base href="${absoluteUrl}">`;
                 let finalHtml = htmlContent;
                 
-                // แทรก <base> ไว้ใน <head> เพื่อซ่อมแซมเส้นทางรูปภาพและลิงก์
                 if (finalHtml.match(/<head[^>]*>/i)) {
                     finalHtml = finalHtml.replace(/(<head[^>]*>)/i, '$1\n    ' + baseTag);
                 } else {
@@ -491,12 +482,11 @@
                 newWin.document.write(finalHtml);
                 newWin.document.close();
             } else {
-                // ถ้าโดนเบราว์เซอร์บล็อค popup ให้ใช้วิธีเปิดปกติ
                 window.open(url, '_blank');
             }
         }
 
-        // ฟังก์ชันจัดการเมื่อคลิกลิงก์ (แสดง UI โหลด, แคชข้อมูล และป้องกันการกดปุ่มอื่น)
+        // อัปเดตฟังก์ชันนี้เพื่อจัดการปัญหา CORS ด้วย Proxy
         async function handleLinkClick(e, url, btnId, shouldCache = true) {
             e.preventDefault();
             
@@ -511,7 +501,6 @@
             const btnOriginal = document.getElementById('btnOriginal');
             const btnVideo = document.getElementById('btnVideo');
             
-            // ป้องกันการกดปุ่มอื่น และลดความสว่างของปุ่มที่ไม่ได้กด
             [btnThai, btnOriginal, btnVideo].forEach(b => {
                 b.style.pointerEvents = 'none';
                 if(b.id !== btnId && b.hasAttribute('href')) {
@@ -519,11 +508,9 @@
                 }
             });
 
-            // เปลี่ยนไอคอนและข้อความเป็นสถานะกำลังโหลด
             icon.className = 'fa-solid fa-spinner fa-spin text-current';
             span.innerText = 'รอโหลดสักครู่...';
 
-            // ฟังก์ชันคืนค่า UI กลับเป็นเหมือนเดิม
             const restoreUI = () => {
                 [btnThai, btnOriginal, btnVideo].forEach(b => {
                     b.style.pointerEvents = '';
@@ -533,7 +520,6 @@
                 span.innerText = originalText;
             };
 
-            // หากเป็นวิดีโอหรือไม่ต้องการแคช ให้เปิดปกติ
             if (!shouldCache) {
                 setTimeout(() => {
                     window.open(url, '_blank');
@@ -547,31 +533,59 @@
                 let content = localStorage.getItem(cacheKey);
                 
                 if (content) {
-                    // 1. มีแคชแล้ว: โหลดจาก Local Storage ทันที (เร็วมาก)
+                    // โหลดจากแคชที่มีอยู่
                     setTimeout(() => {
                         openCachedWindow(url, content);
                         restoreUI();
-                    }, 300); // หน่วงนิดหน่อยให้เห็น UI อนิเมชัน
+                    }, 300); 
                 } else {
-                    // 2. ยังไม่มีแคช: ไปดึงข้อมูลมาจาก URL (Fetch)
-                    const response = await fetch(url);
-                    if (!response.ok) throw new Error('Network error');
-                    content = await response.text();
+                    // ขั้นตอนการดึงข้อมูลเพื่อทำแคชใหม่ (เพิ่ม Proxy เพื่อแก้ปัญหา CORS)
+                    let fetchSuccess = false;
                     
-                    // ลองบันทึกลง Local Storage
                     try {
-                        localStorage.setItem(cacheKey, content);
-                    } catch (err) {
-                        console.warn('LocalStorage limit reached or error');
-                        // ถ้าพื้นที่เต็ม ก็ยังข้ามไปอ่านได้ปกติ แค่ไม่บันทึกแคช
+                        // 1. ลองดึงตรงๆ ก่อน เผื่อเว็บปลายทางอนุญาต CORS
+                        const response = await fetch(url);
+                        if (response.ok) {
+                            content = await response.text();
+                            fetchSuccess = true;
+                        } else {
+                            throw new Error('Direct fetch HTTP Error');
+                        }
+                    } catch (directErr) {
+                        // 2. ถ้าดึงตรงๆ ไม่ได้ (มักจะติด CORS แบบในภาพ) ให้ผ่าน AllOrigins Proxy
+                        console.warn('Direct fetch blocked by CORS, trying via Proxy...');
+                        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+                        
+                        const proxyResponse = await fetch(proxyUrl);
+                        if (proxyResponse.ok) {
+                            const proxyData = await proxyResponse.json();
+                            if (proxyData.contents) {
+                                content = proxyData.contents;
+                                fetchSuccess = true;
+                            } else {
+                                throw new Error('Proxy returned empty content');
+                            }
+                        } else {
+                            throw new Error('Proxy fetch failed');
+                        }
+                    }
+
+                    // บันทึกและเปิด
+                    if (fetchSuccess) {
+                        try {
+                            localStorage.setItem(cacheKey, content);
+                        } catch (err) {
+                            console.warn('LocalStorage limit reached');
+                        }
+                        openCachedWindow(url, content);
+                    } else {
+                        throw new Error('All fetching methods failed');
                     }
                     
-                    openCachedWindow(url, content);
                     restoreUI();
                 }
             } catch (error) {
-                // กรณีเกิดข้อผิดพลาด เช่น โดนบล็อค CORS (ข้ามโดเมน) หรือเน็ตหลุด ให้สลับไปใช้วิธีเปิดปกติ
-                console.warn('Fetch error, fallback to normal open:', error);
+                console.warn('Fetch completely failed, fallback to normal open:', error);
                 setTimeout(() => {
                     window.open(url, '_blank');
                     restoreUI();
@@ -596,7 +610,6 @@
             document.getElementById('modalBookImage').src = imgUrl;
             document.getElementById('modalBookTitle').innerText = book.title;
             
-            // --- อ้างอิงปุ่มต่างๆ ---
             const btnThai = document.getElementById('btnThai');
             const btnThaiIcon = document.getElementById('btnThaiIcon');
             const btnThaiSpan = btnThai.querySelector('span');
@@ -609,13 +622,11 @@
             const btnVideoIcon = document.getElementById('btnVideoIcon');
             const btnVideoSpan = btnVideo.querySelector('span');
 
-            // รีเซ็ต pointer-events และ opacity เผื่อสถานะปุ่มค้างจากรอบก่อนหน้า
             [btnThai, btnOriginal, btnVideo].forEach(b => {
                 b.style.pointerEvents = '';
                 b.classList.remove('opacity-40', 'transition-opacity');
             });
 
-            // --- 1. Thai Translation Button (thaihtml) ---
             btnThaiSpan.innerText = 'อ่านฉบับแปลไทย';
             if (book.thaihtml && book.thaihtml.trim() !== "") {
                 btnThai.href = book.thaihtml;
@@ -629,7 +640,6 @@
                 btnThai.onclick = (e) => e.preventDefault();
             }
 
-            // --- 2. Original Book Button (html) ---
             btnOriginalSpan.innerText = 'อ่านฉบับต้นฉบับ';
             if (book.html && book.html.trim() !== "") {
                 btnOriginal.href = book.html;
@@ -643,7 +653,6 @@
                 btnOriginal.onclick = (e) => e.preventDefault();
             }
 
-            // --- 3. Video Button (video_link) ---
             btnVideoSpan.innerText = 'พอตแคส';
             if (book.video_link && book.video_link.trim() !== "") {
                 btnVideo.href = book.video_link;
@@ -668,7 +677,6 @@
             if (e.target === selectionModal) closeModal();
         });
 
-        // --- Interaction Logic ---
         function switchTab(tab) {
             currentTab = tab;
             if (tab === 'home') {
@@ -718,7 +726,6 @@
             });
         }
 
-        // --- Pagination & Filter ---
         function renderPagination() {
             const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
             paginationContainer.innerHTML = '';
@@ -761,7 +768,7 @@
             const query = searchInput.value.toLowerCase();
             filteredBooks = books.filter(book => {
                 const authorStr = book.author ? book.author.toLowerCase() : "";
-                const cat = book.category || "ทั่วไป"; // จัดการกรณีที่ไม่มีหมวดหมู่
+                const cat = book.category || "ทั่วไป"; 
                 return (book.title.toLowerCase().includes(query) || authorStr.includes(query)) &&
                        (currentFilter === 'all' || cat === currentFilter);
             });
@@ -776,7 +783,6 @@
             }, 300); 
         });
 
-        // Start
         init();
 
     </script>
