@@ -243,6 +243,19 @@
         </div>
     </div>
 
+    <!-- Video Modal (YouTube Embed) -->
+    <div id="videoModal" class="fixed inset-0 z-[120] hidden flex flex-col items-center justify-center p-0 bg-black/95 backdrop-blur-sm animate-fade-fast">
+        <!-- Close Button -->
+        <button onclick="closeVideoModal()" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 text-white z-10 hover:bg-white/30 transition-colors">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        
+        <!-- Video Container (16:9 Aspect Ratio) -->
+        <div class="w-full max-w-4xl aspect-video bg-black shadow-2xl">
+            <iframe id="youtubeIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 w-full bottom-nav z-50">
         <div class="flex justify-around items-center h-14 max-w-md mx-auto">
@@ -284,6 +297,8 @@
         const navFav = document.getElementById('nav-fav');
         const selectionModal = document.getElementById('selectionModal');
         const categoryFiltersContainer = document.getElementById('categoryFilters');
+        const videoModal = document.getElementById('videoModal');
+        const youtubeIframe = document.getElementById('youtubeIframe');
 
         // --- Utility Functions for Views ---
         function parseReadsCount(reads) {
@@ -571,7 +586,10 @@
                 btnVideo.href = book.video_link;
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
                 btnVideoIcon.className = "fa-solid fa-play text-red-500";
-                btnVideo.onclick = (e) => handleLinkClick(e, book.video_link, 'btnVideo');
+                btnVideo.onclick = (e) => {
+                    e.preventDefault();
+                    openVideoModal(book.video_link);
+                };
             } else {
                 btnVideo.removeAttribute('href');
                 btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
@@ -588,6 +606,37 @@
 
         selectionModal.addEventListener('click', (e) => {
             if (e.target === selectionModal) closeModal();
+        });
+
+        // --- Video Modal Logic ---
+        function getYouTubeId(url) {
+            // ฟังก์ชันสกัด ID จากลิงก์รูปแบบต่างๆ ของ YouTube
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|\/shorts\/)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function openVideoModal(url) {
+            const videoId = getYouTubeId(url);
+            if (videoId) {
+                // ปิด Modal เลือกอ่าน แล้วเปิด Modal เล่นวิดีโอแทน
+                closeModal();
+                youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                videoModal.classList.remove('hidden');
+            } else {
+                // ถ้าไม่ใช่ลิงก์ YouTube ให้เปิดแท็บใหม่ตามปกติ (Fallback)
+                window.open(url, '_blank');
+            }
+        }
+
+        function closeVideoModal() {
+            videoModal.classList.add('hidden');
+            youtubeIframe.src = ''; // เคลียร์ src เพื่อหยุดการเล่นวิดีโอ
+        }
+
+        videoModal.addEventListener('click', (e) => {
+            // ปิดเมื่อผู้ใช้คลิกพื้นที่สีดำรอบๆ วิดีโอ
+            if (e.target === videoModal) closeVideoModal();
         });
 
         function switchTab(tab) {
@@ -701,3 +750,6 @@
     </script>
 </body>
 </html>
+
+
+
