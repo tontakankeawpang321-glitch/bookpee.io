@@ -1,0 +1,2684 @@
+<html class="translated-ltr" lang="th"><head><meta charset="utf-8"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<style>
+#pg-header div, #pg-footer div {
+    all: initial;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 2em;
+}
+#pg-footer div.agate {
+    font-size: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+#pg-footer li {
+    all: initial;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-indent: -0.6em;
+}
+#pg-footer div.secthead {
+    font-size: 110%;
+    font-weight: bold;
+}
+#pg-footer #project-gutenberg-license {
+    font-size: 110%;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+#pg-header-heading {
+    all: inherit;
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+}
+#pg-footer-heading {
+    all: inherit;
+    text-align: center;
+    font-size: 120%;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#pg-header #pg-machine-header p {
+    text-indent: -4em;
+    margin-left: 4em;
+    margin-top: 1em;
+    margin-bottom: 0;
+    font-size: medium
+}
+#pg-header #pg-header-authlist {
+    all: initial;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#pg-header #pg-machine-header strong {
+    font-weight: normal;
+}
+#pg-header #pg-start-separator, #pg-footer #pg-end-separator {
+    margin-bottom: 3em;
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 2em;
+    text-align: center
+}
+
+.rules-none > tr > td, .rules-none > * > tr > td, .rules-none > tr > th,
+.rules-none > * > tr > th, .rules-none > td, .rules-none > th {
+border-width: thin;
+border-style: none;} .frame-void {border-style: hidden;} 
+    .xhtml_center {text-align: center; display: block;}
+    .xhtml_center table {
+        display: table;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+        } .xhtml_tt {font-family: monospace;}</style><meta content="Docutils 0.21.2: https://docutils.sourceforge.io/" name="generator"/>
+<style>/*
+Project Gutenberg common docutils stylesheet.
+
+This stylesheet contains styles common to HTML and EPUB.  Put styles
+that are specific to HTML and EPUB into their relative stylesheets.
+
+:Author: Marcello Perathoner (webmaster@gutenberg.org)
+:Copyright: This stylesheet has been placed in the public domain.
+
+This stylesheet is based on:
+
+  :Author: David Goodger (goodger@python.org)
+  :Copyright: This stylesheet has been placed in the public domain.
+
+  Default cascading style sheet for the HTML output of Docutils.
+
+*/
+/* ADE 1.7.2 chokes on !important and throws all css out. */
+/* FONTS */
+.italics {
+    font-style: italic
+    }
+.no-italics {
+    font-style: normal
+    }
+.bold {
+    font-weight: bold
+    }
+.no-bold {
+    font-weight: normal
+    }
+/* Epub needs italics */
+/* Epub needs italics */
+.antiqua {
+    font-style: italic
+    }
+/* what else can we do ? */
+.monospaced {
+    font-family: monospace
+    }
+.smaller {
+    font-size: smaller
+    }
+.larger {
+    font-size: larger
+    }
+.xx-small {
+    font-size: xx-small
+    }
+.x-small {
+    font-size: x-small
+    }
+.small {
+    font-size: small
+    }
+.medium {
+    font-size: medium
+    }
+.large {
+    font-size: large
+    }
+.x-large {
+    font-size: x-large
+    }
+.xx-large {
+    font-size: xx-large
+    }
+.text-transform-uppercase {
+    text-transform: uppercase
+    }
+.text-transform-lowercase {
+    text-transform: lowercase
+    }
+.text-transform-none {
+    text-transform: none
+    }
+.red {
+    color: red
+    }
+.green {
+    color: green
+    }
+.blue {
+    color: blue
+    }
+.yellow {
+    color: yellow
+    }
+.white {
+    color: white
+    }
+.gray {
+    color: gray
+    }
+.black {
+    color: black
+    }
+/* ALIGN */
+.left {
+    text-align: left
+    }
+.justify {
+    text-align: justify
+    }
+.center {
+    text-align: center;
+    text-indent: 0
+    }
+.centerleft {
+    text-align: center;
+    text-indent: 0
+    }
+.right {
+    text-align: right;
+    text-indent: 0
+    }
+/* LINE HEIGHT */
+body {
+    line-height: 1.5
+    }
+p {
+    margin: 0;
+    text-indent: 2em
+    }
+/* PAGINATION */
+.title, .subtitle {
+    page-break-after: avoid
+    }
+.container, .title, .subtitle, #pg-header {
+    page-break-inside: avoid
+    }
+/* SECTIONS */
+body {
+    text-align: justify
+    }
+p.pfirst, p.noindent {
+    text-indent: 0
+    }
+.boxed {
+    border: 1px solid black;
+    padding: 1em
+    }
+.topic, .note {
+    margin: 5% 0;
+    border: 1px solid black;
+    padding: 1em
+    }
+div.section {
+    clear: both
+    }
+div.line-block {
+    margin: 1.5em 0
+    }
+/* same leading as p */
+div.line-block.inner {
+    margin: 0 0 0 10%
+    }
+div.line {
+    margin-left: 20%;
+    text-indent: -20%
+    }
+.line-block.noindent div.line {
+    margin-left: 0;
+    text-indent: 0
+    }
+hr.docutils {
+    margin: 1.5em 40%;
+    border: none;
+    border-bottom: 1px solid black
+    }
+div.transition {
+    margin: 1.5em 0
+    }
+.vfill, .vspace {
+    border: 0 solid white
+    }
+.title {
+    margin: 1.5em 0
+    }
+.title.with-subtitle {
+    margin-bottom: 0
+    }
+.subtitle {
+    margin: 1.5em 0
+    }
+/* header font style */
+/* http://dev.w3.org/csswg/css3-fonts/#propdef-font-size */
+h1.title {
+    font-size: 200%
+    }
+/* for book title only */
+h2.title, p.subtitle.level-1 {
+    font-size: 150%;
+    margin-top: 4.5em;
+    margin-bottom: 2em
+    }
+h3.title, p.subtitle.level-2 {
+    font-size: 120%;
+    margin-top: 2.25em;
+    margin-bottom: 1.25em
+    }
+h4.title, p.subtitle.level-3 {
+    font-size: 100%;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold
+    }
+h5.title, p.subtitle.level-4 {
+    font-size: 89%;
+    margin-top: 1.87em;
+    margin-bottom: 1.69em;
+    font-style: italic
+    }
+h6.title, p.subtitle.level-5 {
+    font-size: 60%;
+    margin-top: 3.5em;
+    margin-bottom: 2.5em
+    }
+/* title page */
+h1.title, p.subtitle.level-1, h2.title, p.subtitle.level-2 {
+    text-align: center
+    }
+#pg-header, h1.document-title {
+    margin: 10% 0 5% 0
+    }
+p.document-subtitle {
+    margin: 0 0 5% 0
+    }
+/* PG header and footer */
+li.toc-entry {
+    list-style-type: none
+    }
+ul.open li, ol.open li {
+    margin-bottom: 1.5em
+    }
+.attribution {
+    margin-top: 1.5em
+    }
+.example-rendered {
+    margin: 1em 5%;
+    border: 1px dotted red;
+    padding: 1em;
+    background-color: #ffd
+    }
+.literal-block.example-source {
+    margin: 1em 5%;
+    border: 1px dotted blue;
+    padding: 1em;
+    background-color: #eef
+    }
+/* DROPCAPS */
+/* BLOCKQUOTES */
+blockquote {
+    margin: 1.5em 10%
+    }
+div.local-contents {
+    margin: 1.5em 10%
+    }
+div.abstract {
+    margin: 3em 10%
+    }
+div.image {
+    margin: 1.5em 0
+    }
+div.caption {
+    margin: 1.5em 0
+    }
+div.legend {
+    margin: 1.5em 0
+    }
+.hidden {
+    display: none
+    }
+.invisible {
+    visibility: hidden;
+    color: white
+    }
+/* white: mozilla print bug */
+a.toc-backref {
+    text-decoration: none;
+    color: black
+    }
+dl.docutils dd {
+    margin-bottom: 0.5em
+    }
+div.figure {
+    margin-top: 3em;
+    margin-bottom: 3em
+    }
+img {
+    max-width: 100%
+    }
+div.footer, div.header {
+    clear: both;
+    font-size: smaller
+    }
+div.sidebar {
+    margin: 0 0 0.5em 1em;
+    border: medium outset;
+    padding: 1em;
+    background-color: #ffe;
+    width: 40%;
+    float: right;
+    clear: right
+    }
+div.sidebar p.rubric {
+    font-family: sans-serif;
+    font-size: medium
+    }
+ol.simple, ul.simple {
+    margin: 1.5em 0
+    }
+ol.toc-list, ul.toc-list {
+    padding-left: 0
+    }
+ol ol.toc-list, ul ul.toc-list {
+    padding-left: 5%
+    }
+ol.arabic {
+    list-style: decimal
+    }
+ol.loweralpha {
+    list-style: lower-alpha
+    }
+ol.upperalpha {
+    list-style: upper-alpha
+    }
+ol.lowerroman {
+    list-style: lower-roman
+    }
+ol.upperroman {
+    list-style: upper-roman
+    }
+p.credits {
+    font-style: italic;
+    font-size: smaller
+    }
+p.label {
+    white-space: nowrap
+    }
+p.rubric {
+    font-weight: bold;
+    font-size: larger;
+    color: maroon;
+    text-align: center
+    }
+p.sidebar-title {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: larger
+    }
+p.sidebar-subtitle {
+    font-family: sans-serif;
+    font-weight: bold
+    }
+p.topic-title, p.admonition-title {
+    font-weight: bold
+    }
+pre.address {
+    margin-bottom: 0;
+    margin-top: 0;
+    font: inherit
+    }
+.literal-block, .doctest-block {
+    margin-left: 2em;
+    margin-right: 2em
+    }
+span.classifier {
+    font-family: sans-serif;
+    font-style: oblique
+    }
+span.classifier-delimiter {
+    font-family: sans-serif;
+    font-weight: bold
+    }
+span.interpreted {
+    font-family: sans-serif
+    }
+span.option {
+    white-space: nowrap
+    }
+span.pre {
+    white-space: pre
+    }
+span.problematic {
+    color: red
+    }
+span.section-subtitle {
+    /* font-size relative to parent (h1..h6 element) */
+    font-size: 100%
+    }
+table {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border-spacing: 0
+    }
+table.align-left, table.align-right {
+    margin-top: 0
+    }
+table.table {
+    border-collapse: collapse
+    }
+table.table.hrules-table thead {
+    border: 1px solid black;
+    border-width: 2px 0 0
+    }
+table.table.hrules-table tbody {
+    border: 1px solid black;
+    border-width: 2px 0
+    }
+table.table.hrules-rows tr {
+    border: 1px solid black;
+    border-width: 0 0 1px
+    }
+table.table.hrules-rows tr.last {
+    border-width: 0
+    }
+table.table.hrules-rows td, table.table.hrules-rows th {
+    padding: 1ex 1em;
+    vertical-align: middle
+    }
+table.table tr {
+    border-width: 0
+    }
+table.table td, table.table th {
+    padding: 0.5ex 1em
+    }
+table.table tr.first td {
+    padding-top: 1ex
+    }
+table.table tr.last td {
+    padding-bottom: 1ex
+    }
+table.table tr.first th {
+    padding-top: 1ex
+    }
+table.table tr.last th {
+    padding-bottom: 1ex
+    }
+table.citation {
+    border-left: solid 1px gray;
+    margin-left: 1px
+    }
+table.docinfo {
+    margin: 3em 4em
+    }
+div.footnote-group {
+    margin: 1em 0
+    }
+table.footnote td.label {
+    width: 2em;
+    text-align: right;
+    padding-left: 0
+    }
+table.docutils td, table.docutils th, table.docinfo td, table.docinfo th {
+    padding: 0 0.5em;
+    vertical-align: top
+    }
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    padding-left: 0
+    }
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+    border: 0
+    }
+table.borderless td, table.borderless th {
+    /* Override padding for "table.docutils td" with "!important".
+         The right padding separates the table cells. */
+    padding: 0 0.5em 0 0
+    }
+/* FIXME: was !important */
+h1 span.xhtml_tt.docutils, h2 span.xhtml_tt.docutils, h3 span.xhtml_tt.docutils, h4 span.xhtml_tt.docutils, h5 span.xhtml_tt.docutils, h6 span.xhtml_tt.docutils {
+    font-size: 100%
+    }
+ul.auto-toc {
+    list-style-type: none
+    }</style>
+<style>/*
+Project Gutenberg HTML docutils stylesheet.
+
+This stylesheet contains styles specific to HTML.
+*/
+/* FONTS */
+/* em                { font-style: normal }
+strong            { font-weight: normal } */
+.small-caps {
+    font-variant: small-caps
+    }
+.gesperrt {
+    letter-spacing: 0.1em
+    }
+/* ALIGN */
+.align-left {
+    clear: left;
+    float: left;
+    margin-right: 1em
+    }
+.align-right {
+    clear: right;
+    float: right;
+    margin-left: 1em
+    }
+.align-center {
+    margin-left: auto;
+    margin-right: auto
+    }
+div.shrinkwrap {
+    display: table
+    }
+/* SECTIONS */
+@media screen {
+    body {
+        margin: 5% 10% 5% 10%
+        }
+    }
+.pagedjs_page_content > div {
+    margin: 5% 10% 5% 10%
+    }
+/* compact list items containing just one p */
+li p.pfirst {
+    margin-top: 0;
+    margin-bottom: 0
+    }
+.first {
+    margin-top: 0 !important;
+    text-indent: 0 !important
+    }
+.last {
+    margin-bottom: 0 !important
+    }
+span.dropcap {
+    float: left;
+    margin: 0 0.1em 0 0;
+    line-height: 1
+    }
+img.dropcap {
+    float: left;
+    margin: 0 0.5em 0 0;
+    max-width: 25%
+    }
+span.dropspan {
+    font-variant: small-caps
+    }
+.no-page-break {
+    page-break-before: avoid !important
+    }
+/* PAGINATION */
+.pageno {
+    position: absolute;
+    right: 95%;
+    font: medium sans-serif;
+    text-indent: 0
+    }
+.pageno:after {
+    color: gray;
+    content: "[" attr(title) "]"
+    }
+.lineno {
+    position: absolute;
+    left: 95%;
+    font: medium sans-serif;
+    text-indent: 0
+    }
+.lineno:after {
+    color: gray;
+    content: "[" attr(title) "]"
+    }
+.toc-pageref {
+    float: right
+    }
+@media screen {
+    .coverpage, .frontispiece, .titlepage, .verso, .dedication, .plainpage {
+        margin: 10% 0
+        }
+    div.clearpage, div.cleardoublepage {
+        margin: 10% 0;
+        border: none;
+        border-top: 1px solid gray
+        }
+    .vfill {
+        margin: 5% 10%
+        }
+    }
+@media print {
+    div.clearpage {
+        page-break-before: always;
+        padding-top: 10%
+        }
+    div.cleardoublepage {
+        page-break-before: right;
+        padding-top: 10%
+        }
+    .vfill {
+        margin-top: 20%
+        }
+    h2.title {
+        margin-top: 20%
+        }
+    }
+/* DIV */
+pre {
+    font-family: monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap
+    }</style>
+<title>คู่มือ RST ของ Project Gutenberg</title>
+<meta content="181" name="PG.Id"/>
+<meta content="PG-RST Manual" name="PG.Title"/>
+<meta content="2010-11-25" name="PG.Released"/>
+<meta content="Public Domain" name="PG.Rights"/>
+<meta content="Marcello Perathoner" name="DC.Creator"/>
+<meta content="The Project Gutenberg RST Manual" name="DC.Title"/>
+<meta content="en" name="DC.Language"/>
+<meta content="2010" name="DC.Created"/>
+<link href="https://purl.org/dc/elements/1.1/" rel="schema.dc" />
+<link href="https://purl.org/dc/terms/" rel="schema.dcterms" />
+<meta content="The Project Gutenberg RST Manual" name="dc.title"/>
+<meta content="en" name="dc.language"/>
+<meta content="https://www.gutenberg.org/files/181/pg181.rst" name="dcterms.source"/>
+<meta content="2026-04-01T08:32:31.116907+00:00" name="dcterms.modified"/>
+<meta content="Public domain in the USA." name="dc.rights"/>
+<link href="https://www.gutenberg.org/ebooks/181" rel="dcterms.isFormatOf" />
+<meta content="Perathoner, Marcello" name="dc.creator"/>
+<meta content="Electronic books" name="dc.subject"/>
+<meta content="Electronic publishing -- Handbooks, manuals, etc." name="dc.subject"/>
+<meta content="2001-01-01" name="dcterms.created"/>
+<meta content="Ebookmaker 0.13.9 by Project Gutenberg" name="generator"/>
+<meta content="The Project Gutenberg RST Manual" property="og:title"/>
+<meta content="Text" property="og:type"/>
+<meta content="https://www.gutenberg.org/cache/epub/181/pg181-images.html" property="og:url"/>
+<meta content="https://www.gutenberg.org/cache/epub/181/pg181.cover.medium.jpg" property="og:image"/>
+</head>
+<body>
+<div class="document language-de text-transform-smartquotes" id="the-project-gutenberg-rst-manual" lang="de">
+<section class="pg-boilerplate pgheader" id="pg-header" lang="en"><h2 id="pg-header-heading" title="">หนังสืออิเล็กทรอนิกส์ Project Gutenberg เรื่อง<span id="pg-title-no-subtitle" lang="en">คู่มือ Project Gutenberg RST</span></h2>
+<div>อีบุ๊กเล่มนี้เปิดให้ทุกคนทุกที่ในสหรัฐอเมริกาและส่วนใหญ่ของโลกใช้งานได้ฟรีและแทบไม่มีข้อจำกัดใดๆ คุณสามารถคัดลอก แจกจ่าย หรือนำไปใช้ซ้ำได้ภายใต้เงื่อนไขของสัญญาอนุญาตโครงการกูเตนเบิร์ก (Project Gutenberg License) ที่รวมอยู่ในอีบุ๊กเล่มนี้หรือทางออนไลน์ที่<a class="reference external" href="https://www.gutenberg.org/">www.gutenberg.org</a>หากคุณไม่ได้อยู่ในสหรัฐอเมริกา คุณจะต้องตรวจสอบกฎหมายของประเทศที่คุณอยู่ก่อนที่จะใช้อีบุ๊กเล่มนี้</div>
+<div class="container" id="pg-machine-header"><p><strong>ชื่อเรื่อง</strong> : คู่มือการใช้งาน RST ของโครงการ Gutenberg</p>
+<div id="pg-header-authlist">
+<p><strong>ผู้สร้าง</strong> : มาร์เชลโล เพราโทเนอร์</p>
+</div>
+<br/>
+<p><strong>วันที่วางจำหน่าย</strong> : 1 มกราคม 2544 [eBook #181] <br/>
+                อัปเดตล่าสุด: 27 สิงหาคม 2554</p>
+<p><strong>ภาษา</strong> : อังกฤษ</p>
+<p><strong>ข้อมูลและรูปแบบอื่นๆ</strong> : <a href="https://www.gutenberg.org/ebooks/181">www.gutenberg.org/ebooks/181</a></p>
+</div><div id="pg-start-separator">
+<span>*** เริ่มต้นอีบุ๊กโครงการกูเตนเบิร์ก คู่มือโครงการกูเตนเบิร์ก RST ***</span>
+</div></section><p class="pfirst"><span>[pg!i]</span></p>
+<div class="docutils container titlepage">
+<div class="vfill">
+</div>
+<div class="line-block outermost">
+<div class="center line"><span class="x-large">เดอะ</span></div>
+<div class="center line"> </div>
+<div class="center line"><span class="x-large">โครงการกูเทนเบิร์ก</span></div>
+<div class="center line"> </div>
+<div class="center line"><span class="x-large">คู่มือ RST</span></div>
+</div>
+<div class="vfill">
+</div>
+<div class="vfill">
+</div>
+</div>
+<p class="pnext"><span>[หน้า 3]</span></p>
+<div class="level-2 section" id="section-1">
+<h2 class="level-2 pfirst section-title title"> <span>สารบัญ</span></h2>
+<div class="contents docutils container">
+<ul class="compact simple toc-list">
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#installing-epubmaker" id="reference-35">การติดตั้ง EpubMaker</a></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#windows" id="reference-33">วินโดวส์</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#debian" id="reference-34">เดเบียน</a></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-rst-classes" id="reference-39">ชั้นเรียน PG-RST</a></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#classes-for-inline-text" id="reference-36">คลาสสำหรับข้อความแทรกในบรรทัด</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#classes-for-block-text" id="reference-37">คลาสสำหรับข้อความบล็อก</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#classes-for-front-matter-markup" id="reference-38">คลาสสำหรับการจัดรูปแบบส่วนหัวของเอกสาร</a></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-rst-extensions" id="reference-50">ส่วนขยาย PG-RST</a></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#styles" id="reference-40">สไตล์</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pagination" id="reference-41">การแบ่งหน้า</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-of-contents" id="reference-42">สารบัญ</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#list-of-figures" id="reference-43">รายชื่อตัวเลข</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#list-of-tables" id="reference-44">รายการตาราง</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#toc-entry" id="reference-45">รายการสารบัญ</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnotes" id="reference-46">เชิงอรรถ</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#page-numbers" id="reference-47">หมายเลขหน้า</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#dropcaps" id="reference-48">ตัวอักษรพิมพ์ใหญ่ขึ้นต้น (Dropcaps)</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#tables" id="reference-49">ตาราง</a></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-metadata" id="reference-54">ข้อมูลเมตาของ PG</a></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#top-boilerplate" id="reference-51">แม่แบบด้านบน</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#metadata-directive" id="reference-52">คำสั่งเมตาเดตา</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#bottom-boilerplate" id="reference-53">แม่แบบด้านล่าง</a></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-rst-best-practices" id="reference-55">แนวปฏิบัติที่ดีที่สุดของ PG-RST</a></p>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#tests-and-examples" id="reference-59"><span>ตัวอย่างและการทดสอบ</span></a></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-1" id="reference-56">ส่วนที่ 3.1</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-2" id="reference-57">ส่วนที่ 3.2</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-3" id="reference-58">ส่วนที่ 3.3</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p class="pfirst"><span>[pg!v]</span></p>
+<div class="level-2 section" id="section-2">
+<h2 class="level-2 pfirst section-title title"> <span>รายการตาราง</span></h2>
+<div class="docutils container loa lot">
+<ul class="compact simple toc-list">
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-76" id="reference-1">คลาสสำหรับข้อความแทรกในบรรทัด I</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-77" id="reference-2">คลาสสำหรับข้อความแทรกในบรรทัด II</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-78" id="reference-3">คลาสสำหรับข้อความแทรกในบรรทัด III</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-79" id="reference-4">คลาสสำหรับข้อความบล็อก</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-80" id="reference-5">คลาสสำหรับการจัดรูปแบบส่วนหัวของเอกสาร</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-81" id="reference-6">คำสั่งสำหรับการแบ่งหน้า</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-82" id="reference-7"><span>ตำแหน่งเชิงอรรถ</span></a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-83" id="reference-8">รองรับการใช้ตัวอักษรตัวใหญ่ขึ้นต้น (Dropcaps) ในรูปแบบเอาต์พุต</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-84" id="reference-9">โต๊ะสาธิต</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-85" id="reference-10">ตารางความจริงสำหรับ “และ”</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-86" id="reference-11">สาขาวิชาในโครงการ PG</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-87" id="reference-12">ฟิลด์ในโครงการ DC</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-88" id="reference-13">ฟิลด์ในโครงการ MARCREL</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-89" id="reference-14">พื้นที่ที่ไม่มีแผนผัง</a></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-90" id="reference-15"><cite class="italics">ตารางที่ 8</cite>ประเภทของคอมพิวเตอร์ที่ใช้ในระบบที่รายงาน</a></span></li>
+</ul>
+</div>
+</div>
+<p class="pfirst"><span>[หน้า 7]</span></p>
+<div class="level-2 section" id="section-3">
+<h2 class="level-2 pfirst section-title title"> <span>รายชื่อตัวเลข</span></h2>
+<div class="docutils container loa lof">
+<ul class="compact simple toc-list">
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#figure-6" id="reference-16"><span>ริชาร์ดและดรูซิลลา มาร์ติน</span></a></span></li>
+</ul>
+</div>
+</div>
+<div class="mainmatter">
+</div>
+<p class="pfirst"><span>[หน้า 1]</span></p>
+<div class="level-2 section" id="installing-epubmaker">
+<h2 class="level-2 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-35"><span>การติดตั้ง EpubMaker</span></a></h2>
+<p class="pfirst"><span>EpubMaker คือโปรแกรมแปลงไฟล์ของ Project Gutenberg สามารถแปลงไฟล์ PG-RST เป็น HTML, EPUB, PDF และข้อความธรรมดาได้</span></p>
+<div class="level-3 section" id="windows">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-33"><span>วินโดวส์</span></a></h3>
+<div class="level-4 section" id="prerequisites">
+<h4 class="level-4 pfirst section-title title"> <span>ข้อกำหนดเบื้องต้น</span></h4>
+<ol class="arabic">
+<li><p class="first pfirst"><span>ติดตั้ง Python</span></p>
+<p class="pnext"><span>สมมติว่าคุณยังไม่มี Python ถ้าคุณติดตั้งเวอร์ชัน 2.6 หรือ 2.7 แล้ว ให้ข้ามขั้นตอนนี้ไป</span></p>
+<p class="pnext"><span></span><span>ดาวน์โหลดโปรแกรม</span><span class="file monospaced">ติดตั้ง Windows x86 MSI (เวอร์ชัน 2.7) </span><span>จาก</span><a href="https://www.python.org/download/releases/2.7/">http://www.python.org/download/releases/2.7/ </a><span>แล้วเรียกใช้งาน</span><span></span><span class="file monospaced"></span><span></span></p>
+<p class="pnext"><span>เลือกตัวเลือกเริ่มต้นทั้งหมดแล้วทำการติดตั้ง</span></p>
+</li>
+<li><p class="first pfirst"><span>ติดตั้ง Python Setuptools</span></p>
+<p class="pnext"><span></span><span>ดาวน์โหลด
+ </span><span class="file monospaced">ไฟล์ setuptools-0.6c11.win32-py2.7.exe (หรือเวอร์ชันที่ใหม่กว่า) </span><span>จาก</span><a href="https://pypi.python.org/pypi/setuptools">http://pypi.python.org/pypi/setuptools </a><span>แล้วเรียกใช้งาน</span><span></span><span class="file monospaced"></span><span></span></p>
+<p class="pnext"><span>หากคุณใช้ Python เวอร์ชัน 2.6 โปรดดาวน์โหลด setuptools สำหรับเวอร์ชัน 2.6</span></p>
+</li>
+<li><p class="first pfirst"><span>ติดตั้ง Groff (คุณสามารถข้ามขั้นตอนนี้ได้หากไม่ต้องการสร้างไฟล์ข้อความธรรมดา)</span></p>
+<p class="pnext"><span></span><span>
+ดาวน์โหลด แพ็กเกจทั้งหมด </span><span>
+ยกเว้น</span><cite class="italics">ซอร์สโค้ด</cite><span>จาก</span><a href="http://gnuwin32.sourceforge.net/packages/groff.htm">http://gnuwin32.sourceforge.net/packages/groff.htm แล้วเรียก </a><span class="file monospaced">ใช้</span><span>งาน</span><span></span><cite class="italics"></cite><span></span><span class="file monospaced"></span><span></span></p>
+<p class="pnext"><span>เลือกตัวเลือกเริ่มต้นทั้งหมดแล้วทำการติดตั้ง</span></p>
+</li>
+<li><p class="first pfirst"><span>ติดตั้ง TexLive (คุณสามารถข้ามขั้นตอนนี้ได้หากไม่ต้องการสร้างไฟล์ PDF)</span></p>
+<p class="pnext"><span>ไปที่</span><a href="http://mirror.ctan.org/systems/texlive/tlnet">http://mirror.ctan.org/systems/texlive/tlnet </a><span>แล้วดาวน์โหลดไฟล์</span><span class="file monospaced">install-tl.zip </span><span>จากนั้นพูดว่า:</span></p>
+<pre class="literal-block"><span>&gt; แตกไฟล์ install-tl.zip
+&gt; cd install-tl*
+&gt; ติดตั้ง-tl</span>
+</pre>
+<p class="pfirst"><span>ขั้นตอนนี้จะเปิดตัวช่วยติดตั้ง TeX Live ทำตามคำแนะนำ หากไม่แน่ใจ ให้ใช้ค่าเริ่มต้น</span></p>
+<p class="pnext"><span>ขั้นตอนนี้จะใช้เวลานานพอสมควร (3 ชั่วโมงบนแล็ปท็อป Dell Vostro 1000 รุ่นเก่า การติดตั้งมีขนาดประมาณ 2.5 GB ซึ่งประกอบด้วยไฟล์ 93,000 ไฟล์) หากคุณพบปัญหาในการดาวน์โหลด ให้เริ่มตัวช่วยดาวน์โหลดใหม่: มันจะดำเนินการดาวน์โหลดต่อจากจุดที่หยุดไป</span></p>
+<p class="pnext"><span>คำแนะนำการติดตั้งฉบับเต็มสามารถดูได้ที่
+ </span><a href="http://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-150003">http://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-150003</a></p>
+</li>
+<li><p class="first pfirst"><span>ติดตั้ง HTML Tidy (คุณสามารถข้ามขั้นตอนนี้ได้หากคุณต้องการประมวลผลเฉพาะไฟล์ RST และไม่ต้องการสร้าง EPUB จากข้อมูล HTML)</span></p>
+<p class="pnext"><span>ถ้าคุณเป็นผู้เชี่ยวชาญด้านการประมวลผลภาพ คุณก็มีสิ่งนี้อยู่แล้ว</span></p>
+<p class="pnext"><a href="http://tidy.sourceforge.net/">http://tidy.sourceforge.net/</a></p>
+</li>
+<li><p class="first pfirst"><span>อัปเดต PATH ของคุณ</span></p>
+<p class="pnext"><span>ไปที่ เริ่ม | แผงควบคุม | ระบบ | ขั้นสูง | ตัวแปรสภาพแวดล้อม คลิก "เส้นทาง" ในตัวแปรผู้ใช้ด้านบน คลิก "แก้ไข"</span></p>
+<p class="pnext"><span>หากช่องว่างว่างเปล่า ให้ป้อนข้อมูลทั้งหมดลงในบรรทัดเดียว:</span></p>
+<pre class="literal-block"><span>C:\Python27;
+C:\Python27\Scripts;
+C:\Program Files\GnuWin32\bin;</span>
+</pre>
+<p class="pfirst"><span>หากช่องนั้นมีข้อมูลอยู่แล้ว ให้ไปที่ส่วนท้ายของข้อมูลนั้น แล้วเพิ่มเครื่องหมายเซมิโคลอนหากยังไม่มีอยู่ จากนั้นจึงเพิ่มข้อความด้านบนเข้าไป</span></p>
+<p class="pnext"><span>คลิกตกลงสามครั้ง</span></p>
+</li>
+</ol>
+</div>
+<div class="level-4 section" id="epubmaker">
+<h4 class="level-4 pfirst section-title title"> <span>อีพับเมกเกอร์</span></h4>
+<ol class="arabic">
+<li><p class="first pfirst"><span>ที่พรอมต์คำสั่ง ให้รันคำสั่งต่อไปนี้:</span></p>
+<pre class="literal-block"><span>&gt; easy_install epubmaker</span>
+</pre>
+</li>
+<li><p class="first pfirst"><span>ทดสอบการติดตั้งของคุณ:</span></p>
+<pre class="literal-block"><span>&gt; epubmaker --help
+&gt; epubmaker https://www.gutenberg.org/masters/rst/181/181.rst</span>
+</pre>
+</li>
+</ol>
+</div>
+</div>
+<div class="level-3 section" id="debian">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-34"><span>เดเบียน</span></a></h3>
+<div class="level-4 section" id="prerequisites-1">
+<h4 class="level-4 pfirst section-title title"> <span>ข้อกำหนดเบื้องต้น</span></h4>
+<p class="pfirst"><span>(ยังใช้งานไม่ได้กับ Python 3 หากระบบปฏิบัติการของคุณใช้ Python 3 เป็นค่าเริ่มต้น (ซึ่งไม่น่าเป็นไปได้!) คุณจะต้องติดตั้ง Python 2.6 หรือ 2.7 ควบคู่ไปด้วย)</span></p>
+<pre class="literal-block"><span># apt-get install python python-setuptools python-lxml
+# apt-get install groff tidy
+# apt-get install libpng-dev libjpeg-dev libfreetype6-dev</span>
+</pre>
+<p class="pfirst"><span>หมายเหตุ: ในการสร้างไฟล์ PDF คุณต้องใช้ TeX Live เวอร์ชัน 2009-11 หรือใหม่กว่า คุณสามารถดาวน์โหลดได้จาก Debian testing หรือ unstable หากคุณไม่ต้องการเปลี่ยนจาก Debian stable คุณต้องติดตั้ง TeX Live ด้วยตนเอง</span></p>
+<p class="pnext"><span>หากคุณกำลังใช้งานเวอร์ชันทดสอบหรือเวอร์ชันไม่เสถียร:</span></p>
+<pre class="literal-block"><span># apt-get install texlive texlive-latex-extra texlive-xetex
+# apt-get install ttf-linux-libertine ttf-dejavu</span>
+</pre>
+<p class="pfirst"><span>หรืออีกวิธีหนึ่ง ในการติดตั้ง TeX Live ด้วยตนเอง ให้ไปที่
+ </span><a href="http://mirror.ctan.org/systems/texlive/tlnet">http://mirror.ctan.org/systems/texlive/tlnet </a><span>และดาวน์โหลดไฟล์
+ </span><span class="file monospaced">install-tl-unx.tar.gz </span><span>แตกไฟล์ จากนั้น:</span></p>
+<pre class="literal-block"><span># cd /path/where/unpacked
+# perl install-tl -gui</span>
+</pre>
+<p class="pfirst"><span>คำแนะนำการติดตั้งฉบับเต็มสามารถดูได้ที่
+ </span><a href="http://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-150003">http://www.tug.org/texlive/doc/texlive-en/texlive-en.html#x1-150003</a></p>
+</div>
+<div class="level-4 section" id="epubmaker-1">
+<h4 class="level-4 pfirst section-title title"> <span>อีพับเมกเกอร์</span></h4>
+<pre class="literal-block"><span># easy_install epubmaker</span>
+</pre>
+</div>
+<div class="level-4 section" id="kindlegen">
+<h4 class="level-4 pfirst section-title title"> <span>เด็กนอน</span></h4>
+<p class="pfirst"><span>(ไม่บังคับ: ใช้สำหรับสร้างไฟล์ Kindle เท่านั้น):</span></p>
+<pre class="literal-block"><span>$ wget http://s3.amazonaws.com/kindlegen/kindlegen_linux_2.6_i386_v1.2.tar.gz
+$ tar -xzf kindlegen_linux_2.6_i386_v1.2.tar.gz</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="level-2 section" id="pg-rst-classes">
+<h2 class="level-2 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-39"><span>ชั้นเรียน PG-RST</span></a></h2>
+<p class="pfirst"><span>รายชื่อคลาสที่คุณสามารถใช้ใน PG-RST ได้</span></p>
+<div class="level-3 section" id="classes-for-inline-text">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-36"><span>คลาสสำหรับข้อความแทรกในบรรทัด</span></a></h3>
+<p class="pfirst"><span>คลาสเหล่านี้มีผลต่อข้อความแบบอินไลน์ หากคุณใส่คลาสเหล่านี้ลงในบล็อก เนื้อหาอินไลน์ทั้งหมดในบล็อกจะถูกแสดงผลตามนั้น</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="no summary" id="table-76" style="width: 75%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-1">
+<span class="larger">คลาสสำหรับข้อความแทรกในบรรทัด I</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ระดับ</span></p>
+</th>
+<th><p class="first last pfirst"><span>คำอธิบาย</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span class="blue css monospaced">ตัวเอียง</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรตัวเอียง</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ตัวหนา</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นตัวอักษรตัวหนา</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">หุ้นขนาดเล็ก</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ตัวพิมพ์ใหญ่ขนาดเล็ก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ถูกบล็อก</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ gesperrt (การเว้นระยะห่างระหว่างตัวอักษรแบบขยาย)</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">โบราณ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ Antiqua</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span class="blue css monospaced">โมโนสเปซ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ฟอนต์แบบตัวอักษรคงที่ (monospaced font)</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="no summary" id="table-77" style="width: 75%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-2">
+<span class="larger">คลาสสำหรับข้อความแทรกในบรรทัด II</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ระดับ</span></p>
+</th>
+<th><p class="first last pfirst"><span>คำอธิบาย</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span class="blue css monospaced">เล็กกว่า</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ขนาดตัวอักษรที่เล็กกว่า</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ใหญ่กว่า</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ขนาดตัวอักษรที่ใหญ่ขึ้น</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ไซส์ xx-เล็ก</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ขนาดตัวอักษรที่เล็กที่สุด</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ไซส์เล็กพิเศษ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ฟอนต์ขนาดเล็กมาก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">เล็ก</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นขนาดตัวอักษรเล็ก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ปานกลาง</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นขนาดตัวอักษรปกติ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ใหญ่</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นขนาดตัวอักษรใหญ่</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ไซส์ใหญ่พิเศษ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ฟอนต์ขนาดใหญ่มาก</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span class="blue css monospaced">ขนาดใหญ่พิเศษ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนไปใช้ขนาดตัวอักษรที่ใหญ่ที่สุด</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="no summary" id="table-78" style="width: 75%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-3">
+<span class="larger">คลาสสำหรับข้อความแทรกในบรรทัด III</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ระดับ</span></p>
+</th>
+<th><p class="first last pfirst"><span>คำอธิบาย</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span class="blue css monospaced">สีแดง</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีแดง</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">สีเขียว</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีเขียว</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">สีฟ้า</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีน้ำเงิน</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">สีเหลือง</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีเหลือง</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">สีขาว</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีขาว</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">สีเทา</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีเทา</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span class="blue css monospaced">สีดำ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เปลี่ยนเป็นแบบอักษรสีดำ</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="level-3 section" id="classes-for-block-text">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-37"><span>คลาสสำหรับข้อความบล็อก</span></a></h3>
+<p class="pfirst"><span>คลาสเหล่านี้มีผลต่อข้อความในบล็อก โปรดอย่าสับสนระหว่างการจัดแนวของบล็อกกับการจัดแนวของข้อความภายในบล็อก ตัวอย่างเช่น ตารางอาจจัดให้อยู่ตรงกลาง ในขณะที่ข้อความภายในตารางจัดชิดซ้าย การจัดแนวของบล็อกจะถูกกำหนดด้วย</span><span>
+ตัวเลือก</span><span class="green monospaced option">align</span><span></span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="no summary" id="table-79" style="width: 75%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-4">
+<span class="larger">คลาสสำหรับข้อความบล็อก</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ระดับ</span></p>
+</th>
+<th><p class="first last pfirst"><span>คำอธิบาย</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span class="blue css monospaced">ซ้าย</span></p>
+</td>
+<td><p class="first last pfirst"><span>จัดข้อความในบล็อกให้ชิดซ้าย</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ศูนย์</span></p>
+</td>
+<td><p class="first last pfirst"><span>จัดข้อความให้อยู่ตรงกลางบล็อก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ขวา</span></p>
+</td>
+<td><p class="first last pfirst"><span>จัดข้อความในบล็อกให้ชิดขวา</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">พิสูจน์</span></p>
+</td>
+<td><p class="first last pfirst"><span>จัดตำแหน่งข้อความในบล็อกให้ชิดขอบทั้งสองด้าน</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span class="blue css monospaced">ช่องว่างก่อนเส้น</span></p>
+</td>
+<td><p class="first last pfirst"><span>รักษารูปแบบการขึ้นบรรทัดใหม่ไว้</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="level-3 section" id="classes-for-front-matter-markup">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-38"><span>คลาสสำหรับการจัดรูปแบบส่วนหัวของเอกสาร</span></a></h3>
+<p class="pfirst"><span>EpubMaker มีคลาสบางส่วนสำหรับทำเครื่องหมายส่วนหัวของเอกสาร แม้ว่าจะไม่จำเป็นต้องทำเช่นนี้ แต่ก็เพิ่มคุณค่า ในอนาคตแคตตาล็อกของ PG อาจดึงข้อมูลโดยอัตโนมัติไม่เพียงแค่หน้าปก แต่ยังรวมถึงหน้าชื่อเรื่อง หน้าหลัง ฯลฯ ด้วย</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="no summary" id="table-80" style="width: 75%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-5">
+<span class="larger">คลาสสำหรับการจัดรูปแบบส่วนหัวของเอกสาร</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ระดับ</span></p>
+</th>
+<th><p class="first last pfirst"><span>คำอธิบาย</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span class="blue css monospaced">หน้าปก</span></p>
+</td>
+<td><p class="first last pfirst"><span>หน้าปก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ภาพหน้าปก</span></p>
+</td>
+<td><p class="first last pfirst"><span>ภาพประกอบหน้าแรก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">หน้าปก</span></p>
+</td>
+<td><p class="first last pfirst"><span>หน้าปกหนังสือ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ต่อ</span></p>
+</td>
+<td><p class="first last pfirst"><span>ด้านหลังของหน้าปก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span class="blue css monospaced">ความทุ่มเท</span></p>
+</td>
+<td><p class="first last pfirst"><span>หน้าคำอุทิศ</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span class="blue css monospaced">หน้าธรรมดา</span></p>
+</td>
+<td><p class="first last pfirst"><span>คลาสทั่วไปสำหรับหน้าเว็บ</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="pfirst"><span>ใช้คลาสเหล่านี้กับ</span><span class="directive monospaced red">คอนเทนเนอร์</span><span>คลาสเหล่านี้จะแทรกตัวแบ่งหน้าก่อนคอนเทนเนอร์ให้แล้ว ดังนั้นคุณไม่จำเป็นต้องแทรกตัวแบ่งหน้าด้วยตนเอง</span></p>
+<div class="example topic" id="example-116">
+<pre class="example-source literal-block"><span>.. คอนเทนเนอร์:: หน้าชื่อเรื่อง
+
+   | ความภาคภูมิใจและอคติ
+   |
+   | เขียนโดย เจน ออสติน</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="level-2 section" id="pg-rst-extensions">
+<h2 class="level-2 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-50"><span>ส่วนขยาย PG-RST</span></a></h2>
+<p class="pfirst"><span>คุณสามารถสร้างบทบาทที่กำหนดเองโดยอิงจากบทบาทที่มีอยู่ได้ นี่คือวิธีการสร้างและใช้งานบทบาทที่กำหนดเอง</span></p>
+<div class="example topic" id="example-117">
+<pre class="example-source literal-block"><span>..บทบาท::หุ้นขนาดเล็ก
+   :คลาส: ตัวพิมพ์เล็ก
+
+ข้อความนี้เขียนด้วยตัวพิมพ์ใหญ่เล็ก (Small Caps)</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>ข้อความนี้เขียนด้วย ตัว </span><span>พิมพ์</span><span class="small-caps">เล็กทั้งหมด</span><span></span></p>
+</div>
+</div>
+<p class="pfirst"><span>คุณสามารถกำหนดคลาสมากกว่าหนึ่งคลาสให้กับบทบาทได้:</span></p>
+<div class="example topic" id="example-118">
+<pre class="example-source literal-block"><span>..บทบาท:: ใหญ่และโดดเด่น
+   :คลาส: ตัวหนาขนาดใหญ่พิเศษ
+
+ข้อความนี้เป็นตัวหนาและตัวใหญ่</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>ข้อความนี้มี</span><span class="bold x-large">ขนาดใหญ่และตัว</span><span>หนา</span></p>
+</div>
+</div>
+<div class="level-3 section" id="styles">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-40"><span>สไตล์</span></a></h3>
+<p class="pfirst"><span>คุณสามารถกำหนดรูปแบบการแสดงผลขององค์ประกอบใหม่ได้:</span></p>
+<div class="example topic" id="example-119">
+<pre class="example-source literal-block"><span>..สไตล์::เน้นย้ำ
+   :คลาส: ล็อก
+
+ตอนนี้ *emphasis* จะถูกแสดงเป็น gesperrt</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>ตอนนี้</span><em class="gesperrt italics">การเน้นข้อความ</em><span>จะแสดงเป็น gesperrt</span></p>
+</div>
+</div>
+<div class="example topic" id="example-120">
+<pre class="example-source literal-block"><span>สไตล์:: แข็งแกร่ง
+   :คลาส: ตัวพิมพ์เล็ก
+
+และ **Strong Emphasis** จะแสดงเป็นตัวพิมพ์เล็ก</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>และ</span><strong class="bold small-caps">หุ้นที่มีการเน้นย้ำอย่างมาก</strong><span>จะถูกแสดงในรูปแบบตัวพิมพ์เล็ก</span></p>
+</div>
+</div>
+<div class="example topic" id="example-121">
+<pre class="example-source literal-block"><span>สไตล์:: แข็งแกร่ง
+   :class: small-caps x-large bold
+
+และ **Strong Emphasis** จะแสดงผลด้วยตัวอักษรขนาดใหญ่ ตัวหนา และตัวเล็ก</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>และ</span><strong class="bold small-caps x-large">ข้อความ "Strong Emphasis" </strong><span>จะแสดงผลในรูปแบบตัวอักษรขนาดใหญ่ ตัวหนา และตัวเล็ก</span></p>
+</div>
+</div>
+<div class="example topic" id="example-122">
+<pre class="example-source literal-block"><span>..สไตล์::แบบตรงตัว
+   :คลาส: สีแดง
+
+"สีแดงอย่างแท้จริง"
+
+..สไตล์::ตัวยก
+   :คลาส: สีเขียว
+
+:superscript:`sup`\ คือ
+
+..สไตล์::การอ้างอิงชื่อเรื่อง
+   :คลาส: สีน้ำเงิน
+
+:title-reference:`แฮมเล็ต` และ `โอเทลโล`</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span class="docutils literal monospaced red xhtml_tt">สีแดงอย่างแท้จริง</span></p>
+<p class="pnext"><sup class="green superscript">ซุปเปอร์</sup><span>​</span></p>
+<p class="pnext"><cite class="blue italics">แฮมเล็ต</cite><span>และ</span><cite class="blue italics">โอเทล</cite><span>โล</span></p>
+</div>
+</div>
+<p class="pfirst"><span>คุณสามารถใช้การกำหนดความหมายเชิงความหมายกับข้อความต่างประเทศได้:</span></p>
+<div class="example topic" id="example-123">
+<pre class="example-source literal-block"><span>..บทบาท:: ภาษาฝรั่งเศส
+   :class: language-fr italics
+
+:french:`Pas de double` เป็นภาษาฝรั่งเศส แปลว่า "พ่อของฝาแฝด"</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span class="italics language-fr" lang="fr">Pas de double </span><span>เป็นภาษาฝรั่งเศส แปลว่า "พ่อของฝาแฝด"</span></p>
+</div>
+</div>
+</div>
+<div class="level-3 section" id="pagination">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-41"><span>การแบ่งหน้า</span></a></h3>
+<p class="pfirst"><span>การกำหนดหมายเลขหน้ามีความสำคัญหากคุณสร้างไฟล์ PDF โปรดดูตารางคำแนะนำสำหรับการกำหนดหมายเลขหน้า</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table table" data-summary="no summary" id="table-81" style="width: 100%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-6">
+<span class="larger">คำสั่งสำหรับการแบ่งหน้า</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th style="vertical-align: top"><p class="first last pfirst"><span>คำสั่ง</span></p>
+</th>
+<th style="vertical-align: top"><p class="first last pfirst"><span>คำอธิบาย</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td style="vertical-align: top"><p class="first last pfirst"><span class="directive monospaced red">หน้าว่าง</span></p>
+</td>
+<td style="vertical-align: top"><p class="first last pfirst"><span>คำสั่งนี้จะแทรกตัวแบ่งหน้า</span></p>
+</td>
+</tr>
+<tr><td style="vertical-align: top"><p class="first last pfirst"><span class="directive monospaced red">หน้าคู่ที่ชัดเจน</span></p>
+</td>
+<td style="vertical-align: top"><p class="first last pfirst"><span>คำสั่งนี้จะแทรกตัวแบ่งหน้าเพื่อให้รายการถัดไปเริ่มต้นที่หน้าด้านขวา</span></p>
+</td>
+</tr>
+<tr><td style="vertical-align: top"><p class="first last pfirst"><span class="directive monospaced red">เติม</span></p>
+</td>
+<td style="vertical-align: top"><p class="first pfirst"><span>(ไฟล์ PDF เท่านั้น)</span></p>
+<p class="pnext"><span>คำสั่งนี้สร้างพื้นที่แนวตั้งแบบยืดหยุ่น พื้นที่นี้จะขยายไปยังพื้นที่ว่างทั้งหมดในหน้าเดียว หากคุณใช้คำสั่งนี้มากกว่าหนึ่งครั้งในหน้าเดียวกัน พื้นที่ว่างจะถูกแบ่งเท่าๆ กันระหว่างการเรียกใช้ทั้งหมด</span></p>
+<p class="pnext"><span>หากต้องการจัดวางองค์ประกอบให้ชิดด้านล่างในแนวตั้ง ให้ใช้</span><span class="directive monospaced red">คำสั่ง vfill </span><span>ก่อนองค์ประกอบนั้น</span></p>
+<p class="last pnext"><span>หากต้องการจัดตำแหน่งองค์ประกอบในแนวตั้งให้ห่างจากขอบหน้าประมาณ 1/3 ให้ใช้</span><span class="directive monospaced red">คำสั่ง vfill </span><span>
+หนึ่งครั้งก่อนองค์ประกอบ และสองครั้งหลังองค์ประกอบ</span></p>
+</td>
+</tr>
+<tr><td style="vertical-align: top"><p class="first last pfirst"><span class="directive monospaced red">พรมปูพื้นด้านหน้า</span></p>
+</td>
+<td style="vertical-align: top"><p class="first pfirst"><span>(ไฟล์ PDF เท่านั้น)</span></p>
+<p class="pnext"><span>ใส่คำแนะนำนี้ไว้ที่ตอนต้นของหนังสือของคุณ</span></p>
+<p class="pnext"><span>คำ สั่ง </span><span class="directive monospaced red">pgheader </span><span>ใช้คำสั่งนี้ภายใน ดังนั้นคุณสามารถละเว้น</span><span class="directive monospaced red">frontmatter </span><span>ได้</span><span>
+ทุกครั้งที่คุณใช้
+ </span><span class="directive monospaced red">pgheader</span><span></span></p>
+<p class="last pnext"><span>คำสั่งนี้จะเปิดใช้งานหมายเลขหน้าแบบเลขโรมัน</span></p>
+</td>
+</tr>
+<tr><td style="vertical-align: top"><p class="first last pfirst"><span class="directive monospaced red">เรื่องหลัก</span></p>
+</td>
+<td style="vertical-align: top"><p class="first pfirst"><span>(ไฟล์ PDF เท่านั้น)</span></p>
+<p class="pnext"><span>โปรดวางคำสั่งนี้ไว้หลังสารบัญและก่อนบทแรก</span></p>
+<p class="last pnext"><span>คำสั่งนี้จะเปลี่ยนการนับเลขหน้าจากเลขโรมันเป็นเลขอารบิก และรีเซ็ตตัวนับหน้าใหม่</span></p>
+</td>
+</tr>
+<tr class="last"><td style="vertical-align: top"><p class="first last pfirst"><span class="directive monospaced red">ส่วนท้าย</span></p>
+</td>
+<td style="vertical-align: top"><p class="first pfirst"><span>(ไฟล์ PDF เท่านั้น)</span></p>
+<p class="last pnext"><span>โปรดวางคำสั่งนี้ไว้ก่อนภาคผนวกหรือสารบัญ</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="level-3 section" id="table-of-contents">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-42"><span>สารบัญ</span></a></h3>
+<p class="pfirst"><span>ใช้คำสั่ง RST </span><span class="directive monospaced red">contents </span><span>เพื่อสร้างสารบัญโดยอัตโนมัติ</span></p>
+<p class="pnext"><span>หมายเหตุ คุณสามารถจัดทำสารบัญด้วยตนเองได้เช่นกัน</span></p>
+<p class="pnext"><span>ใน PG-RST คำสั่ง </span><span class="directive monospaced red">contents </span><span>กำหนดให้คุณต้องระบุอาร์กิวเมนต์หรือ</span><span>ตัวเลือก</span><span class="green monospaced option">ภายใน</span><span></span></p>
+<p class="pnext"><span>ตัว เลือก </span><span class="green monospaced option">แบบท้องถิ่น</span><span>จะแสดงสารบัญเฉพาะส่วนย่อยของหัวข้อที่ประกาศไว้เท่านั้น</span></p>
+<p class="pnext"><span>ตัว เลือก </span><span class="green monospaced option">หมายเลขหน้า</span><span>จะแสดงหมายเลขหน้าเดิมในสารบัญ</span></p>
+<div class="example topic" id="example-124">
+<pre class="example-source literal-block"><span>..สารบัญ:: สารบัญพร้อมหมายเลขหน้า
+   :ความลึก: 2
+   :หมายเลขหน้า:</span>
+</pre>
+</div>
+<div class="level-4 section" id="section-4">
+<h4 class="level-4 pfirst section-title title"> <span>สารบัญพร้อมหมายเลขหน้า</span></h4>
+<div class="contents docutils container">
+<ul class="compact simple toc-list">
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#installing-epubmaker" id="reference-62">การติดตั้ง EpubMaker</a><span class="toc-pageref"> </span></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#windows" id="reference-60">วินโดวส์</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#debian" id="reference-61">เดเบียน</a><span class="toc-pageref"> </span></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-rst-classes" id="reference-66">ชั้นเรียน PG-RST</a><span class="toc-pageref"> </span></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#classes-for-inline-text" id="reference-63">คลาสสำหรับข้อความแทรกในบรรทัด</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#classes-for-block-text" id="reference-64">คลาสสำหรับข้อความบล็อก</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#classes-for-front-matter-markup" id="reference-65">คลาสสำหรับการจัดรูปแบบส่วนหัวของเอกสาร</a><span class="toc-pageref"> </span></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-rst-extensions" id="reference-77">ส่วนขยาย PG-RST</a><span class="toc-pageref"> </span></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#styles" id="reference-67">สไตล์</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pagination" id="reference-68">การแบ่งหน้า</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-of-contents" id="reference-69">สารบัญ</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#list-of-figures" id="reference-70">รายชื่อตัวเลข</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#list-of-tables" id="reference-71">รายการตาราง</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#toc-entry" id="reference-72">รายการสารบัญ</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnotes" id="reference-73">เชิงอรรถ</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#page-numbers" id="reference-74">หมายเลขหน้า</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#dropcaps" id="reference-75">ตัวอักษรพิมพ์ใหญ่ขึ้นต้น (Dropcaps)</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#tables" id="reference-76">ตาราง</a><span class="toc-pageref"> </span></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-metadata" id="reference-81">ข้อมูลเมตาของ PG</a><span class="toc-pageref"> </span></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#top-boilerplate" id="reference-78">แม่แบบด้านบน</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#metadata-directive" id="reference-79">คำสั่งเมตาเดตา</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#bottom-boilerplate" id="reference-80">แม่แบบด้านล่าง</a><span class="toc-pageref"> </span></p>
+</li>
+</ul>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#pg-rst-best-practices" id="reference-82">แนวปฏิบัติที่ดีที่สุดของ PG-RST</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-2 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#tests-and-examples" id="reference-86"><span>ตัวอย่างและการทดสอบ</span></a><span class="toc-pageref"> </span></p>
+<ul class="compact toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-1" id="reference-83">ส่วนที่ 3.1</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-2" id="reference-84">ส่วนที่ 3.2</a><span class="toc-pageref"> </span></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-3" id="reference-85">ส่วนที่ 3.3</a><span class="toc-pageref"> </span></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="level-3 section" id="list-of-figures">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-43"><span>รายชื่อตัวเลข</span></a></h3>
+<p class="pfirst"><span>ใช้ คำสั่ง </span><span class="directive monospaced red">lof </span><span>เพื่อสร้างรายการรูปภาพโดยอัตโนมัติ</span></p>
+<p class="pnext"><span>หมายเหตุ คุณสามารถระบุรายการตัวเลขด้วยตนเองได้เช่นกัน</span></p>
+<div class="example topic" id="example-125">
+<pre class="example-source literal-block"><span>...lof:: รายชื่อตัวเลข
+   :หมายเลขหน้า:
+   :backlinks: none</span>
+</pre>
+<div class="docutils container example-rendered">
+<div class="level-4 section" id="section-5">
+<h4 class="level-4 pfirst section-title title"> <span>รายชื่อตัวเลข</span></h4>
+<div class="docutils container loa lof">
+<ul class="compact simple toc-list">
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#figure-6" id="reference-17"><span>ริชาร์ดและดรูซิลลา มาร์ติน</span></a><span class="toc-pageref"> </span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="level-3 section" id="list-of-tables">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-44"><span>รายการตาราง</span></a></h3>
+<p class="pfirst"><span>ใช้ คำสั่ง </span><span class="directive monospaced red">lot </span><span>เพื่อสร้างรายการตาราง</span></p>
+<p class="pnext"><span>หมายเหตุ คุณสามารถระบุรายการตารางด้วยตนเองได้เช่นกัน</span></p>
+<div class="example topic" id="example-126">
+<pre class="example-source literal-block"><span>.. ล็อต:: รายชื่อตาราง
+   :หมายเลขหน้า:
+   :backlinks: none</span>
+</pre>
+<div class="docutils container example-rendered">
+<div class="level-4 section" id="section-6">
+<h4 class="level-4 pfirst section-title title"> <span>รายการตาราง</span></h4>
+<div class="docutils container loa lot">
+<ul class="compact simple toc-list">
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-76" id="reference-18">คลาสสำหรับข้อความแทรกในบรรทัด I</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-77" id="reference-19">คลาสสำหรับข้อความแทรกในบรรทัด II</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-78" id="reference-20">คลาสสำหรับข้อความแทรกในบรรทัด III</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-79" id="reference-21">คลาสสำหรับข้อความบล็อก</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-80" id="reference-22">คลาสสำหรับการจัดรูปแบบส่วนหัวของเอกสาร</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-81" id="reference-23">คำสั่งสำหรับการแบ่งหน้า</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-82" id="reference-24"><span>ตำแหน่งเชิงอรรถ</span></a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-83" id="reference-25">รองรับการใช้ตัวอักษรตัวใหญ่ขึ้นต้น (Dropcaps) ในรูปแบบเอาต์พุต</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-84" id="reference-26">โต๊ะสาธิต</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-85" id="reference-27">ตารางความจริงสำหรับ “และ”</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-86" id="reference-28">สาขาวิชาในโครงการ PG</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-87" id="reference-29">ฟิลด์ในโครงการ DC</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-88" id="reference-30">ฟิลด์ในโครงการ MARCREL</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-89" id="reference-31">พื้นที่ที่ไม่มีแผนผัง</a><span class="toc-pageref"> </span></span></li>
+<li class="level-2 toc-entry"><span class="first"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#table-90" id="reference-32"><cite class="italics">ตารางที่ 8</cite>ประเภทของคอมพิวเตอร์ที่ใช้ในระบบที่รายงาน</a><span class="toc-pageref"> </span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="level-3 section" id="toc-entry">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-45"><span>รายการสารบัญ</span></a></h3>
+<p class="pfirst"><span>ใช้ คำสั่ง </span><span class="directive monospaced red">toc-entry </span><span>เพื่อ:</span></p>
+<ul class="simple">
+<li><p class="first pfirst"><span>ระบุรายการสารบัญทางเลือก</span></p>
+</li>
+<li><p class="first pfirst"><span>ระงับรายการในสารบัญ หรือ</span></p>
+</li>
+<li><p class="first pfirst"><span>สลับเปิดหรือปิดการรวบรวมข้อมูล TOC</span></p>
+</li>
+</ul>
+<p class="pfirst"><span>รายการ</span><span class="directive monospaced red">สารบัญ</span><span>ที่มีอาร์กิวเมนต์จะกำหนดอาร์กิวเมนต์นั้นเป็นรายการสารบัญสำหรับส่วน รูปภาพ หรือตารางถัดไป</span></p>
+<p class="pnext"><span>การ</span><span class="directive monospaced red">เลือกรายการในสารบัญ</span><span>โดยไม่มีอาร์กิวเมนต์ จะเป็นการระงับรายการในสารบัญสำหรับส่วน รูปภาพ หรือตารางถัดไป</span></p>
+<p class="pnext"><span>ใช้ ตัวเลือก </span><span class="green monospaced option">ความลึก</span><span>เพื่อตั้งค่าความลึกในการรวบรวมชื่อส่วนต่างๆ สำหรับสารบัญ ความลึก 0 จะปิดการรวบรวมสารบัญ</span></p>
+<div class="example topic" id="example-127">
+<pre class="example-source literal-block"><span>.. toc-entry:: คำบรรยายภาพทางเลือก</span>
+</pre>
+</div>
+</div>
+<div class="level-3 section" id="footnotes">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-46"><span>เชิงอรรถ</span></a></h3>
+<p class="pfirst"><span>ควรระบุความหมายของเชิงอรรถไว้หลังย่อหน้าที่อ้างอิงเสมอ</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="Explains where footnotes end up" id="table-82" style="width: 75%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-7">
+<span class="larger">การจัดวางเชิงอรรถ</span></a></caption>
+<colgroup>
+<col style="width: 20%;"/>
+<col style="width: 80%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>รูปแบบ</span></p>
+</th>
+<th><p class="first last pfirst"><span>ตำแหน่ง</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span>เอชแอล</span></p>
+</td>
+<td><p class="first last pfirst"><span>รวบรวมตามคำสั่งเชิงอรรถ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>อียูบี</span></p>
+</td>
+<td><p class="first last pfirst"><span>เหมือนกัน</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>TXT</span></p>
+</td>
+<td><p class="first last pfirst"><span>ที่ซึ่งมีการกำหนดไว้</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span>พีดี</span></p>
+</td>
+<td><p class="first last pfirst"><span>ที่ด้านล่างของหน้านี้</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="pfirst"><span>ในการรวบรวมเชิงอรรถ ให้ใช้ คำสั่ง </span><span class="directive monospaced red">footnotes </span><span>
+คำสั่งนี้จะสร้างส่วนที่มีชื่อเรื่อง และเชิงอรรถทั้งหมดในเอกสารจะถูกย้ายเข้าไปอยู่ในส่วนนั้น</span></p>
+<p class="pnext"><span>ในรูปแบบไฟล์ PDF และ TXT คำสั่ง </span><span class="directive monospaced red">footnotes </span><span>จะไม่มีผลใดๆ</span><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-1" id="footnote-reference-1"><sup>1</sup></a></p>
+<p class="pnext"><span></span><span>การ</span><span>ทดสอบ</span><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-2" id="footnote-reference-2"><sup>2 </sup></a><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-3" id="footnote-reference-3"><sup>3</sup></a><span></span></p>
+<div class="example topic" id="example-128">
+<pre class="example-source literal-block"><span>..เชิงอรรถ:: เชิงอรรถ
+   :คลาส: เล็กกว่า</span>
+</pre>
+</div>
+</div>
+<div class="level-3 section" id="page-numbers">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-47"><span>หมายเลขหน้า</span></a></h3>
+<p class="pfirst"><span>ลำดับ</span><span class="code monospaced">[pg n] </span><span>จะถูกแปลงเป็นเครื่องหมายระบุหมายเลขหน้าเป็น n โดยที่ n สามารถเป็นตัวเลขอะрабิกหรือโรมันใดก็ได้ ลำดับดังกล่าวจะถูกลบออกจากข้อความ เหลือไว้เพียงจุดยึดหน้า</span><em class="italics">ต้อง</em><span>มีช่องว่างรอบๆ ลำดับ หากการแบ่งหน้าอยู่กลางคำ ให้รวมคำเข้าด้วยกันและวางลำดับไว้ที่ท้ายคำ</span></p>
+<div class="example topic" id="example-129">
+<pre class="example-source literal-block"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+พวกเขาอิจฉาเวลา [หน้า 42] มากเท่ากับที่พวกเขาปรารถนาทั้งแรงงานและความเจ็บปวด
+มีบ้าง แต่ก็เป็นประสบการณ์ที่น่าพึงพอใจ แต่ที่จริงแล้วฉันกล่าวโทษพวกเขาอย่างยุติธรรม
+ปวดสองอย่าง [หน้า xviii] และนั่นก็เป็นเรื่องหนึ่ง</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt [pg 42] ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores [pg xviii] และ ea rebum</span></p>
+</div>
+</div>
+<p class="pfirst"><span>สามารถแทรกการอ้างอิงถึงหมายเลขหน้าได้โดยใช้ลำดับ
+ </span><span class="code monospaced">[pg n]_ </span><span>ซึ่งจะสร้างลิงก์ไปยังจุดอ้างอิงของหน้านั้น</span></p>
+<div class="example topic" id="example-130">
+<pre class="example-source literal-block"><span>ดูหน้า [pg 42]_.</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>ดูหน้า [pg 42]_.</span></p>
+</div>
+</div>
+<p class="pfirst"><span>สามารถแทรกหมายเลขหน้าที่มองไม่เห็นได้โดยใช้ลำดับ
+ </span><span class="code monospaced">[pg!n </span><span>]</span></p>
+<div class="example topic" id="example-131">
+<pre class="example-source literal-block"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+พวกเขาอิจฉาเวลาที่ไม่มีอยู่จริง [หน้า 43] เปรียบเสมือนความเหนื่อยยากและความเจ็บปวดอย่างใหญ่หลวง
+มีบ้าง แต่ก็เป็นประสบการณ์ที่น่าพึงพอใจ แต่ที่จริงแล้วฉันกล่าวโทษพวกเขาอย่างยุติธรรม
+ปวดสองอย่าง และนั่นก็เป็นเรื่องหนึ่ง ดูหน้า [p. 43]_</span>
+</pre>
+<div class="docutils container example-rendered">
+<p class="pfirst"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt [pg!43] ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum ดูหน้า [หน้า 43]_.</span></p>
+</div>
+</div>
+<p class="pfirst"><span>ดูหน้า [pg iii]_.</span></p>
+</div>
+<div class="level-3 section" id="dropcaps">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-48"><span>ตัวอักษรพิมพ์ใหญ่ขึ้นต้น (Dropcaps)</span></a></h3>
+<p class="pfirst"><span>คุณสามารถแทรกตัวอักษรขนาดใหญ่พิเศษ (dropcap) ด้วย คำสั่ง </span><span class="directive monospaced red">dropcap </span><span>คุณสามารถใช้ตัวอักษรที่ขยายใหญ่ขึ้นหรือรูปภาพเป็นตัวอักษรขนาดใหญ่พิเศษได้ นอกจากนี้ คุณยังสามารถระบุช่วงของตัวอักษรที่ควรแสดงเป็นตัวพิมพ์เล็กหลังจากตัวอักษรขนาดใหญ่พิเศษได้อีกด้วย</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="no summary" id="table-83" style="width: 80%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-8">
+<span class="larger">รองรับการใช้ตัวอักษรตัวใหญ่ขึ้นต้น (Dropcaps) ในรูปแบบเอาต์พุต</span></a></caption>
+<colgroup>
+<col style="width: 17%;"/>
+<col style="width: 42%;"/>
+<col style="width: 42%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>รูปแบบ</span></p>
+</th>
+<th><p class="first last pfirst"><span>จดหมาย</span></p>
+</th>
+<th><p class="first last pfirst"><span>ภาพ</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span>เอชแอล</span></p>
+</td>
+<td><p class="first last pfirst"><span>ขยายใหญ่ขึ้นและลดลง</span></p>
+</td>
+<td><p class="first last pfirst"><span>ปรับขนาดและลดลง</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>อียูบี</span></p>
+</td>
+<td><p class="first last pfirst"><span>ขยายจากเส้นฐาน</span></p>
+</td>
+<td><p class="first last pfirst"><span>ปรับขนาดตามเส้นฐาน</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>TXT</span></p>
+</td>
+<td><p class="first last pfirst"><span>ขนาดปกติ</span></p>
+</td>
+<td><p class="first last pfirst"><span>ข้อความทางเลือก</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span>พีดี</span></p>
+</td>
+<td><p class="first last pfirst"><span>ขยายและลดลง</span><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#a" id="footnote-reference-5"><sup>5</sup></a></p>
+</td>
+<td><p class="first last pfirst"><span>ปรับขนาดและลดลง</span><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#a" id="footnote-reference-6"><sup>5</sup></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="pfirst"><span>อาร์กิวเมนต์แรก (บังคับ) ระบุตัวอักษรที่จะแทนที่ด้วยตัวพิมพ์ใหญ่ ตัวอักษรนั้นต้องตรงกับจุดเริ่มต้นของย่อหน้าถัดไป</span></p>
+<p class="pnext"><span>อาร์กิวเมนต์ที่สอง (เป็นตัวเลือก) ระบุตัวอักษรที่จะแทนที่ด้วยตัวพิมพ์เล็ก ตัวอักษรเหล่านั้นต้องตรงกับจุดเริ่มต้นของย่อหน้าถัดไปด้วย</span></p>
+<div class="example topic" id="example-132">
+<pre class="example-source literal-block"><span>... ล้างหน้าเว็บ::
+
+.. dropcap:: L Lorem ipsum
+   :บรรทัด: 4
+   :indents: -1.25em 0.5em
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+พวกเขาอิจฉาเวลาของกันและกัน เพราะต่างฝ่ายต่างต้องทนทุกข์ทรมานและลำบากอย่างมาก
+ใช่ มันเป็นประสบการณ์ที่น่ายินดี แต่ที่จริงแล้วฉันกล่าวหาพวกเขาแค่สองคนเท่านั้น
+ความเจ็บปวดและสิ่งนั้น ยืนนิ่งๆ อย่าให้ทะเลทาคิมาตะ
+มันศักดิ์สิทธิ์ การได้รับความรักเป็นความสุขอย่างหนึ่ง
+พวกเขาพอใจในความสุขของตนเอง แต่ก็มักอิจฉาผู้อื่นเสมอ
+แม้ว่าจะมีความยากลำบากและความเจ็บปวดอย่างมาก แต่ก็มีความสุขด้วยเช่นกัน</span>
+</pre>
+<div class="docutils container example-rendered">
+<div class="clearpage">
+</div>
+<p class="pfirst"><span class="dropcap" style="font-size: 6.00em">แอล</span><span class="dropspan small-caps">ฉันภาวนา</span><span>ว่าความเจ็บปวดจะเป็นความสุข แต่ฉันจะไม่พอใจกับมันไปอีกนาน แต่ฉันจะไม่พอใจกับมันไปอีกนาน แต่ฉันจะกล่าวโทษพวกเขาและความเจ็บปวดเพียงสองอย่างและสิ่งนั้น ยืนนิ่งไว้เถิดเพื่อนของฉัน ฉันจะไม่พอใจกับมันไปอีกนาน Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet แต่ฉันจะไม่พอใจกับมันไปอีกนาน แต่ฉันจะไม่พอใจกับมันไปอีกนาน</span></p>
+</div>
+</div>
+<p class="pfirst"><span>ตัว เลือก </span><span class="green monospaced option">จำนวนบรรทัด</span><span>(เฉพาะไฟล์ PDF) ระบุจำนวนบรรทัดที่ตัวอักษรตัวแรกขนาดใหญ่ควรครอบคลุม ค่าเริ่มต้นคือ 2</span></p>
+<p class="pnext"><span>ตัว เลือก </span><span class="green monospaced option">การเยื้อง</span><span>(เฉพาะไฟล์ PDF) สามารถระบุค่าความยาวได้สูงสุด 2 ค่า ค่าแรกคือการเยื้องของบรรทัดแรก ค่าที่สองคือการเยื้องของบรรทัดถัดไป การเยื้องจะคำนวณจากขอบด้านขวาของตัวอักษรตัวแรกขนาดใหญ่ ค่าเริ่มต้นคือ 0em และ 0.5em</span></p>
+<p class="pnext"><span>ตัว เลือก </span><span class="green monospaced option">รูปภาพ</span><span>ระบุ URL ของรูปภาพ ในรูปแบบข้อความธรรมดาและ EPUB รูปภาพจะไม่ถูกนำมาใช้</span></p>
+<div class="example topic" id="example-133">
+<pre class="example-source literal-block"><span>... ล้างหน้าเว็บ::
+
+.. dropcap:: G
+   :ภาพ: images/G.png
+   :บรรทัด: 4
+
+ความเจ็บปวดนั้นเจ็บปวดเหลือเกิน ความเจ็บปวดนั้นเจ็บปวด แต่ความเจ็บปวดนั้นก็เจ็บปวดเหลือเกิน
+พวกเขาอิจฉาเวลาของกันและกัน เพราะต่างฝ่ายต่างต้องทนทุกข์ทรมานและลำบากอย่างมาก
+ใช่ มันเป็นประสบการณ์ที่น่ายินดี แต่ที่จริงแล้วฉันกล่าวหาพวกเขาแค่สองคนเท่านั้น
+ความเจ็บปวดและสิ่งนั้น ยืนนิ่งๆ อย่าให้ทะเลทาคิมาตะ
+มันศักดิ์สิทธิ์ การได้รับความรักเป็นความสุขอย่างหนึ่ง
+พวกเขาพอใจในความสุขของตนเอง แต่ก็มักอิจฉาผู้อื่นเสมอ
+แม้ว่าจะมีความยากลำบากและความเจ็บปวดอย่างมาก แต่ก็มีความสุขด้วยเช่นกัน</span>
+</pre>
+<div class="docutils container example-rendered">
+<div class="clearpage">
+</div>
+<p class="pfirst"><img alt="จี" class="dropcap inline" src="./The Project Gutenberg RST Manual_files/G.png" style="height: 4.80em"/><span class="dropspan small-caps"></span><span>ฉันภาวนาว่าความเจ็บปวดจะเป็นความสุข แต่ฉันจะไม่พอใจกับมันไปอีกนาน แต่ฉันจะไม่พอใจกับมันไปอีกนาน แต่ฉันจะกล่าวโทษพวกเขาและความเจ็บปวดเพียงสองอย่างและสิ่งนั้น ยืนนิ่งไว้เถิดเพื่อนของฉัน ฉันจะไม่พอใจกับมันไปอีกนาน Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet แต่ฉันจะไม่พอใจกับมันไปอีกนาน แต่ฉันจะไม่พอใจกับมันไปอีกนาน</span></p>
+</div>
+</div>
+</div>
+<div class="level-3 section" id="tables">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-49"><span>ตาราง</span></a></h3>
+<p class="pfirst"><span>โปรดระมัดระวังในการใช้ตาราง เนื่องจากเครื่องอ่านอีบุ๊กหลายรุ่นรองรับตารางได้ไม่ดีหรือไม่รองรับเลย</span></p>
+<p class="pnext"><span>ตารางยังรองรับตัวเลือกเหล่านี้ด้วย:</span></p>
+<dl class="docutils">
+<dt><span class="green monospaced option">ความกว้าง</span></dt>
+<dd><p class="first last pfirst"><span>ทำให้โต๊ะกว้างขนาดนั้น</span></p>
+</dd>
+<dt><span class="green monospaced option">ความกว้าง</span></dt>
+<dd><p class="first pfirst"><span>รายการค่าที่ไม่มีหน่วยคั่นด้วยช่องว่าง โดยแต่ละค่าระบุความกว้างสัมพัทธ์ของคอลัมน์ในตารางหนึ่งๆ</span></p>
+<p class="last pnext"><span>หากคุณไม่ได้ใช้ตัวเลือก</span><span class="green monospaced option">widths </span><span>ความกว้างของคอลัมน์จะถูกคำนวณจากโครงสร้างของตารางในไฟล์ต้นฉบับของคุณ</span></p>
+</dd>
+<dt><span class="green monospaced option">จัดเรียง</span></dt>
+<dd><p class="first pfirst"><span>จัดเรียงคอลัมน์ให้ขนานกันในแนวนอน</span></p>
+<p class="pnext"><span>รายการการจัดเรียงที่คั่นด้วยช่องว่าง โดยแต่ละรายการระบุการจัดเรียงของคอลัมน์หนึ่งคอลัมน์</span></p>
+<p class="last pnext"><span>ค่าการจัดแนวที่ถูกต้อง ได้แก่ ซ้าย กลาง ขวา และจัดชิดขอบทั้งสองข้าง</span></p>
+</dd>
+<dt><span class="green monospaced option">จัดแนวแนวตั้ง</span></dt>
+<dd><p class="first pfirst"><span>จัดเรียงคอลัมน์ให้ตรงกันในแนวตั้ง</span></p>
+<p class="pnext"><span>รายการการจัดแนวแนวตั้งที่คั่นด้วยช่องว่าง โดยแต่ละรายการระบุการจัดแนวของคอลัมน์หนึ่งคอลัมน์</span></p>
+<p class="pnext"><span>ค่าการจัดแนวที่ถูกต้อง ได้แก่: บน กลาง และล่าง</span></p>
+<p class="last pnext"><span>หมายเหตุ: การจัดแนวแนวตั้งรองรับได้อย่างเต็มที่ใน HTML เท่านั้น รูปแบบอื่นๆ อาจรองรับได้ในระดับที่แตกต่างกันไป</span></p>
+</dd>
+<dt><span class="green monospaced option">สรุป</span><span>(เฉพาะ HTML)</span></dt>
+<dd><p class="first last pfirst"><span>เพิ่มแอตทริบิวต์สรุปให้กับองค์ประกอบตาราง</span></p>
+</dd>
+</dl>
+<p class="pfirst"><span>นี่คือคลาสเพิ่มเติมที่ PG-RST รองรับ:</span></p>
+<dl class="docutils">
+<dt><span class="blue css monospaced">กฎเกณฑ์</span></dt>
+<dd><p class="first pfirst"><span>ละเว้นเส้นแบ่งระหว่างแถวในตาราง (ไม่รวมเส้นแบ่งระหว่างส่วนหัวและส่วนเนื้อหา หรือเส้นแบ่งที่ด้านบนและด้านล่างของตาราง)</span></p>
+<p class="last pnext"><span>ใช้คลาสนี้เมื่อสายตาสามารถติดตามแถวในตารางได้โดยไม่ต้องอาศัยเส้นแบ่ง</span></p>
+</dd>
+</dl>
+<div class="example topic" id="example-134">
+<pre class="example-source literal-block"><span>..ตาราง::ตารางสาธิต
+   ความกว้าง: 100%
+   จัดแนว: ตรงกลาง
+   ความกว้าง: 3 1 1 1
+   จัดแนว: จัดกึ่งกลางขวา
+   :การจัดแนวตั้ง: บน กลาง ล่าง บน
+   สรุป: ตารางนี้มีข้อมูลที่มีประโยชน์
+
+   +------------------------+-----------+----------+----------+
+   | แถวหัวเรื่อง คอลัมน์ที่ 1 | จัดชิดขอบทั้งสองข้าง | จัดกึ่งกลาง | ราคา ($) |
+   | (แถวส่วนหัวเป็นตัวเลือก) | | | |
+   +========================+===========+==========+===========+
+   | แถวที่ 1 | คอลัมน์ | คอลัมน์ | 1.23 |
+   +------------------------+-----------+----------+----------+
+   | แถวที่ 2 | คอลัมน์ คอลัมน์ | คอลัมน์ | 45.67 |
+   | | คอล คอล | | |
+   | | คอล คอล | | |
+   | | คอลัมน์ | | |
+   +------------------------+-----------+----------+----------+
+   | แถวที่ 3 | เซลล์อาจคร่อมหลายคอลัมน์ได้ |
+   | | Lorem ipsum dolor sit amet, |
+   | | เขากระหายความสุข แต่ |
+   | | พวกเขาอิจฉาริษยากันมานานแล้ว |
+   | | การทำงานหนักและความเจ็บปวดอย่างมาก |
+   | | แต่ความสุขของเพชรพลอย แต่แท้จริงแล้วพวกเขา |
+   | | ฉันกล่าวหาและมีเพียงสองความเจ็บปวดและ |
+   | | สิ่งนั้น |
+   +------------------------+-----------+----------+----------+
+   | เซลล์อาจครอบคลุมหลายแถวและ | เซลล์ | แถวที่ 4 |
+   | คอลัมน์ Lorem ipsum dolor นั่ง | อาจขยาย +------+
+   | ความรัก ความกระหายในการกินปลา | แถว | แถวที่ 5 |
+   +------------------------------------+----------+-----------+</span>
+</pre>
+<div class="docutils container example-rendered">
+<table class="align-center colwidths-given hrules-rows hrules-table table" data-summary="This table contains valuable data." id="table-84" style="width: 100%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-9">
+<span class="larger">โต๊ะสาธิต</span></a></caption>
+<colgroup>
+<col style="width: 50%;"/>
+<col style="width: 17%;"/>
+<col style="width: 17%;"/>
+<col style="width: 17%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th style="text-align: justify; vertical-align: top"><p class="first last pfirst"><span>แถวหัวเรื่อง คอลัมน์ที่ 1 (แถวหัวเรื่องเป็นตัวเลือกเสริม)</span></p>
+</th>
+<th style="text-align: justify"><p class="first last pfirst"><span>สมเหตุสมผล</span></p>
+</th>
+<th style="text-align: center; vertical-align: bottom"><p class="first last pfirst"><span>ตรงกลาง</span></p>
+</th>
+<th style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>ราคา ($)</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td style="text-align: justify; vertical-align: top"><p class="first last pfirst"><span>แถวที่ 1</span></p>
+</td>
+<td style="text-align: justify"><p class="first last pfirst"><span>คอลัมน์</span></p>
+</td>
+<td style="text-align: center; vertical-align: bottom"><p class="first last pfirst"><span>คอลัมน์</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>1.23</span></p>
+</td>
+</tr>
+<tr><td style="text-align: justify; vertical-align: top"><p class="first last pfirst"><span>แถวที่ 2</span></p>
+</td>
+<td style="text-align: justify"><p class="first last pfirst"><span>คอ คอ คอ คอ คอ คอ</span></p>
+</td>
+<td style="text-align: center; vertical-align: bottom"><p class="first last pfirst"><span>คอล</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>45.67</span></p>
+</td>
+</tr>
+<tr><td style="text-align: justify; vertical-align: top"><p class="first last pfirst"><span>แถวที่ 3</span></p>
+</td>
+<td colspan="3" style="text-align: justify"><p class="first last pfirst"><span>เซลล์อาจขยายคอลัมน์ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam sed diam voluptua. ที่ vero eos accusam และ justo duo dolores et rebum</span></p>
+</td>
+</tr>
+<tr><td colspan="2" rowspan="2" style="text-align: justify; vertical-align: top"><p class="first last pfirst"><span>เซลล์อาจขยายแถวและคอลัมน์ Lorem ipsum dolor นั่ง amet, consetetur adipiscing.</span></p>
+</td>
+<td rowspan="2" style="text-align: center; vertical-align: bottom"><p class="first last pfirst"><span>เซลล์อาจครอบคลุมหลายแถว</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>แถวที่ 4</span></p>
+</td>
+</tr>
+<tr class="last"><td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>แถวที่ 5</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="example topic" id="example-135">
+<pre class="example-source literal-block"><span>..ตาราง:: ตารางความจริงสำหรับ “และ”
+   :คลาส: กฎเกณฑ์
+   จัดแนว: ตรงกลาง
+   ความกว้าง: 50%
+
+   ===== ===== =========
+     เอบีเอและบี
+   ===== ===== =========
+   เท็จ เท็จ เท็จ
+   จริง เท็จ เท็จ
+   เท็จ จริง เท็จ
+   จริง จริง จริง
+   ===== ===== =========</span>
+</pre>
+<div class="docutils container example-rendered">
+<table class="align-center hrules-rows hrules-table norules table" data-summary="no summary" id="table-85" style="width: 50%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-10">
+<span class="larger">ตารางความจริงสำหรับ “และ”</span></a></caption>
+<colgroup>
+<col style="width: 26%;"/>
+<col style="width: 26%;"/>
+<col style="width: 47%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>เอ</span></p>
+</th>
+<th><p class="first last pfirst"><span>บี</span></p>
+</th>
+<th><p class="first last pfirst"><span>เอ และ บี</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>จริง</span></p>
+</td>
+<td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+<td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+<td><p class="first last pfirst"><span>จริง</span></p>
+</td>
+<td><p class="first last pfirst"><span>เท็จ</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span>จริง</span></p>
+</td>
+<td><p class="first last pfirst"><span>จริง</span></p>
+</td>
+<td><p class="first last pfirst"><span>จริง</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="level-2 section" id="pg-metadata">
+<h2 class="level-2 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-54"><span>ข้อมูลเมตาของ PG</span></a></h2>
+<div class="level-3 section" id="top-boilerplate">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-51"><span>แม่แบบด้านบน</span></a></h3>
+<p class="pfirst"><span>ส่วนนี้จะอธิบายข้อความมาตรฐานของ PG ที่คุณต้องใส่ไว้ที่ส่วนบนสุดของไฟล์ PG-RST ของคุณ</span></p>
+<p class="pnext"><span>หน้าตาเป็นแบบนี้:</span></p>
+<div class="example topic" id="example-136">
+<pre class="example-source literal-block"><span>.. -*- การเข้ารหัส: utf-8 -*- (1)
+
+ .. เมตา:: (2)
+    รหัส PG: 181
+    :PG.Title: ชื่อเรื่องสั้นมาก
+    :PG. ออกฉาย: 25 พฤศจิกายน 2010
+    ลิขสิทธิ์: สาธารณสมบัติ
+    ผู้กำกับภาพ: วู้ดดี้ กัทรี
+    :PG. ผู้ผลิต: พีท ซีเกอร์
+    ผู้ผลิต: The Almanac Singers
+    :PG.Credits: ไฟล์นี้สร้างขึ้นจากภาพที่ขโมยมาจากพิพิธภัณฑ์ลูฟร์
+    :DC.ผู้สร้าง: เจน ออสติน
+    :MARCREL.edt: มาร์ค ทเวน
+    :MARCREL.ill: Édouard Manet
+    :DC.Title: ข้อความชื่อเรื่องฉบับเต็ม
+    :DC.Language: in
+    :DC.Language: fr
+    :DC.Language: de
+    ก่อตั้งเมื่อ: 1900
+    :coverpage: images/cover.jpg
+
+
+ ===========
+ ชื่อย่อ (3)
+ ===========
+
+ .. pgheader:: (4)</span>
+</pre>
+</div>
+<ol class="arabic simple">
+<li><p class="first pfirst"><span>แทรกบรรทัดนี้ลงไปโดยตรง ต้องเป็นบรรทัดแรกในข้อความ</span><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-5" id="footnote-reference-7"><sup>6</sup></a><span>นี่เป็นการบอกให้ตัวแปลงใช้การเข้ารหัส UTF-8 และโปรแกรมแก้ไขข้อความหลายโปรแกรมก็ยอมรับเช่นกัน</span></p>
+</li>
+<li><p class="first pfirst"><span>คำสั่งเกี่ยวกับเมตาเดตา: โปรดดูส่วนด้านล่าง</span></p>
+</li>
+<li><p class="first pfirst"><span>นี่จะเป็นบรรทัดแรกของไฟล์ที่สร้างขึ้น ควรระบุว่า: “The Project Gutenberg Ebook of Title” หรือเพียงแค่ “Title” ใช้เครื่องหมาย '=' ทั้งด้านบนและด้านล่างของชื่อเรื่อง</span></p>
+</li>
+<li><p class="first pfirst"><span>คำสั่งนี้จะแทรกส่วนหัว PG ตามที่สร้างขึ้นจากข้อมูลเมตา</span></p>
+</li>
+</ol>
+</div>
+<div class="level-3 section" id="metadata-directive">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-52"><span>คำสั่งเมตาเดตา</span></a></h3>
+<p class="pfirst"><span>คำสั่ง metadata ประกอบด้วยข้อมูลทั้งหมดที่ใช้ในการสร้างส่วนหัวของ PG และรายการในแคตตาล็อกของ PG</span></p>
+<p class="pnext"><span>แผนผังคือส่วนก่อนจุด</span></p>
+<div class="level-4 section" id="pg-scheme">
+<h4 class="level-4 pfirst section-title title"> <span>โครงการ PG</span></h4>
+<p class="pfirst"><span>โครงการ PG เก็บข้อมูลที่เกี่ยวข้องกับโครงการ Project Gutenberg เท่านั้น</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table table" data-summary="no summary" id="table-86" style="width: 75%">
+<caption class="centerleft level-4 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-11">
+<span class="larger">สาขาวิชาในโครงการ PG</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ชื่อ</span></p>
+</th>
+<th><p class="first last pfirst"><span>สารบัญ</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span>พีจี.ไอดี</span></p>
+</td>
+<td><p class="first last pfirst"><span>หมายเลขอีบุ๊ก</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>เผยแพร่โดย PG</span></p>
+</td>
+<td><p class="first last pfirst"><span>วันวางจำหน่ายสำหรับผู้ชมทุกวัย (PG) ในรูปแบบ ปี-เดือน-วัน (YYYY-MM-DD)</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>สิทธิ์ PG</span></p>
+</td>
+<td><p class="first last pfirst"><span>ต้องเป็น 'สาธารณสมบัติ' หรือ 'มีลิขสิทธิ์' เท่านั้น</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>ชื่อเรื่องระดับ PG</span></p>
+</td>
+<td><p class="first last pfirst"><span>ชื่อเรื่องในรูปแบบย่อมาก ใช้ในข้อความมาตรฐานของอีบุ๊ก PG ในบรรทัดที่ระบุว่า: “เริ่มต้นอีบุ๊ก PG เล่มนี้…” และ “จบอีบุ๊ก PG เล่มนี้…”</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>พีจี.โปรดิวเซอร์</span></p>
+</td>
+<td><p class="first last pfirst"><span>ชื่อบุคคลหรือองค์กรที่ช่วยจัดทำข้อความนี้ ช่องนี้สามารถปรากฏได้มากกว่าหนึ่งครั้ง ห้ามใส่ชื่อมากกว่าหนึ่งชื่อในช่องเดียว หากจำเป็นให้ทำซ้ำช่องนี้</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span>หน่วยกิตระดับปริญญาโท</span></p>
+</td>
+<td><p class="first last pfirst"><span>ข้อความที่ระบุแหล่งที่มาของรูปภาพหรือข้อมูลอื่นๆ</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="level-4 section" id="dc-scheme">
+<h4 class="level-4 pfirst section-title title"> <span>โครงการ DC</span></h4>
+<p class="pfirst"><span>โครงสร้างข้อมูลนี้จัดเก็บข้อมูล Dublincore มาตรฐาน และถูกใช้โดยเครื่องมือค้นหาหลายแห่ง รวมถึงซอฟต์แวร์จัดทำรายการบรรณานุกรมของ PG ด้วย</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table table" data-summary="no summary" id="table-87" style="width: 75%">
+<caption class="centerleft level-4 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-12">
+<span class="larger">ฟิลด์ในโครงการ DC</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ชื่อ</span></p>
+</th>
+<th><p class="first last pfirst"><span>สารบัญ</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span>ดีซี.ครีเอเตอร์</span></p>
+</td>
+<td><p class="first last pfirst"><span>ผู้เขียน: ชื่อบุคคลหรือองค์กรที่สร้างสรรค์ผลงาน สามารถระบุชื่อได้มากกว่าหนึ่งครั้ง ห้ามใส่ชื่อมากกว่าหนึ่งชื่อในช่องเดียวกัน หากจำเป็นให้ทำซ้ำในช่องนั้น</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>ดีซี.ไทเทิล</span></p>
+</td>
+<td><p class="first last pfirst"><span>ชื่อเรื่องฉบับเต็มตามที่ปรากฏบนหน้าปกหนังสือ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>ภาษา DC</span></p>
+</td>
+<td><p class="first last pfirst"><span>รหัส 2 หรือ 3 ตัวอักษรสำหรับทุกภาษาที่ใช้ในส่วนสำคัญของข้อความ อาจปรากฏมากกว่าหนึ่งครั้ง ห้ามใส่รหัสมากกว่าหนึ่งรหัสในช่องเดียว ทำซ้ำช่องหากจำเป็น ภาษาที่ระบุไว้ที่นี่เป็นเพียงตัวอย่างสำหรับแคตตาล็อกและไม่ได้กำหนดภาษาของข้อความและกฎการแบ่งคำ ให้ใช้ตัวเลือก</span><span class="green monospaced option">class </span><span>language-&lt;language-code&gt; สำหรับการกำหนดภาษาและ การแบ่งคำ</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span>ดีซี. สร้างขึ้น</span></p>
+</td>
+<td><p class="first last pfirst"><span>ปีที่ตีพิมพ์ครั้งแรก หากทราบ</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="level-4 section" id="marcrel-scheme">
+<h4 class="level-4 pfirst section-title title"> <span>โครงการมาร์เครล</span></h4>
+<p class="pfirst"><span>ส่วนนี้ใช้สำหรับบันทึกรายชื่อผู้มีส่วนร่วมในการเขียนเนื้อหา ข้อมูลในช่องเหล่านี้อาจปรากฏมากกว่าหนึ่งครั้งได้ ห้ามใส่ชื่อมากกว่าหนึ่งชื่อในช่องเดียว หากจำเป็นให้ทำซ้ำช่องนั้น</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table table" data-summary="no summary" id="table-88" style="width: 75%">
+<caption class="centerleft level-4 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-13">
+<span class="larger">ฟิลด์ในโครงการ MARCREL</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ชื่อ</span></p>
+</th>
+<th><p class="first last pfirst"><span>สารบัญ</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td><p class="first last pfirst"><span>MARCREL.edt</span></p>
+</td>
+<td><p class="first last pfirst"><span>บรรณาธิการ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>มาร์เครล.อิล</span></p>
+</td>
+<td><p class="first last pfirst"><span>นักวาดภาพประกอบ</span></p>
+</td>
+</tr>
+<tr><td><p class="first last pfirst"><span>มาร์เครล.ทร์ล</span></p>
+</td>
+<td><p class="first last pfirst"><span>นักแปล</span></p>
+</td>
+</tr>
+<tr class="last"><td><p class="first last pfirst"><span>มาร์เครล*</span></p>
+</td>
+<td><p class="first last pfirst"><span>ดู</span><a href="http://www.loc.gov/marc/relators/relacode.html">รายการรหัส MARC relator ทั้งหมดได้</a><span>ที่นี่</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="level-4 section" id="no-scheme">
+<h4 class="level-4 pfirst section-title title"> <span>ไม่มีโครงการ</span></h4>
+<p class="pfirst"><span>บางฟิลด์ไม่เกี่ยวข้องกับโครงการใดๆ ข้างต้นเลย</span></p>
+<table class="align-center colwidths-given hrules-rows hrules-table table" data-summary="no summary" id="table-89" style="width: 75%">
+<caption class="centerleft level-4 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-14">
+<span class="larger">พื้นที่ที่ไม่มีแผนผัง</span></a></caption>
+<colgroup>
+<col style="width: 25%;"/>
+<col style="width: 75%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th><p class="first last pfirst"><span>ชื่อ</span></p>
+</th>
+<th><p class="first last pfirst"><span>สารบัญ</span></p>
+</th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first last"><td><p class="first last pfirst"><span>หน้าปก</span></p>
+</td>
+<td><p class="first last pfirst"><span>ภาพหน้าปกสำหรับรูปแบบต่างๆ (เช่น Kindle) ที่รองรับภาพหน้าปก ต้องแนบภาพนี้มากับไฟล์อัปโหลด แต่ไม่จำเป็นต้องอยู่ในส่วนเดียวกับเนื้อหาข้อความ</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="level-3 section" id="bottom-boilerplate">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-53"><span>แม่แบบด้านล่าง</span></a></h3>
+<p class="pfirst"><span>คุณต้องใส่ข้อความนี้ไว้ที่ด้านล่างสุดของไฟล์ PG-RST ของคุณ</span></p>
+<div class="example topic" id="example-137">
+<pre class="example-source literal-block"><span>.. pgfooter:: (1)</span>
+</pre>
+</div>
+<ol class="arabic simple">
+<li><p class="first pfirst"><span>คำสั่งนี้จะแทรกส่วนท้ายและข้อตกลงใบอนุญาต PG เข้าไป</span></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="level-2 section" id="pg-rst-best-practices">
+<h2 class="level-2 pfirst section-title title with-subtitle"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-55"><span>แนวปฏิบัติที่ดีที่สุดของ PG-RST</span></a></h2>
+<p class="level-2 pfirst section-subtitle subtitle" id="images">
+<span>รูปภาพ</span></p>
+<p class="pfirst"><span>ระบุ ตัวเลือก </span><span class="green monospaced option">ความกว้าง</span><span>ในรูปภาพและ ตัวเลือก </span><span class="green monospaced option">ความกว้างของรูปภาพ</span><span>
+ในแผนภาพ แล้วแสดงผลเป็นเปอร์เซ็นต์</span></p>
+<p class="pnext"><span>หากคุณไม่ได้ระบุความกว้าง โปรแกรมแปลงค่าจะคำนวณเปอร์เซ็นไทล์ความกว้างให้คุณโดยอัตโนมัติ โดยใช้สูตร:</span></p>
+<pre class="literal-block"><span>ความกว้างของภาพ / (980 พิกเซล * 0.8) * 100</span>
+</pre>
+<p class="pfirst"><span>(980 พิกเซล คือความกว้างโดยประมาณของหน้าต่างเบราว์เซอร์ที่มีแถบเลื่อนบนหน้าจอที่มีความกว้าง 1024 พิกเซล โดย 0.8 คือระยะขอบด้านซ้ายและขวา 10%)</span></p>
+<p class="pnext"><span>การกำหนดขนาดภาพโดยสัมพันธ์กับความกว้างของหน้าจอเป็นวิธีที่ดีที่สุดในการแสดงภาพได้อย่างถูกต้องบนอุปกรณ์หลากหลายประเภท ตั้งแต่ iPhone ไปจนถึงการพิมพ์</span></p>
+<div class="example topic" id="example-138">
+<pre class="example-source literal-block"><span>.. toc-entry:: Richard and Drucilla Martin
+
+...รูปภาพ:: images/cover.jpg
+   จัดแนว: ตรงกลาง
+   :alt: ริชาร์ดและดรูซิลลา มาร์ติน
+
+   ริชาร์ด มาร์ติน เคยเป็นทาสในเมืองเมมฟิส รัฐเทนเนสซี
+   ดรูซิลลา มาร์ติน เป็นทาสในเคาน์ตีไจลส์ รัฐเทนเนสซี
+
+   คำอธิบายภาพประกอบด้วยองค์ประกอบทั้งหมดที่อยู่หลังคำบรรยาย Lorem
+   ความเจ็บปวดนั้นคือความรักอย่างหนึ่ง มันคือความสุขที่ปนเศร้า แต่ความเจ็บปวดนั้นก็แสนสาหัส
+   พวกเขาอิจฉาเวลาของกันและกัน เพราะต่างฝ่ายต่างต้องทนทุกข์ทรมานและลำบากอย่างมาก
+   ใช่ มันเป็นประสบการณ์ที่น่ายินดี แต่ที่จริงแล้วฉันกล่าวหาพวกเขาแค่สองคนเท่านั้น
+   ความเจ็บปวดและเรื่องอื่นๆ ทำนองนั้น</span>
+</pre>
+<div class="docutils container example-rendered">
+<div class="align-center auto-scaled figure margin" id="figure-6" style="width: 64%">
+<img alt="ริชาร์ดและดรูซิลลา มาร์ติน" class="align-center block" src="./The Project Gutenberg RST Manual_files/cover.jpg" style="display: block; width: 100%"/>
+<div class="caption centerleft figure-caption margin">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-16">
+<span class="italics">ริชาร์ด มาร์ติน เป็นทาสในเมืองเมมฟิส รัฐเทนเนสซี ส่วน
+ <br/>ดรูซิลลา มาร์ติน เป็นทาสในเคาน์ตีไจลส์ รัฐเทนเนสซี</span></a></div>
+<div class="legend margin">
+<p class="pfirst"><span>คำอธิบายประกอบด้วยองค์ประกอบทั้งหมดหลังคำบรรยาย Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum</span></p>
+</div>
+</div>
+</div>
+</div>
+<p class="pfirst"><span>[หน้า 2]</span></p>
+</div>
+<div class="level-2 section" id="tests-and-examples">
+<h2 class="level-2 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-59"><span>การทดสอบและตัวอย่าง</span></a></h2>
+<div class="topic">
+<p class="centerleft level-2 pfirst title topic-title"><span>สังเกต</span></p>
+<p class="pfirst"><span>ส่วนที่เหลือของไฟล์นี้ประกอบด้วยชุดทดสอบ คุณสามารถดูซอร์สโค้ดของ RST เพื่อเรียนรู้ว่าสิ่งต่างๆ ทำงานอย่างไร</span></p>
+</div>
+<p class="pfirst"><span>สารบัญท้องถิ่นที่สร้างขึ้นโดยอัตโนมัติ:</span></p>
+<div class="docutils container local local-contents">
+<ul class="compact simple toc-list">
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-1" id="reference-87">ส่วนที่ 3.1</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-2" id="reference-88">ส่วนที่ 3.2</a></p>
+</li>
+<li class="level-3 toc-entry"><p class="first pfirst"><a href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#section-3-3" id="reference-89">ส่วนที่ 3.3</a></p>
+</li>
+</ul>
+</div>
+<p class="pnext"><span>สารบัญโดยย่อของเนื้อหาท้องถิ่น:</span></p>
+<blockquote class="highlights">
+<div>
+<p class="pfirst"><span>คิงส์ตัน — ข้อสังเกตที่ให้ความรู้เกี่ยวกับประวัติศาสตร์อังกฤษยุคต้น — ข้อสังเกตที่ให้ความรู้เกี่ยวกับไม้โอ๊กแกะสลักและชีวิตโดยทั่วไป — กรณีที่น่าเศร้าของสติฟวิงส์ จูเนียร์ — ข้อคิดเกี่ยวกับยุคโบราณ — ฉันลืมไปว่ากำลังบังคับพวงมาลัยอยู่ — ผลลัพธ์ที่น่าสนใจ — เขาวงกตแฮมป์ตันคอร์ท — แฮร์ริสเป็นไกด์</span></p>
+</div>
+</blockquote>
+<p class="pfirst"><span>ÅÖÜ äöüß Æsop Œdipus coer. ด. †‡ ｳ. §2.1</span></p>
+<p class="pnext"><span>'' ‚‛ “ ” ‹› em — en –.</span></p>
+<p class="pnext"><span>“ 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren ไม่มีทะเล ทาคิมาตะ sanctus est Lorem ipsum dolor นั่ง amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua ที่ vero eos et accusam et justo duo dolores et ea ปฏิเสธ ทะเล takimata sanctus est Lorem ipsum dolor นั่ง amet. ”</span></p>
+<p class="pnext"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. [หน้า 3] ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet.</span></p>
+<div class="docutils container margin transition">
+<p class="center pnext"><span>— — — —</span></p>
+</div>
+<p class="pnext"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet.</span></p>
+<p class="pnext"><span>[หน้า 4]</span></p>
+<p class="pnext"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet.</span></p>
+<div class="align-center docutils container shrinkwrap">
+<div class="line-block outermost">
+<div class="inner line-block">
+<div class="line"><span>'พูดจาหยาบคายกับลูกชายตัวเล็กของคุณบ้างนะ'</span></div>
+<div class="inner line-block">
+<div class="line"><span>และจงตีเขาเมื่อเขาจาม:</span></div>
+</div>
+<div class="line"><span>เขาทำแบบนั้นก็เพื่อก่อกวนเท่านั้น</span></div>
+<div class="inner line-block">
+<div class="line"><span>เพราะเขารู้ว่ามันเป็นการยั่วเย้า'</span></div>
+<div class="line"> </div>
+<div class="inner line-block">
+<div class="inner line-block">
+<div class="line"><span>ท่อนประสานเสียง</span></div>
+<div class="line"> </div>
+</div>
+</div>
+</div>
+</div>
+<div class="line"><span>(ซึ่งแม่ครัวและเด็กทารกได้ร่วมแสดงด้วย):—</span></div>
+<div class="line"> </div>
+<div class="inner line-block">
+<div class="inner line-block">
+<div class="inner line-block">
+<div class="line"><span>'ว้าว! ว้าว! ว้าว!'</span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="line-block outermost">
+<div class="line"><span>ฤดูร้อนผ่านพ้นไป เด็กๆ เติบโตเป็นผู้ใหญ่แล้ว</span></div>
+<div class="inner line-block">
+<div class="line"><span>เขาไม่รู้สึกถึงความสนุกสนานรื่นเริงอีกต่อไปแล้ว</span></div>
+</div>
+<div class="line"><span>โรเบิร์ตแห่งลินคอล์นเป็นหญิงชราที่น่าเบื่อหน่าย</span></div>
+<div class="inner line-block">
+<div class="line"><span>เขาโบยบินไป และพวกเราก็ร้องเพลงไปพร้อมกับเขา:</span></div>
+<div class="inner line-block">
+<div class="line"><span>บ็อบ-โอ'ลิงค์ บ็อบ-โอ'ลิงค์</span></div>
+<div class="line"><span>ปิ๊ง ปิ๊ง ปิ๊ง;</span></div>
+</div>
+</div>
+<div class="line"><span>เมื่อคุณสามารถเป่าเพลงเก่าแก่ที่ไพเราะนั้นได้</span></div>
+<div class="line"><span>โรเบิร์ตแห่งลินคอล์น โปรดกลับมาอีกครั้ง</span></div>
+<div class="inner line-block">
+<div class="inner line-block">
+<div class="inner line-block">
+<div class="line"><span>ชี ชี ชี</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="pnext"><span>และตอนนี้คำพูดจาก Lorem Ipsum:</span></p>
+<blockquote>
+<div>
+<p class="pfirst"><span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita [หน้า 5] kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor envidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ที่ vero eos et accusam และ justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sat amet.</span></p>
+<div class="attribution margin">
+<span>— </span><span>โลเรม อิปซัม</span></div>
+</div>
+</blockquote>
+<p class="pfirst"><span>[หน้า 7]</span></p>
+<div class="level-3 section" id="section-3-1">
+<h3 class="level-3 pfirst section-title title"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-87"><span>ส่วนที่ 3.1</span></a></h3>
+<blockquote class="epigraph">
+<div>
+<p class="pfirst"><span>ข้าพเจ้าสงสารคนที่เดินทางจากดานไปยังเบียร์เชบา แล้วกล่าวว่า “ที่นี่แห้งแล้งไปหมด” เช่นเดียวกับโลกทั้งใบก็เป็นเช่นนั้นสำหรับคนที่ไม่อยากเพาะปลูกผลไม้ที่มันมอบให้</span></p>
+<div class="attribution margin">
+<span>— </span><span>สเตอร์น: การเดินทางแห่งความรู้สึก</span></div>
+</div>
+</blockquote>
+<p class="pfirst"><span>รายการแบบง่ายที่มีเครื่องหมายยัติภังค์</span></p>
+<ul class="simple">
+<li><p class="first pfirst"><span>ล้างหูข้างซ้าย</span></p>
+</li>
+<li><p class="first pfirst"><span>ล้างหูข้างขวา</span></p>
+</li>
+<li><p class="first pfirst"><span>แปรงฟัน</span></p>
+</li>
+</ul>
+<p class="pfirst"><span>รายการแบบง่ายที่มีสัญลักษณ์แสดงหัวข้อ</span></p>
+<ul class="simple">
+<li><p class="first pfirst"><span>ล้างหูข้างซ้าย</span></p>
+</li>
+<li><p class="first pfirst"><span>ล้างหูข้างขวา</span></p>
+</li>
+<li><p class="first pfirst"><span>แปรงฟัน</span></p>
+</li>
+</ul>
+<p class="pfirst"><span>รายการซ้อน</span></p>
+<ol class="arabic simple">
+<li><p class="first pfirst"><span>รายการที่ 1.</span></p>
+<ol class="loweralpha">
+<li><p class="first pfirst"><span>ข้อ 1ก.</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 1ข.</span></p>
+<ol class="upperroman">
+<li><p class="first pfirst"><span>รายการที่ 1.aI</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 1.ก.II</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 1.ก.III</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 1.ก.IV</span></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol class="first upperalpha">
+<li><ol class="first lowerroman">
+<li><p class="first pfirst"><span>รายการที่ 2.Ai [หน้า 8]</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 2.A.ii</span></p>
+</li>
+</ol>
+</li>
+<li><ol class="first lowerroman">
+<li><p class="first pfirst"><span>รายการที่ 2.Bi</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 2.B.ii</span></p>
+</li>
+<li><p class="first pfirst"><span>ข้อ 2.B.iii</span></p>
+</li>
+</ol>
+</li>
+<li><p class="first pfirst"><span>ข้อ 2.C</span></p>
+</li>
+</ol>
+</li>
+<li><p class="first pfirst"><span>ข้อ 3.</span></p>
+</li>
+</ol>
+<p class="pfirst"><span>รายการคำจำกัดความ</span></p>
+<dl class="docutils">
+<dt><span>ภาคเรียน</span></dt>
+<dd><p class="first last pfirst"><span>คำนิยาม.</span></p>
+</dd>
+<dt><span>ภาคเรียนที่ 2</span></dt>
+<dd><p class="first pfirst"><span>นิยามที่ 2</span></p>
+<p class="last pnext"><span>นิยามข้อ 2 วรรค 2</span></p>
+</dd>
+<dt><span>ระยะยาว 3</span></dt>
+<dd><p class="first last pfirst"><span>นิยามที่ 3</span></p>
+</dd>
+</dl>
+<p class="pfirst"><span>รายการตัวเลือก (PG ไม่ได้ใช้)</span></p>
+<table class="docutils option-list frame-void rules-none">
+<colgroup><col class="option"/>
+<col class="description"/>
+</colgroup><tbody style="vertical-align: top;">
+<tr><td class="option-group">
+<kbd><span class="option"><span>-a</span></span></kbd></td>
+<td><p class="first last pfirst"><span>ตัวเลือกบรรทัดคำสั่ง "a"</span></p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option"><span>-1</span> <var><span class="italics">file</span></var></span>, <span class="option"><span>--one</span>=<var><span class="italics">file</span></var></span>, <span class="option"><span>--two</span> <var><span class="italics">file</span></var></span></kbd></td>
+</tr>
+<tr><td> </td><td><p class="first last pfirst"><span>มีตัวเลือกหลายแบบพร้อมอาร์กิวเมนต์</span></p>
+</td></tr>
+</tbody>
+</table>
+<p class="pfirst"><span>[หน้า 123]</span></p>
+</div>
+<div class="level-3 section" id="section-3-2">
+<h3 class="level-3 pfirst section-title title"> <span>ส่วนที่ 3.2 </span><a class="footnote-reference" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-6" id="footnote-reference-8"><sup>7</sup></a></h3>
+<p class="pfirst"><span>ใส่ข้อความลงไปบ้างเพื่อให้ส่วนนี้ไม่ว่างเปล่า</span></p>
+</div>
+<div class="level-3 section" id="section-3-3">
+<h3 class="level-3 pfirst section-title title with-subtitle"> <a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-89"><span>ส่วนที่ 3.3</span></a></h3>
+<p class="level-3 pfirst section-subtitle subtitle" id="the-man-who-pleases">
+<span>ชายผู้ทำให้ผู้อื่นพึงพอใจ</span></p>
+<div class="docutils container">
+<blockquote class="epigraph">
+<div>
+<div class="line-block outermost">
+<div class="line"><span class="italics">เพื่อนรักของฉัน ชายผู้ใจดีที่สุด</span></div>
+<div class="line"><span class="italics">จิตวิญญาณที่สมบูรณ์และไม่เหนื่อยล้า</span></div>
+<div class="line"><span class="italics">ในการแสดงความสุภาพ</span></div>
+</div>
+<div class="attribution margin">
+<span class="small-caps">— </span><span class="small-caps">พ่อค้าแห่งเวนิส</span></div>
+</div>
+</blockquote>
+<blockquote class="epigraph">
+<div>
+<div class="line-block outermost">
+<div class="line"><span class="italics">เขามีความงดงามในชีวิตประจำวันของเขา</span></div>
+</div>
+<div class="attribution margin">
+<span class="small-caps">— </span><span class="small-caps">โอเทลโล</span></div>
+</div>
+</blockquote>
+<blockquote class="epigraph">
+<div>
+<div class="line-block outermost">
+<div class="line"><span class="italics">ผู้ชายแบบนี้จะชนะใจผู้หญิงคนไหนก็ได้ทั่วโลก</span></div>
+<div class="line"><span class="italics">ถ้าหากฉันสามารถได้รับความไว้วางใจจากเธอได้</span></div>
+</div>
+<div class="attribution margin">
+<span class="small-caps">— </span><span class="small-caps">เรื่องวุ่นวายใหญ่โตแต่ไร้สาระ</span></div>
+</div>
+</blockquote>
+</div>
+<p class="pfirst"><span>มีไม่กี่เรื่องที่จะดึงดูดความสนใจของทั้งชายและหญิงได้ลึกซึ้งไปกว่าเรื่องความหลงใหลส่วนตัว</span></p>
+<blockquote class="epigraph">
+<div>
+<p class="pfirst"><span>"บัดนี้สงครามครั้งใหญ่และโหดร้ายได้เริ่มต้นขึ้นแล้ว ระหว่างผู้ที่อยู่ภายนอกและผู้ที่อยู่ภายใน"</span></p>
+<p class="pnext right"><cite class="italics">เรื่องราวจากเมืองปิสโตเอีย</cite></p>
+</div>
+</blockquote>
+<table class="align-center colwidths-given hrules-rows hrules-table norules table" data-summary="TABLE 8 Types of Computers Used in the Systems Reported" id="table-90" style="width: 50%">
+<caption class="centerleft level-3 pfirst table-title title">
+<a class="toc-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#reference-15">
+<cite class="italics larger">ตารางที่ 8</cite><span class="larger">ประเภทของคอมพิวเตอร์ที่ใช้ในระบบที่รายงาน</span></a></caption>
+<colgroup>
+<col style="width: 60%;"/>
+<col style="width: 20%;"/>
+<col style="width: 20%;"/>
+</colgroup>
+<thead style="vertical-align: bottom;">
+<tr class="first last"><th style="vertical-align: top"><p class="first last pfirst"><span>พิมพ์</span></p>
+</th>
+<th style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>ตัวเลข</span></p>
+</th>
+<th style="text-align: right"> </th>
+</tr>
+</thead>
+<tbody style="vertical-align: top;">
+<tr class="first"><td style="vertical-align: top"><p class="first last pfirst"><span>แต่ 210</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>1</span></p>
+</td>
+<td rowspan="2" style="text-align: right"><p class="first last pfirst"><span>(3)</span></p>
+</td>
+</tr>
+<tr><td style="vertical-align: top"><p class="first last pfirst"><span>แต่ 2100</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>2</span></p>
+</td>
+</tr>
+<tr><td style="vertical-align: top"><p class="first last pfirst"><span>ซีดีซี 160เอ</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>2</span></p>
+</td>
+<td rowspan="2" style="text-align: right"><p class="first last pfirst"><span>(3)</span></p>
+</td>
+</tr>
+<tr class="last"><td style="vertical-align: top"><p class="first last pfirst"><span>ซีดีซี 3100</span></p>
+</td>
+<td style="text-align: right; vertical-align: top"><p class="first last pfirst"><span>1</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="literal-block"><span class="small">ต้นทุนรวมของคอมพิวเตอร์ 0.22 ± 0.06 โดยเฉลี่ย
+------------------------ = 0.23 -&gt; แยกอัตราส่วนสำหรับแต่ละรายการ
+ต้นทุนของระบบเร่งอนุภาคเปล่า</span>
+</pre>
+<div class="backmatter">
+</div>
+<p class="pfirst"><span>[หน้า 10]</span></p>
+<div class="level-4 section" id="section-7">
+<h4 class="level-4 pfirst section-title title"> <span>เชิงอรรถ</span></h4>
+<div class="docutils container footnotes">
+<div class="footnote-group">
+<table class="docutils footnote frame-void rules-none" id="footnote-1">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label"><a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-1">[ <span class="smaller">1</span> ]</a></td><td><p class="first last pfirst"><span class="smaller">ไม่ต้องพิมพ์แม้แต่ชื่อหัวข้อส่วนด้วยซ้ำ</span></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote frame-void rules-none" id="footnote-2">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label"><a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-2">[ <span class="smaller">2</span> ]</a></td><td><p class="first last pfirst"><span class="smaller">หมายเหตุเพิ่มเติมอีกข้อหนึ่ง เพื่อทดสอบว่าเชิงอรรถหลายรายการ</span><a class="footnote-reference smaller" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-4" id="footnote-reference-4"><sup>4</sup></a><span class="smaller">รายการเรียงซ้อนกันบนหน้าเดียว ได้อย่างไร</span></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote frame-void rules-none" id="footnote-3">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label"><a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-3">[ <span class="smaller">3</span> ]</a></td><td><p class="first pfirst"><span class="smaller">ฉบับต่อมามีเนื้อหาดังต่อไปนี้:</span></p>
+<div class="last line-block outermost">
+<div class="line"><span class="smaller">เมื่อผืนทรายแห้งเหือดไปหมด เขาก็ร่าเริงเหมือนนกน้อย</span></div>
+<div class="line"><span class="smaller">และจะพูดจาดูหมิ่นฉลามด้วยน้ำเสียงเหยียดหยาม</span></div>
+<div class="line"><span class="smaller">แต่เมื่อน้ำขึ้นสูงและมีฉลามอยู่บริเวณนั้น...</span></div>
+<div class="line"><span class="smaller">น้ำเสียงของเขาฟังดูขี้อายและสั่นเครือ</span></div>
+</div>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote frame-void rules-none" id="footnote-4">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label"><a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-4">[ <span class="smaller">4</span> ]</a></td><td><p class="first last pfirst"><span class="smaller">การทดสอบของกิบบอน เชิงอรรถซ้อนเชิงอรรถ</span></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote frame-void rules-none" id="a">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label">[ <span class="smaller">5</span> ]</td><td><em>( <a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-5">1</a> , <a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-6">2</a> )</em> <p class="last pfirst"><em class="italics smaller">คำเตือน: </em><span class="smaller">หากย่อหน้าที่มีตัวอักษรขนาดใหญ่ขึ้นต้น (dropcap) เกิดการแบ่งหน้า ตัวอักษรขนาดใหญ่ขึ้นต้นนั้นอาจติดอยู่ที่ด้านล่างของหน้า หลีกเลี่ยงการใช้ตัวอักษรขนาดใหญ่ขึ้นต้น เว้นแต่คุณแน่ใจว่าคุณอยู่ที่ด้านบนสุดของหน้า เช่น ที่จุดเริ่มต้นของบท</span></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote frame-void rules-none" id="footnote-5">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label"><a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-7">[ <span class="smaller">6</span> ]</a></td><td><p class="first last pfirst"><span class="smaller">สามารถใส่ BOM แบบ Unicode ไว้ก่อนหน้านี้ได้ ที่จริงแล้วโปรแกรมแก้ไขข้อความส่วนใหญ่ใน Windows จะเพิ่ม BOM โดยไม่ถามคุณก่อนด้วยซ้ำ</span></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote frame-void rules-none" id="footnote-6">
+<colgroup><col class="label"/><col/></colgroup>
+<tbody style="vertical-align: top;">
+<tr><td class="label"><a class="fn-backref" href="https://www.gutenberg.org/cache/epub/181/pg181-images.html#footnote-reference-8">[ <span class="smaller">7</span> ]</a></td><td><p class="first last pfirst"><span class="smaller">ชื่อเรื่องนี้มีเชิงอรรถอ้างอิง เชิงอรรถอ้างอิงนี้จะไม่ปรากฏในสารบัญ</span></p>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p class="pfirst"><span>[หน้า 99]</span></p>
+<div class="topic">
+<p class="centerleft level-3 pfirst title topic-title"><span>หมายเหตุของผู้ถอดเสียง</span></p>
+<p class="pfirst"><span>ข้อผิดพลาดเล็กน้อยด้านการสะกดคำได้รับการแก้ไขโดยไม่แจ้งให้ทราบล่วงหน้า</span></p>
+<p class="pnext"><span>การใช้เครื่องหมายขีดคั่นได้รับการปรับให้สม่ำเสมอแล้ว</span></p>
+</div>
+<div class="vspace" style="height: 5em">
+</div>
+<p class="pfirst" id="pg-end-line"><span>*** สิ้นสุดคู่มือฉบับแรกของโครงการ Project Gutenberg EBook นี้แล้ว ***</span></p>
+<div class="backmatter">
+</div>
+</div>
+</div>
+<div class="language-en level-2 pgfooter section" id="a-word-from-project-gutenberg" lang="en">
+<section class="pg-boilerplate pgheader" id="pg-footer" lang="en">
+<div id="pg-end-separator">
+<span>*** จบส่วนอีบุ๊กของโครงการกูเทนเบิร์ก คู่มือโครงการกูเทนเบิร์ก RST ***</span>
+</div>
+<div>
+ฉบับปรับปรุงใหม่จะมาแทนที่ฉบับเดิม โดยฉบับเก่าจะถูกเปลี่ยนชื่อใหม่
+</div><div>
+การสร้างผลงานจากฉบับพิมพ์ที่ไม่ได้รับการคุ้มครองโดยกฎหมายลิขสิทธิ์ของสหรัฐอเมริกา หมายความว่าไม่มีใครเป็นเจ้าของลิขสิทธิ์ในสหรัฐอเมริกาสำหรับผลงานเหล่านี้ ดังนั้นมูลนิธิ (และคุณ!) สามารถคัดลอกและแจกจ่ายผลงานเหล่านี้ในสหรัฐอเมริกาได้โดยไม่ต้องขออนุญาตและไม่ต้องจ่ายค่าลิขสิทธิ์ อย่างไรก็ตาม มีกฎพิเศษที่กำหนดไว้ในส่วนข้อกำหนดการใช้งานทั่วไปของใบอนุญาตนี้ ที่ใช้กับการคัดลอกและแจกจ่ายผลงานอิเล็กทรอนิกส์ของ Project Gutenberg™ เพื่อปกป้องแนวคิดและเครื่องหมายการค้า PROJECT GUTENBERG™ Project Gutenberg เป็นเครื่องหมายการค้าจดทะเบียน และห้ามใช้หากคุณเรียกเก็บเงินสำหรับอีบุ๊ก เว้นแต่จะปฏิบัติตามข้อกำหนดของใบอนุญาตเครื่องหมายการค้า รวมถึงการจ่ายค่าลิขสิทธิ์สำหรับการใช้เครื่องหมายการค้า Project Gutenberg หากคุณไม่เรียกเก็บเงินใดๆ สำหรับสำเนาอีบุ๊กนี้ การปฏิบัติตามใบอนุญาตเครื่องหมายการค้าทำได้ง่ายมาก คุณสามารถใช้อีบุ๊กนี้ได้เกือบทุกวัตถุประสงค์ เช่น การสร้างผลงานดัดแปลง รายงาน การแสดง และการวิจัย อีบุ๊กของ Project Gutenberg สามารถแก้ไข พิมพ์ และแจกจ่ายได้ คุณสามารถทำอะไรก็ได้ในสหรัฐอเมริกาด้วยอีบุ๊กที่ไม่ได้รับการคุ้มครองโดยกฎหมายลิขสิทธิ์ของสหรัฐอเมริกา การนำไปเผยแพร่ต่อต้องเป็นไปตามข้อตกลงใบอนุญาตเครื่องหมายการค้า โดยเฉพาะอย่างยิ่งการเผยแพร่ต่อเพื่อการค้า
+</div>
+<div id="project-gutenberg-license">เริ่มต้น: ใบอนุญาตฉบับเต็ม</div>
+<h2 id="pg-footer-heading">ใบอนุญาต Project Gutenberg™ ฉบับเต็ม</h2>
+<div class="agate">โปรดอ่านข้อความนี้ก่อนเผยแพร่หรือใช้งานผลงานนี้
+</div><div>
+เพื่อปกป้องพันธกิจของ Project Gutenberg™ ในการส่งเสริมการเผยแพร่ผลงานอิเล็กทรอนิกส์อย่างเสรี การใช้หรือเผยแพร่ผลงานนี้ (หรือผลงานอื่นใดที่เกี่ยวข้องกับวลี “Project Gutenberg” ไม่ว่าในทางใดก็ตาม) ถือว่าคุณตกลงที่จะปฏิบัติตามข้อกำหนดทั้งหมดของสัญญาอนุญาตฉบับเต็มของ Project Gutenberg ซึ่งมีอยู่ในไฟล์นี้หรือทางออนไลน์ที่ www.gutenberg.org/license
+</div><div class="secthead">
+ส่วนที่ 1. ข้อกำหนดทั่วไปในการใช้งานและการเผยแพร่ผลงานอิเล็กทรอนิกส์ของโครงการ Gutenberg
+</div><div>
+1.A. การอ่านหรือใช้งานส่วนใดส่วนหนึ่งของงานอิเล็กทรอนิกส์ของ Project Gutenberg นี้ แสดงว่าคุณได้อ่าน เข้าใจ ตกลง และยอมรับข้อกำหนดทั้งหมดของข้อตกลงใบอนุญาตและข้อตกลงทรัพย์สินทางปัญญา (เครื่องหมายการค้า/ลิขสิทธิ์) นี้แล้ว หากคุณไม่เห็นด้วยที่จะปฏิบัติตามข้อกำหนดทั้งหมดของข้อตกลงนี้ คุณต้องหยุดใช้งานและส่งคืนหรือทำลายสำเนาทั้งหมดของงานอิเล็กทรอนิกส์ของ Project Gutenberg ที่อยู่ในครอบครองของคุณ หากคุณชำระค่าธรรมเนียมเพื่อขอรับสำเนาหรือเข้าถึงงานอิเล็กทรอนิกส์ของ Project Gutenberg และคุณไม่เห็นด้วยที่จะผูกพันตามข้อกำหนดของข้อตกลงนี้ คุณสามารถขอรับเงินคืนได้จากบุคคลหรือนิติบุคคลที่คุณชำระค่าธรรมเนียมให้ ตามที่ระบุไว้ในข้อ 1.E.8
+</div><div>
+1.B. “Project Gutenberg” เป็นเครื่องหมายการค้าจดทะเบียน ผู้ที่สามารถใช้หรือเกี่ยวข้องกับงานอิเล็กทรอนิกส์ใดๆ ได้นั้น ต้องยินยอมปฏิบัติตามข้อตกลงนี้เท่านั้น แม้ว่าจะไม่ปฏิบัติตามข้อตกลงนี้อย่างครบถ้วน ก็ยังสามารถทำบางสิ่งบางอย่างกับงานอิเล็กทรอนิกส์ส่วนใหญ่ของ Project Gutenberg ได้ โปรดดูรายละเอียดในข้อ 1.C ด้านล่าง และหากคุณปฏิบัติตามข้อตกลงนี้และช่วยรักษาการเข้าถึงงานอิเล็กทรอนิกส์ของ Project Gutenberg ในอนาคตโดยไม่เสียค่าใช้จ่าย ก็ยังสามารถทำสิ่งต่างๆ ได้มากมาย โปรดดูรายละเอียดในข้อ 1.E ด้านล่าง
+</div><div>
+1.C. มูลนิธิ Project Gutenberg Literary Archive Foundation (“มูลนิธิ” หรือ PGLAF) เป็นเจ้าของลิขสิทธิ์ในการรวบรวมผลงานอิเล็กทรอนิกส์ของ Project Gutenberg ผลงานเกือบทั้งหมดในคอลเลกชันนี้เป็นสาธารณสมบัติในสหรัฐอเมริกา หากผลงานใดไม่ได้รับการคุ้มครองโดยกฎหมายลิขสิทธิ์ในสหรัฐอเมริกา และคุณอยู่ในสหรัฐอเมริกา เราไม่มีสิทธิ์ที่จะห้ามคุณจากการคัดลอก แจกจ่าย แสดง หรือสร้างผลงานดัดแปลงจากผลงานนั้น ตราบใดที่ได้ลบการอ้างอิงถึง Project Gutenberg ออกทั้งหมดแล้ว แน่นอนว่า เราหวังว่าคุณจะสนับสนุนภารกิจของ Project Gutenberg ในการส่งเสริมการเข้าถึงผลงานอิเล็กทรอนิกส์อย่างเสรี โดยการแบ่งปันผลงานของ Project Gutenberg อย่างเสรีตามข้อตกลงนี้ และคงชื่อ Project Gutenberg ไว้กับผลงานนั้น คุณสามารถปฏิบัติตามข้อตกลงนี้ได้ง่ายๆ โดยการเก็บรักษาผลงานนี้ในรูปแบบเดิมพร้อมกับใบอนุญาต Project Gutenberg ฉบับเต็มที่แนบมาด้วย เมื่อคุณแบ่งปันผลงานนั้นกับผู้อื่นโดยไม่คิดค่าใช้จ่าย
+</div><div>
+1.D. กฎหมายลิขสิทธิ์ของประเทศที่คุณอยู่จะควบคุมสิ่งที่คุณสามารถทำได้กับงานนี้ กฎหมายลิขสิทธิ์ในประเทศส่วนใหญ่มีการเปลี่ยนแปลงอยู่ตลอดเวลา หากคุณอยู่นอกสหรัฐอเมริกา โปรดตรวจสอบกฎหมายของประเทศของคุณเพิ่มเติมจากข้อกำหนดของข้อตกลงนี้ก่อนที่จะดาวน์โหลด คัดลอก แสดง แสดงผล แจกจ่าย หรือสร้างงานดัดแปลงจากงานนี้หรืองานอื่นใดของ Project Gutenberg มูลนิธิไม่มีการรับรองใด ๆ เกี่ยวกับสถานะลิขสิทธิ์ของงานใด ๆ ในประเทศอื่นนอกเหนือจากสหรัฐอเมริกา
+</div><div>
+1.E. เว้นแต่คุณได้ลบข้อมูลอ้างอิงทั้งหมดถึง Project Gutenberg แล้ว:
+</div><div>
+1.E.1. ประโยคต่อไปนี้ พร้อมลิงก์ที่ใช้งานได้ หรือการเข้าถึงโดยตรงไปยังสัญญาอนุญาตโครงการกูเทนเบิร์กฉบับเต็ม จะต้องปรากฏอย่างเด่นชัดทุกครั้งที่มีการเข้าถึง แสดง เล่น ดู คัดลอก หรือแจกจ่ายสำเนาใด ๆ ของงานโครงการกูเทนเบิร์ก (งานใด ๆ ที่มีวลี “โครงการกูเทนเบิร์ก” ปรากฏอยู่ หรือที่เกี่ยวข้องกับวลี “โครงการกูเทนเบิร์ก”):
+</div><blockquote><div>
+    อีบุ๊กเล่มนี้เปิดให้ทุกคนทุกที่ในสหรัฐอเมริกาและส่วนใหญ่ของโลกใช้งานได้ฟรีโดยแทบไม่มีข้อจำกัดใดๆ คุณสามารถคัดลอก แจกจ่าย หรือนำไปใช้ซ้ำได้ภายใต้เงื่อนไขของสัญญาอนุญาต Project Gutenberg™ ที่รวมอยู่ในอีบุ๊กเล่มนี้หรือทางออนไลน์ที่<a href="https://www.gutenberg.org/">www.gutenberg.org</a>หากคุณไม่ได้อยู่ในสหรัฐอเมริกา คุณจะต้องตรวจสอบกฎหมายของประเทศที่คุณอยู่ก่อนที่จะใช้อีบุ๊กเล่มนี้
+  </div></blockquote><div>
+1.E.2. หากผลงานอิเล็กทรอนิกส์ของ Project Gutenberg แต่ละชิ้นนั้นดัดแปลงมาจากข้อความที่ไม่ได้รับการคุ้มครองโดยกฎหมายลิขสิทธิ์ของสหรัฐอเมริกา (ไม่มีข้อความระบุว่าเผยแพร่โดยได้รับอนุญาตจากเจ้าของลิขสิทธิ์) ผลงานนั้นสามารถคัดลอกและเผยแพร่ให้กับบุคคลใดก็ได้ในสหรัฐอเมริกาโดยไม่ต้องเสียค่าธรรมเนียมหรือค่าใช้จ่ายใดๆ หากคุณกำลังเผยแพร่หรือให้สิทธิ์เข้าถึงผลงานที่มีวลี “Project Gutenberg” เกี่ยวข้องหรือปรากฏอยู่ในผลงานนั้น คุณต้องปฏิบัติตามข้อกำหนดในย่อหน้า 1.E.1 ถึง 1.E.7 หรือขออนุญาตใช้ผลงานและเครื่องหมายการค้า Project Gutenberg ตามที่ระบุไว้ในย่อหน้า 1.E.8 หรือ 1.E.9
+</div><div>
+1.E.3. หากผลงานอิเล็กทรอนิกส์ของ Project Gutenberg ชิ้นใดชิ้นหนึ่งถูกเผยแพร่โดยได้รับอนุญาตจากเจ้าของลิขสิทธิ์ การใช้งานและการเผยแพร่ของคุณจะต้องเป็นไปตามข้อ 1.E.1 ถึง 1.E.7 และข้อกำหนดเพิ่มเติมใดๆ ที่เจ้าของลิขสิทธิ์กำหนดไว้ ข้อกำหนดเพิ่มเติมจะเชื่อมโยงไปยังสัญญาอนุญาตของ Project Gutenberg สำหรับผลงานทั้งหมดที่เผยแพร่โดยได้รับอนุญาตจากเจ้าของลิขสิทธิ์ ซึ่งสามารถดูได้ที่ส่วนต้นของเอกสารนี้
+</div><div>
+1.E.4. ห้ามยกเลิกการเชื่อมโยง แยก หรือนำข้อกำหนดทั้งหมดของสัญญาอนุญาตโครงการกูเทนเบิร์กออกจากงานนี้ หรือไฟล์ใดๆ ที่มีส่วนหนึ่งของงานนี้ หรืองานอื่นๆ ที่เกี่ยวข้องกับโครงการกูเทนเบิร์ก
+</div><div>
+1.E.5. ห้ามคัดลอก แสดง ดำเนินการ แจกจ่าย หรือเผยแพร่ซ้ำงานอิเล็กทรอนิกส์นี้ หรือส่วนใดส่วนหนึ่งของงานอิเล็กทรอนิกส์นี้ โดยไม่แสดงข้อความที่ระบุไว้ในย่อหน้า 1.E.1 อย่างชัดเจน พร้อมลิงก์ที่ใช้งานได้ หรือการเข้าถึงข้อกำหนดฉบับเต็มของใบอนุญาต Project Gutenberg ได้ทันที
+</div><div>
+1.E.6. คุณสามารถแปลงและเผยแพร่ผลงานนี้ในรูปแบบไบนารี รูปแบบบีบอัด รูปแบบที่มีเครื่องหมายกำกับ รูปแบบที่ไม่ใช่กรรมสิทธิ์ หรือรูปแบบกรรมสิทธิ์ใดๆ ก็ได้ รวมถึงรูปแบบการประมวลผลคำหรือไฮเปอร์เท็กซ์ อย่างไรก็ตาม หากคุณให้สิทธิ์การเข้าถึงหรือเผยแพร่สำเนาผลงานของ Project Gutenberg ในรูปแบบอื่นนอกเหนือจาก “Plain Vanilla ASCII” หรือรูปแบบอื่นๆ ที่ใช้ในเวอร์ชันอย่างเป็นทางการที่โพสต์บนเว็บไซต์อย่างเป็นทางการของ Project Gutenberg (www.gutenberg.org) คุณต้องจัดหาสำเนา วิธีการส่งออกสำเนา หรือวิธีการขอรับสำเนาตามคำขอของผลงานในรูปแบบ “Plain Vanilla ASCII” หรือรูปแบบอื่นๆ ดั้งเดิม โดยไม่มีค่าใช้จ่าย ค่าธรรมเนียม หรือค่าใช้จ่ายเพิ่มเติมใดๆ แก่ผู้ใช้ รูปแบบทางเลือกใดๆ ต้องมีข้อตกลงใบอนุญาต Project Gutenberg ฉบับเต็มตามที่ระบุไว้ในย่อหน้า 1.E.1
+</div><div>
+1.E.7. ห้ามเรียกเก็บค่าธรรมเนียมสำหรับการเข้าถึง การดู การแสดง การแสดงผล การคัดลอก หรือการแจกจ่ายผลงานใดๆ ของ Project Gutenberg เว้นแต่คุณจะปฏิบัติตามวรรค 1.E.8 หรือ 1.E.9
+</div><div>
+1.E.8. คุณสามารถเรียกเก็บค่าธรรมเนียมที่สมเหตุสมผลสำหรับการทำสำเนา การให้สิทธิ์เข้าถึง หรือการแจกจ่ายผลงานอิเล็กทรอนิกส์ของ Project Gutenberg ได้ โดยมีเงื่อนไขดังนี้:
+</div><ul>
+<li>• คุณต้องชำระค่าลิขสิทธิ์ 20% ของกำไรขั้นต้นที่คุณได้รับจากการใช้ผลงานของ Project Gutenberg โดยคำนวณด้วยวิธีเดียวกับที่คุณใช้ในการคำนวณภาษีอยู่แล้ว ค่าธรรมเนียมนี้ต้องจ่ายให้กับเจ้าของเครื่องหมายการค้า Project Gutenberg แต่เขาตกลงที่จะบริจาคค่าลิขสิทธิ์ตามวรรคนี้ให้กับมูลนิธิ Project Gutenberg Literary Archive Foundation การชำระค่าลิขสิทธิ์ต้องชำระภายใน 60 วันนับจากวันที่คุณจัดทำ (หรือมีหน้าที่ตามกฎหมายที่จะต้องจัดทำ) แบบแสดงรายการภาษีรายงวด การชำระค่าลิขสิทธิ์ควรระบุอย่างชัดเจนว่าเป็นค่าลิขสิทธิ์ และส่งไปยังมูลนิธิ Project Gutenberg Literary Archive Foundation ตามที่อยู่ที่ระบุไว้ในหัวข้อ 4 “ข้อมูลเกี่ยวกับการบริจาคให้กับมูลนิธิ Project Gutenberg Literary Archive Foundation”
+    </li>
+<li>• คุณต้องคืนเงินเต็มจำนวนแก่ผู้ใช้ที่แจ้งเป็นลายลักษณ์อักษร (หรือทางอีเมล) ภายใน 30 วันนับจากวันที่ได้รับสินค้าว่าไม่เห็นด้วยกับข้อกำหนดของสัญญาอนุญาตใช้สิทธิ์ Project Gutenberg™ ฉบับเต็ม คุณต้องขอให้ผู้ใช้ดังกล่าวส่งคืนหรือทำลายสำเนาทั้งหมดของผลงานที่อยู่ในรูปแบบสื่อทางกายภาพ และยุติการใช้งานและการเข้าถึงสำเนาอื่นๆ ของผลงาน Project Gutenberg™ ทั้งหมด
+    </li>
+<li>• คุณจะต้องคืนเงินเต็มจำนวนที่ชำระไปสำหรับงานนั้น หรือส่งสำเนาใหม่ให้ หากพบข้อบกพร่องในงานอิเล็กทรอนิกส์ และแจ้งให้คุณทราบภายใน 90 วันนับจากวันที่ได้รับงาน ตามวรรค 1.F.3
+    </li>
+<li>• คุณต้องปฏิบัติตามข้อกำหนดอื่นๆ ทั้งหมดของข้อตกลงนี้สำหรับการเผยแพร่ผลงานของ Project Gutenberg™ โดยไม่คิดค่าใช้จ่าย
+    </li>
+</ul><div>
+1.E.9. หากท่านประสงค์จะเรียกเก็บค่าธรรมเนียมหรือเผยแพร่ผลงานอิเล็กทรอนิกส์หรือกลุ่มผลงานของ Project Gutenberg™ ภายใต้เงื่อนไขที่แตกต่างจากที่ระบุไว้ในข้อตกลงนี้ ท่านต้องขออนุญาตเป็นลายลักษณ์อักษรจากมูลนิธิ Project Gutenberg Literary Archive Foundation ซึ่งเป็นผู้ดูแลเครื่องหมายการค้า Project Gutenberg™ โปรดติดต่อมูลนิธิตามที่ระบุไว้ในส่วนที่ 3 ด้านล่าง
+</div><div>
+1.ฟ.
+</div><div>
+1.F.1. อาสาสมัครและพนักงานของ Project Gutenberg ทุ่มเทความพยายามอย่างมากในการระบุ ค้นคว้าข้อมูลลิขสิทธิ์ ถอดความ และตรวจทานผลงานที่ไม่ได้รับการคุ้มครองโดยกฎหมายลิขสิทธิ์ของสหรัฐอเมริกา ในการสร้างคอลเลกชันของ Project Gutenberg™ อย่างไรก็ตาม แม้จะพยายามอย่างเต็มที่แล้ว ผลงานอิเล็กทรอนิกส์ของ Project Gutenberg™ และสื่อที่ใช้จัดเก็บ อาจมี “ข้อบกพร่อง” เช่น ข้อมูลที่ไม่สมบูรณ์ ไม่ถูกต้อง หรือเสียหาย ข้อผิดพลาดในการถอดความ การละเมิดลิขสิทธิ์หรือทรัพย์สินทางปัญญาอื่นๆ ดิสก์หรือสื่ออื่นๆ ที่ชำรุดหรือเสียหาย ไวรัสคอมพิวเตอร์ หรือรหัสคอมพิวเตอร์ที่ทำให้เกิดความเสียหายหรือไม่สามารถอ่านได้โดยอุปกรณ์ของคุณ
+</div><div>
+1.F.2. การรับประกันแบบจำกัด การปฏิเสธความรับผิดต่อความเสียหาย - ยกเว้น “สิทธิ์ในการเปลี่ยนหรือคืนเงิน” ที่อธิบายไว้ในย่อหน้า 1.F.3 มูลนิธิ Project Gutenberg Literary Archive Foundation เจ้าของเครื่องหมายการค้า Project Gutenberg™ และบุคคลอื่นใดที่เผยแพร่ผลงานอิเล็กทรอนิกส์ของ Project Gutenberg™ ภายใต้ข้อตกลงนี้ ขอปฏิเสธความรับผิดต่อคุณสำหรับความเสียหาย ค่าใช้จ่าย และค่าธรรมเนียมต่างๆ รวมถึงค่าธรรมเนียมทางกฎหมาย คุณตกลงว่าคุณไม่มีสิทธิ์เรียกร้องใดๆ สำหรับความประมาทเลินเล่อ ความรับผิดโดยเคร่งครัด การละเมิดการรับประกัน หรือการละเมิดสัญญา ยกเว้นที่ระบุไว้ในย่อหน้า 1.F.3 คุณตกลงว่ามูลนิธิ เจ้าของเครื่องหมายการค้า และผู้จัดจำหน่ายใดๆ ภายใต้ข้อตกลงนี้ จะไม่รับผิดชอบต่อคุณสำหรับความเสียหายที่เกิดขึ้นจริง โดยตรง โดยอ้อม ผลกระทบต่อเนื่อง การลงโทษ หรือความเสียหายที่เกิดขึ้นโดยบังเอิญ แม้ว่าคุณจะแจ้งให้ทราบถึงความเป็นไปได้ของความเสียหายดังกล่าวแล้วก็ตาม
+</div><div>
+1.F.3. สิทธิ์ในการเปลี่ยนหรือคืนเงินที่จำกัด - หากคุณพบข้อบกพร่องในงานอิเล็กทรอนิกส์นี้ภายใน 90 วันนับจากวันที่ได้รับ คุณสามารถขอรับเงินคืน (ถ้ามี) ที่คุณชำระไปได้ โดยส่งคำอธิบายเป็นลายลักษณ์อักษรไปยังบุคคลที่คุณได้รับงานนั้น หากคุณได้รับงานในรูปแบบสื่อทางกายภาพ คุณต้องส่งคืนสื่อนั้นพร้อมกับคำอธิบายเป็นลายลักษณ์อักษร บุคคลหรือหน่วยงานที่จัดหาผลงานที่ชำรุดให้แก่คุณอาจเลือกที่จะจัดหาสำเนาใหม่แทนการคืนเงิน หากคุณได้รับงานในรูปแบบอิเล็กทรอนิกส์ บุคคลหรือหน่วยงานที่จัดหาให้คุณอาจเลือกที่จะให้โอกาสครั้งที่สองแก่คุณในการรับงานในรูปแบบอิเล็กทรอนิกส์แทนการคืนเงิน หากสำเนาที่สองยังชำรุด คุณสามารถเรียกร้องเงินคืนเป็นลายลักษณ์อักษรได้โดยไม่ต้องมีโอกาสแก้ไขปัญหาเพิ่มเติม
+</div><div>
+1.F.4. นอกเหนือจากสิทธิ์ในการเปลี่ยนหรือคืนเงินที่จำกัดตามที่ระบุไว้ในย่อหน้า 1.F.3 แล้ว งานนี้จัดให้แก่คุณ "ตามสภาพที่เป็นอยู่" โดยไม่มีการรับประกันอื่นใด ไม่ว่าโดยชัดแจ้งหรือโดยนัย รวมถึงแต่ไม่จำกัดเพียงการรับประกันความสามารถในการจำหน่ายหรือความเหมาะสมสำหรับวัตถุประสงค์ใดๆ
+</div><div>
+1.F.5. บางรัฐไม่อนุญาตให้มีการยกเว้นการรับประกันโดยนัยบางประการ หรือการยกเว้นหรือจำกัดความเสียหายบางประเภท หากการยกเว้นหรือข้อจำกัดใดๆ ที่ระบุไว้ในข้อตกลงนี้ขัดต่อกฎหมายของรัฐที่ใช้บังคับกับข้อตกลงนี้ ข้อตกลงนี้จะถูกตีความเพื่อให้มีการยกเว้นหรือข้อจำกัดสูงสุดตามที่กฎหมายของรัฐนั้นอนุญาต ความเป็นโมฆะหรือไม่สามารถบังคับใช้ได้ของข้อกำหนดใดๆ ในข้อตกลงนี้จะไม่ทำให้ข้อกำหนดที่เหลืออยู่เป็นโมฆะ
+</div><div>
+1.F.6. การชดใช้ค่าเสียหาย - คุณตกลงที่จะชดใช้และปกป้องมูลนิธิ เจ้าของเครื่องหมายการค้า ตัวแทนหรือพนักงานของมูลนิธิ บุคคลใดก็ตามที่จัดทำสำเนาผลงานอิเล็กทรอนิกส์ของ Project Gutenberg™ ตามข้อตกลงนี้ และอาสาสมัครใดๆ ที่เกี่ยวข้องกับการผลิต การส่งเสริม และการเผยแพร่ผลงานอิเล็กทรอนิกส์ของ Project Gutenberg™ จากความรับผิด ค่าใช้จ่าย และค่าธรรมเนียมทั้งหมด รวมถึงค่าธรรมเนียมทางกฎหมาย ที่เกิดขึ้นโดยตรงหรือโดยอ้อมจากสิ่งต่อไปนี้ที่คุณกระทำหรือก่อให้เกิดขึ้น: (ก) การเผยแพร่ผลงานนี้หรือผลงานใดๆ ของ Project Gutenberg (ข) การเปลี่ยนแปลง แก้ไข เพิ่มเติม หรือลบผลงานใดๆ ของ Project Gutenberg และ (ค) ข้อบกพร่องใดๆ ที่คุณก่อขึ้น
+</div><div class="secthead">
+ส่วนที่ 2 ข้อมูลเกี่ยวกับพันธกิจของโครงการกูเตนเบิร์ก
+</div><div>
+โครงการกูเตนเบิร์ก (Project Gutenberg) มีความหมายเหมือนกันกับการแจกจ่ายผลงานอิเล็กทรอนิกส์ฟรีในรูปแบบที่คอมพิวเตอร์หลากหลายประเภทสามารถอ่านได้ ไม่ว่าจะเป็นคอมพิวเตอร์รุ่นเก่า รุ่นใหม่ หรือคอมพิวเตอร์ที่ใช้งานมานานแล้ว โครงการนี้เกิดขึ้นได้จากความพยายามของอาสาสมัครหลายร้อยคนและการบริจาคจากผู้คนทุกสาขาอาชีพ
+</div><div>
+อาสาสมัครและการสนับสนุนทางการเงินเพื่อช่วยเหลืออาสาสมัครเป็นสิ่งสำคัญยิ่งต่อการบรรลุเป้าหมายของโครงการกูเตนเบิร์ก และการทำให้มั่นใจว่าคอลเลกชันของโครงการกูเตนเบิร์กจะยังคงเปิดให้ใช้งานได้ฟรีสำหรับคนรุ่นต่อๆ ไป ในปี 2544 มูลนิธิหอจดหมายเหตุวรรณกรรมโครงการกูเตนเบิร์ก (Project Gutenberg Literary Archive Foundation) ได้ถูกก่อตั้งขึ้นเพื่อให้มีอนาคตที่มั่นคงและถาวรสำหรับโครงการกูเตนเบิร์กและคนรุ่นหลัง หากต้องการเรียนรู้เพิ่มเติมเกี่ยวกับมูลนิธิหอจดหมายเหตุวรรณกรรมโครงการกูเตนเบิร์ก และวิธีที่ความพยายามและการบริจาคของคุณสามารถช่วยได้ โปรดดูส่วนที่ 3 และ 4 และหน้าข้อมูลของมูลนิธิที่ www.gutenberg.org
+</div><div class="secthead">
+ส่วนที่ 3 ข้อมูลเกี่ยวกับมูลนิธิหอจดหมายเหตุวรรณกรรมโปรเจกต์กูเตนเบิร์ก
+</div><div>
+มูลนิธิ Project Gutenberg Literary Archive Foundation เป็นองค์กรการศึกษาที่ไม่แสวงหาผลกำไรตามมาตรา 501(c)(3) ของรัฐมิสซิสซิปปี และได้รับการยกเว้นภาษีจากกรมสรรพากรของสหรัฐอเมริกา หมายเลขประจำตัวผู้เสียภาษีของมูลนิธิ (EIN) คือ 64-6221541 การบริจาคให้แก่มูลนิธิ Project Gutenberg Literary Archive Foundation สามารถนำไปหักลดหย่อนภาษีได้เต็มจำนวนตามที่กฎหมายของรัฐบาลกลางสหรัฐอเมริกาและกฎหมายของรัฐของคุณอนุญาต
+</div><div>
+สำนักงานธุรกิจของมูลนิธิตั้งอยู่ที่ 41 Watchung Plaza #516, Montclair NJ 07042, USA, +1 (862) 621-9288 สามารถดูลิงก์ติดต่อทางอีเมลและข้อมูลการติดต่อล่าสุดได้ที่เว็บไซต์ของมูลนิธิและหน้าอย่างเป็นทางการที่ www.gutenberg.org/contact
+</div><div class="secthead">
+ส่วนที่ 4 ข้อมูลเกี่ยวกับการบริจาคให้แก่ มูลนิธิโครงการเก็บรักษาเอกสารวรรณกรรมกูเตนเบิร์ก
+</div><div>
+โครงการ Project Gutenberg™ ขึ้นอยู่กับการสนับสนุนและการบริจาคจากสาธารณชนอย่างกว้างขวาง และไม่สามารถอยู่รอดได้หากปราศจากการสนับสนุนดังกล่าว เพื่อดำเนินภารกิจในการเพิ่มจำนวนผลงานที่เป็นสาธารณสมบัติและผลงานที่ได้รับอนุญาต ซึ่งสามารถเผยแพร่ได้อย่างอิสระในรูปแบบที่เครื่องอ่านได้ และเข้าถึงได้โดยอุปกรณ์หลากหลายประเภท รวมถึงอุปกรณ์ที่ล้าสมัย การบริจาคจำนวนเล็กน้อย (ตั้งแต่ 1 ถึง 5,000 ดอลลาร์) มีความสำคัญอย่างยิ่งต่อการรักษาสถานะการยกเว้นภาษีกับกรมสรรพากร
+</div><div>
+มูลนิธิฯ มุ่งมั่นที่จะปฏิบัติตามกฎหมายที่ควบคุมองค์กรการกุศลและการบริจาคเพื่อการกุศลในทั้ง 50 รัฐของสหรัฐอเมริกา ข้อกำหนดในการปฏิบัติตามกฎหมายนั้นไม่เหมือนกัน และต้องใช้ความพยายามอย่างมาก เอกสารจำนวนมาก และค่าธรรมเนียมมากมายเพื่อให้เป็นไปตามข้อกำหนดเหล่านี้ เราจะไม่ขอรับบริจาคในสถานที่ที่เราไม่ได้รับการยืนยันเป็นลายลักษณ์อักษรว่าปฏิบัติตามกฎหมายแล้ว หากต้องการส่งเงินบริจาคหรือตรวจสอบสถานะการปฏิบัติตามกฎหมายของรัฐใดรัฐหนึ่ง โปรดไปที่
+ <a href="https://www.gutenberg.org/donate/">www.gutenberg.org/donate</a></div><div>
+แม้ว่าเราจะไม่สามารถและไม่ขอรับเงินบริจาคจากรัฐที่เราไม่ผ่านข้อกำหนดในการขอรับเงินบริจาค แต่เราไม่ทราบว่ามีข้อห้ามใด ๆ ในการรับเงินบริจาคโดยไม่ได้รับการร้องขอจากผู้บริจาคในรัฐเหล่านั้นที่ติดต่อเราเพื่อเสนอที่จะบริจาค
+</div><div>
+เรายินดีรับเงินบริจาคจากต่างประเทศ แต่เราไม่สามารถให้ข้อมูลใดๆ เกี่ยวกับการเสียภาษีของเงินบริจาคที่ได้รับจากนอกสหรัฐอเมริกาได้ เนื่องจากกฎหมายของสหรัฐอเมริกาเพียงอย่างเดียวก็ครอบคลุมภาระงานของเจ้าหน้าที่จำนวนน้อยของเราแล้ว
+</div><div>
+โปรดตรวจสอบหน้าเว็บของ Project Gutenberg เพื่อดูวิธีการบริจาคและที่อยู่ในการรับบริจาคในปัจจุบัน เรารับบริจาคหลายวิธี เช่น เช็ค การชำระเงินออนไลน์ และการบริจาคผ่านบัตรเครดิต หากต้องการบริจาค โปรดไปที่: www.gutenberg.org/donate
+</div><div class="secthead">
+ส่วนที่ 5 ข้อมูลทั่วไปเกี่ยวกับผลงานอิเล็กทรอนิกส์ของโครงการกูเตนเบิร์ก
+</div><div>
+ศาสตราจารย์ไมเคิล เอส. ฮาร์ท เป็นผู้ริเริ่มแนวคิดโครงการกูเตนเบิร์ก (Project Gutenberg) ซึ่งเป็นห้องสมุดผลงานอิเล็กทรอนิกส์ที่สามารถแบ่งปันได้อย่างอิสระกับทุกคน ตลอดระยะเวลาสี่สิบปี เขาผลิตและเผยแพร่หนังสืออิเล็กทรอนิกส์ของโครงการกูเตนเบิร์กโดยอาศัยเพียงเครือข่ายอาสาสมัครที่ไม่เป็นทางการเท่านั้น
+</div><div>
+อีบุ๊กของ Project Gutenberg มักสร้างขึ้นจากหนังสือฉบับพิมพ์หลายเล่ม ซึ่งได้รับการยืนยันแล้วว่าไม่ได้รับการคุ้มครองลิขสิทธิ์ในสหรัฐอเมริกา เว้นแต่จะมีการระบุข้อความแจ้งลิขสิทธิ์ไว้ ดังนั้น เราจึงไม่จำเป็นต้องรักษาความถูกต้องตามข้อกำหนดของหนังสือฉบับพิมพ์เล่มใดเล่มหนึ่งโดยเฉพาะ
+</div><div>
+คนส่วนใหญ่เริ่มต้นที่เว็บไซต์ของเรา ซึ่งมีระบบค้นหา PG หลักอยู่ที่
+ <a href="https://www.gutenberg.org/">www.gutenberg.org</a></div><div>
+เว็บไซต์นี้มีข้อมูลเกี่ยวกับโครงการ Project Gutenberg รวมถึงวิธีการบริจาคให้กับมูลนิธิ Project Gutenberg Literary Archive Foundation วิธีการช่วยสนับสนุนการผลิตอีบุ๊กใหม่ของเรา และวิธีการสมัครรับจดหมายข่าวทางอีเมลเพื่อรับทราบข้อมูลเกี่ยวกับอีบุ๊กใหม่ๆ
+</div>
+</section></div>
+</div>
+</body></html>
