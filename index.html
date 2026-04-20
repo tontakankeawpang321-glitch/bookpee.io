@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>InterLib V2 - แยกหมวดหมู่วิดีโอ</title>
+    <title>InterLib V2 - นิยายเล่าเรื่องแบบ พอตแคส</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -45,7 +45,7 @@
         
         /* Video Row Styling */
         .video-row { display: flex; overflow-x: auto; gap: 1rem; padding: 0.5rem 0 1.5rem 0; scroll-snap-type: x mandatory; }
-        .video-item { flex: 0 0 70%; scroll-snap-align: start; }
+        .video-item { flex: 0 0 75%; scroll-snap-align: start; }
         @media (min-width: 640px) { .video-item { flex: 0 0 35%; } }
     </style>
 </head>
@@ -101,7 +101,7 @@
         <!-- PAGE: Clips (Videos) - Grouped Rows with Horizontal Scroll -->
         <section id="page-clips" class="tab-content hidden">
             <div class="flex flex-col items-center mb-8 text-center">
-                <h2 class="font-bold text-xl mb-1 text-slate-900">วิดีโอสรุปความรู้</h2>
+                <h2 class="font-bold text-xl mb-1 text-slate-900 uppercase">นิยายเล่าเรื่องแบบ พอตแคส</h2>
                 <div class="text-[9px] text-slate-400 uppercase tracking-widest flex items-center gap-1">
                     <i class="fa-brands fa-youtube text-red-500"></i> Powered by YouTube
                 </div>
@@ -131,7 +131,7 @@
 
             <div class="mb-10">
                 <h3 class="font-bold text-sm mb-4 px-2 border-l-4 border-fav text-fav uppercase tracking-wider">วิดีโอที่บันทึกไว้</h3>
-                <div id="fav-videos-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5"></div>
+                <div id="fav-videos-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5 overflow-x-auto no-scrollbar pb-4"></div>
             </div>
         </section>
 
@@ -180,10 +180,9 @@
 
         // --- FETCH ---
         async function init() {
+            // โหลดข้อมูลแบบขนานเพื่อความเร็ว
             await Promise.all([fetchOriginals(), fetchVideos()]);
-            renderOriginals();
-            renderClips();
-            renderFavorites();
+            updateView();
         }
 
         async function fetchOriginals() {
@@ -191,7 +190,7 @@
                 const response = await fetch(CSV_ORIGINALS);
                 const text = await response.text();
                 originalsData = parseCSV(text);
-            } catch (e) { console.error(e); }
+            } catch (e) { console.error("Error fetching originals:", e); }
         }
 
         async function fetchVideos() {
@@ -199,11 +198,12 @@
                 const response = await fetch(CSV_VIDEOS);
                 const text = await response.text();
                 videosData = parseCSV(text);
-            } catch (e) { console.error(e); }
+            } catch (e) { console.error("Error fetching videos:", e); }
         }
 
         function parseCSV(csv) {
             const lines = csv.split('\n');
+            if (lines.length === 0) return [];
             const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
             const result = [];
             for (let i = 1; i < lines.length; i++) {
@@ -220,15 +220,27 @@
 
         // --- RENDERING ---
 
+        function updateView() {
+            if (currentTab === 'originals') renderOriginals();
+            else if (currentTab === 'clips') renderClips();
+            else if (currentTab === 'favorites') renderFavorites();
+        }
+
         function renderOriginals() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const grid = document.getElementById('grid-originals');
             
+            // กรองข้อมูลก่อนแบ่งหน้า
             const filtered = originalsData.filter(item => 
                 (item.title || "").toLowerCase().includes(query) || (item.author || "").toLowerCase().includes(query)
             );
 
             const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            
+            // ตรวจสอบขอบเขตของหน้า
+            if (originalsPage > totalPages) originalsPage = totalPages;
+            if (originalsPage < 1) originalsPage = 1;
+
             const currentBatch = filtered.slice((originalsPage - 1) * itemsPerPage, originalsPage * itemsPerPage);
 
             document.getElementById('currentPageNum').innerText = originalsPage;
@@ -236,6 +248,7 @@
             document.getElementById('prevBtn').disabled = originalsPage === 1;
             document.getElementById('nextBtn').disabled = originalsPage >= totalPages;
 
+            // แสดงเฉพาะชุดข้อมูลปัจจุบันเพื่อความเร็วในการเรนเดอร์
             grid.innerHTML = currentBatch.map(item => createBookCard(item)).join('');
         }
 
@@ -244,7 +257,7 @@
             return `
                 <div class="book-card flex flex-col group relative">
                     <div class="relative overflow-hidden rounded-2xl shadow-sm border border-slate-200 bg-slate-100 aspect-[2/3] cursor-pointer" onclick="openWithTranslate('${item.html}')">
-                        <img src="${item.image || 'https://via.placeholder.com/200x300'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="${item.image || 'https://via.placeholder.com/200x300'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                             <i class="fa-solid fa-language text-white text-3xl"></i>
                         </div>
@@ -276,7 +289,7 @@
             }
             emptyState.classList.add('hidden');
 
-            // Group by category
+            // จัดกลุ่มตามหมวดหมู่
             const grouped = filtered.reduce((acc, item) => {
                 const cat = item.category || 'ทั่วไป';
                 if (!acc[cat]) acc[cat] = [];
@@ -284,12 +297,13 @@
                 return acc;
             }, {});
 
+            // เรนเดอร์แยกตามหมวดหมู่เป็นแถว
             container.innerHTML = Object.keys(grouped).map(cat => {
                 const clips = grouped[cat];
                 return `
                     <div class="category-row-section mb-10">
                         <div class="flex items-center justify-between mb-2 px-1">
-                            <h3 class="font-bold text-sm text-slate-800 border-l-4 border-accent pl-2">${cat}</h3>
+                            <h3 class="font-bold text-sm text-slate-800 border-l-4 border-accent pl-2 uppercase">${cat}</h3>
                             <span class="text-[9px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-widest">${clips.length} คลิป</span>
                         </div>
                         <div class="video-row no-scrollbar px-1">
@@ -308,7 +322,7 @@
             return `
                 <div class="video-item bg-white rounded-3xl overflow-hidden shadow-sm group relative border border-slate-100 flex flex-col">
                     <div class="relative aspect-video cursor-pointer overflow-hidden" onclick="playVideo('${item.url}')">
-                        <img src="${thumb}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="${thumb}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all">
                             <div class="w-10 h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-xl">
                                 <i class="fa-solid fa-play text-white text-lg ml-1"></i>
@@ -327,11 +341,11 @@
 
         function renderFavorites() {
             document.getElementById('fav-books-grid').innerHTML = favorites.books.length === 0 
-                ? `<p class="col-span-full text-center py-10 text-slate-300 text-xs italic">ยังไม่มีหนังสือที่บันทึกไว้</p>` 
+                ? `<p class="col-span-full text-center py-10 text-slate-300 text-xs italic font-body">ยังไม่มีหนังสือที่บันทึกไว้</p>` 
                 : favorites.books.map(item => createBookCard(item)).join('');
 
             document.getElementById('fav-videos-grid').innerHTML = favorites.videos.length === 0 
-                ? `<p class="col-span-full text-center py-10 text-slate-300 text-xs italic">ยังไม่มีวิดีโอที่บันทึกไว้</p>` 
+                ? `<p class="col-span-full text-center py-10 text-slate-300 text-xs italic font-body">ยังไม่มีวิดีโอที่บันทึกไว้</p>` 
                 : favorites.videos.map(item => createVideoCard(item)).join('');
         }
 
@@ -347,7 +361,7 @@
                 if (idx > -1) favorites.videos.splice(idx, 1); else favorites.videos.push(data);
             }
             localStorage.setItem('interlib_favs', JSON.stringify(favorites));
-            renderOriginals(); renderClips(); renderFavorites();
+            updateView();
         }
 
         function openWithTranslate(url) {
@@ -384,7 +398,7 @@
             document.getElementById(`nav-${tab}`).classList.add('active');
             
             if(tab === 'originals') originalsPage = 1;
-            renderOriginals(); renderClips(); renderFavorites();
+            updateView();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -394,10 +408,14 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // ค้นหาแบบ Real-time พร้อมการดีเลย์เพื่อประสิทธิภาพ
+        let searchTimer;
         document.getElementById('searchInput').addEventListener('input', () => {
-            originalsPage = 1;
-            if(currentTab === 'originals') renderOriginals(); 
-            else if(currentTab === 'clips') renderClips();
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => {
+                originalsPage = 1;
+                updateView();
+            }, 300);
         });
 
         document.getElementById('videoModal').addEventListener('click', function(e) { if(e.target === this) closeVideoModal(); });
