@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>InterLib - ศูนย์รวมหนังสือแปล</title>
-    <!-- Tailwind CSS -->
+    <title>InterLib V2 - แยกหมวดหมู่วิดีโอ</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Playfair+Display:wght@700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -17,739 +15,394 @@
                 extend: {
                     fontFamily: {
                         sans: ['Prompt', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
                         body: ['Sarabun', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#1e293b',
-                        'accent': '#3b82f6',
-                        'paper': '#ffffff',
-                        'cream': '#f8fafc',
-                    },
-                    animation: {
-                        'fade-fast': 'fadeIn 0.2s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        }
+                        'brand': '#0f172a',
+                        'accent': '#2563eb',
+                        'fav': '#ef4444',
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #f8fafc;
-            color: #334155;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .glass-header {
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .book-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            border-width: 1px;
-            border-style: solid;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease; 
-            position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .book-card-wrapper:nth-child(3n+1) .book-card { border-color: #bfdbfe; }
-        .book-card-wrapper:nth-child(3n+1) .category-badge { background-color: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
-        .book-card-wrapper:nth-child(3n+2) .book-card { border-color: #e9d5ff; }
-        .book-card-wrapper:nth-child(3n+2) .category-badge { background-color: #faf5ff; color: #7e22ce; border: 1px solid #f3e8ff; }
-        .book-card-wrapper:nth-child(3n+3) .book-card { border-color: #fed7aa; }
-        .book-card-wrapper:nth-child(3n+3) .category-badge { background-color: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
-
-        @media (hover: hover) {
-            .book-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            }
-        }
-
-        .search-input:focus { border-color: #3b82f6; outline: none; }
-
-        .pagination-btn {
-            width: 36px; height: 36px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 8px; background: #ffffff;
-            border: 1px solid #e2e8f0; color: #64748b; font-size: 0.875rem;
-        }
-        .pagination-btn.active {
-            background: #1e293b; color: #ffffff; border-color: #1e293b;
-        }
-
-        .bottom-nav {
-            background: #ffffff; 
-            border-top: 1px solid #e2e8f0;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        .nav-item.active { color: #1e293b; }
+        body { background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+        .glass-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; }
+        .bottom-nav { background: #ffffff; border-top: 1px solid #e2e8f0; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { color: #94a3b8; transition: all 0.3s; position: relative; }
+        .nav-item.active { color: #2563eb; }
         .nav-item.active::after {
-            content: ''; position: absolute; top: -8px; left: 50%;
-            transform: translateX(-50%); width: 40px; height: 2px; background: #1e293b;
+            content: ''; position: absolute; top: -1px; left: 50%;
+            transform: translateX(-50%); width: 30px; height: 3px; 
+            background: #2563eb; border-radius: 0 0 4px 4px;
         }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05); }
+        .book-card:active { transform: scale(0.96); }
         
-        #selectionModal { background-color: rgba(0, 0, 0, 0.7); }
-        
-        .line-clamp-2 {
-            display: -webkit-box; -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical; overflow: hidden;
-        }
+        /* Video Row Styling */
+        .video-row { display: flex; overflow-x: auto; gap: 1rem; padding: 0.5rem 0 1.5rem 0; scroll-snap-type: x mandatory; }
+        .video-item { flex: 0 0 70%; scroll-snap-align: start; }
+        @media (min-width: 640px) { .video-item { flex: 0 0 35%; } }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans overflow-x-hidden selection:bg-slate-200">
+<body class="font-sans text-slate-800 pb-24">
 
     <!-- Header -->
-    <header class="sticky top-0 z-50 glass-header shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
-            <!-- Logo -->
-            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home'); window.scrollTo(0,0)">
-                <div class="w-9 h-9 rounded-lg bg-slate-900 flex items-center justify-center text-white text-lg shadow-md">
-                    <i class="fa-solid fa-book-open"></i>
+    <header class="sticky top-0 z-50 glass-header">
+        <div class="container mx-auto px-4 py-3 flex flex-col items-center gap-3">
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="switchTab('originals')">
+                    <div class="w-8 h-8 rounded-lg bg-brand flex items-center justify-center text-white text-sm">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h1 class="text-xl font-bold tracking-tight uppercase">Inter<span class="text-accent">Lib</span></h1>
                 </div>
-                <div>
-                    <h1 class="text-xl font-bold text-slate-800 tracking-tight leading-none">INTER<span class="text-blue-600">LIB</span></h1>
-                </div>
+                <a href="https://sites.google.com/view/bookpeefreer/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81" target="_blank" class="text-[10px] font-bold text-slate-400 border border-slate-200 px-2 py-1 rounded hover:bg-slate-50 transition-colors uppercase">
+                    Privacy Policy
+                </a>
             </div>
-
-            <!-- Search -->
-            <div class="relative w-full md:w-96">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
-                </div>
-                <input 
-                    type="text" 
-                    id="searchInput"
-                    placeholder="ค้นหาชื่อหนังสือ..." 
-                    class="search-input w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400"
-                >
+            
+            <div class="relative w-full max-w-md">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" placeholder="ค้นหาชื่อเรื่อง..." 
+                    class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-full text-sm focus:ring-2 focus:ring-accent outline-none">
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-3 pt-6 pb-28 flex-grow relative z-10">
+    <main class="container mx-auto px-4 pt-6">
         
-        <!-- === HOME VIEW === -->
-        <div id="homeView">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-slate-800 pl-1">ศูนย์รวมหนังสือแปล</h2>
-                <div class="text-xs text-slate-500 bg-white px-2 py-1 rounded border border-slate-200">
-                    หน้า <span id="pageInfo" class="font-bold text-slate-800">1</span>
-                </div>
-            </div>
-            
-            <!-- Category Filters (Generated Dynamically) -->
-            <div class="flex flex-wrap justify-center gap-2 mb-4" id="categoryFilters">
-                <!-- หมวดหมู่จะถูกสร้างด้วย Javascript อัตโนมัติ -->
+        <!-- PAGE: Originals (Books) - 10 Items per Page -->
+        <section id="page-originals" class="tab-content">
+             <div class="flex flex-col items-center mb-6 text-center">
+                <h2 class="font-bold text-xl mb-1 text-slate-900">คลังต้นฉบับ</h2>
+                <p class="text-xs text-slate-500">เลือกอ่านฉบับแปลไทย (ทีละ 10 เล่ม)</p>
             </div>
 
-            <div id="bookGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6 min-h-[400px]">
-                <div class="col-span-full text-center py-20 text-slate-400">
-                    <i class="fa-solid fa-circle-notch fa-spin text-2xl mb-2 text-slate-300"></i>
-                    <p class="text-xs">กำลังโหลด...</p>
-                </div>
-            </div>
-            
-            <div id="paginationContainer" class="mt-8 flex flex-wrap justify-center items-center gap-2"></div>
+            <div id="grid-originals" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 min-h-[400px]"></div>
 
-            <div id="noResults" class="hidden text-center py-20">
-                <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
+            <div id="pagination-originals" class="flex items-center justify-center gap-4 mt-10">
+                <button onclick="changeOriginalsPage(-1)" id="prevBtn" class="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center shadow-sm disabled:opacity-20 transition-all">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-white px-4 py-2 rounded-full border border-slate-100 shadow-sm">
+                    หน้า <span id="currentPageNum" class="text-accent">1</span> / <span id="totalPageNum">1</span>
                 </div>
-                <p class="text-slate-400 text-sm">ไม่พบหนังสือ</p>
-            </div>
-        </div>
-
-        <!-- === FAVORITES VIEW === -->
-        <div id="favoritesView" class="hidden">
-            <div class="flex items-center gap-3 mb-6 px-1 border-b border-slate-200 pb-4">
-                <div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center">
-                    <i class="fa-solid fa-heart text-rose-500 text-lg"></i>
-                </div>
-                <div>
-                    <h2 class="text-lg font-bold text-slate-800">รายการโปรด</h2>
-                    <p class="text-xs text-slate-500">หนังสือที่บันทึกไว้</p>
-                </div>
-            </div>
-
-            <div id="favGrid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6"></div>
-
-            <div id="noFavs" class="hidden flex flex-col items-center justify-center py-20 text-center">
-                <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 border border-slate-100">
-                    <i class="fa-regular fa-heart text-2xl text-slate-300"></i>
-                </div>
-                <p class="text-slate-400 text-sm mb-4">ยังไม่มีรายการโปรด</p>
-                <button onclick="switchTab('home')" class="px-5 py-2 bg-slate-800 text-white rounded-lg text-xs font-medium">
-                    ไปเลือกหนังสือ
+                <button onclick="changeOriginalsPage(1)" id="nextBtn" class="w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center shadow-sm disabled:opacity-20 transition-all">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
             </div>
-        </div>
-    </main>
+        </section>
 
-    <!-- Modal (Dialog) -->
-    <div id="selectionModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl p-0 w-full max-w-sm relative shadow-2xl overflow-hidden animate-fade-fast" onclick="event.stopPropagation()">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 z-10">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="p-6 text-center">
-                <!-- Book Cover -->
-                <div class="inline-block p-1 bg-white rounded-lg shadow-md mb-4 border border-slate-100">
-                    <img id="modalBookImage" src="" alt="Cover" class="w-20 h-32 object-cover rounded">
-                </div>
-                
-                <h3 id="modalBookTitle" class="text-lg font-bold text-slate-800 mb-1 px-2 line-clamp-2">ชื่อหนังสือ</h3>
-                <p class="text-slate-400 text-xs mb-6">เลือกรูปแบบการรับชม</p>
-                
-                <div class="flex flex-col gap-3">
-                    
-                    <!-- 1. Thai Translation Button (thaihtml) -->
-                    <a id="btnThai" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all">
-                        <i id="btnThaiIcon" class="fa-solid fa-language text-blue-200"></i>
-                        <span>อ่านฉบับแปลไทย</span>
-                    </a>
-
-                    <!-- 2. Original Book Button (html) -->
-                    <a id="btnOriginal" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
-                        <i id="btnOriginalIcon" class="fa-solid fa-book text-slate-500"></i> 
-                        <span>อ่านฉบับต้นฉบับ</span>
-                    </a>
-
-                    <!-- 3. Video Button (video_link) -->
-                    <a id="btnVideo" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all">
-                        <i id="btnVideoIcon" class="fa-solid fa-play text-red-500"></i>
-                        <span>พอตแคส</span>
-                    </a>
+        <!-- PAGE: Clips (Videos) - Grouped Rows with Horizontal Scroll -->
+        <section id="page-clips" class="tab-content hidden">
+            <div class="flex flex-col items-center mb-8 text-center">
+                <h2 class="font-bold text-xl mb-1 text-slate-900">วิดีโอสรุปความรู้</h2>
+                <div class="text-[9px] text-slate-400 uppercase tracking-widest flex items-center gap-1">
+                    <i class="fa-brands fa-youtube text-red-500"></i> Powered by YouTube
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Video Modal (YouTube Embed) -->
-    <div id="videoModal" class="fixed inset-0 z-[120] hidden flex flex-col items-center justify-center p-0 bg-black/95 backdrop-blur-sm animate-fade-fast">
-        <!-- Close Button -->
-        <button onclick="closeVideoModal()" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 text-white z-10 hover:bg-white/30 transition-colors">
-            <i class="fa-solid fa-xmark text-xl"></i>
-        </button>
-        
-        <!-- Video Container (16:9 Aspect Ratio) -->
-        <div class="w-full max-w-4xl aspect-video bg-black shadow-2xl">
-            <iframe id="youtubeIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div id="video-sections-container">
+                <!-- Category Rows generated here -->
+            </div>
+            
+            <div id="empty-clips" class="hidden py-20 text-center text-slate-400">
+                <i class="fa-solid fa-clapperboard text-4xl mb-3 opacity-20"></i>
+                <p class="text-sm">ไม่พบวิดีโอ</p>
+            </div>
+        </section>
+
+        <!-- PAGE: Favorites -->
+        <section id="page-favorites" class="tab-content hidden">
+            <div class="flex flex-col items-center mb-8 text-center">
+                <h2 class="font-bold text-xl mb-1 text-fav">รายการโปรด</h2>
+                <p class="text-xs text-slate-500">รายการที่คุณบันทึกไว้</p>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="font-bold text-sm mb-4 px-2 border-l-4 border-accent uppercase tracking-wider">หนังสือที่บันทึกไว้</h3>
+                <div id="fav-books-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5"></div>
+            </div>
+
+            <div class="mb-10">
+                <h3 class="font-bold text-sm mb-4 px-2 border-l-4 border-fav text-fav uppercase tracking-wider">วิดีโอที่บันทึกไว้</h3>
+                <div id="fav-videos-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 p-0 sm:p-4 backdrop-blur-md">
+        <div class="relative w-full max-w-4xl aspect-video bg-black shadow-2xl overflow-hidden rounded-none sm:rounded-2xl">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-white/50 text-2xl p-2 hover:text-white z-10 transition-colors">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <iframe id="videoIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
     <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 w-full bottom-nav z-50">
-        <div class="flex justify-around items-center h-14 max-w-md mx-auto">
-            <button id="nav-home" class="nav-item active flex-1 h-full flex flex-col items-center justify-center" onclick="switchTab('home')">
-                <i class="fa-solid fa-house text-lg mb-1"></i>
-                <span class="text-[10px] font-bold">หน้าหลัก</span>
+        <div class="flex justify-around items-center h-16 max-w-lg mx-auto">
+            <button onclick="switchTab('originals')" id="nav-originals" class="nav-item active flex-1 h-full flex flex-col items-center justify-center gap-1">
+                <i class="fa-solid fa-book-bookmark text-xl"></i>
+                <span class="text-[9px] font-bold uppercase tracking-wider">คลังต้นฉบับ</span>
             </button>
-            <div class="w-px h-6 bg-slate-200"></div>
-            <button id="nav-fav" class="nav-item flex-1 h-full flex flex-col items-center justify-center" onclick="switchTab('favorites')">
-                <i class="fa-solid fa-heart text-lg mb-1"></i>
-                <span class="text-[10px] font-bold">รายการโปรด</span>
+            <button onclick="switchTab('clips')" id="nav-clips" class="nav-item flex-1 h-full flex flex-col items-center justify-center gap-1">
+                <i class="fa-solid fa-circle-play text-xl"></i>
+                <span class="text-[9px] font-bold uppercase tracking-wider">วิดีโอ</span>
+            </button>
+            <button onclick="switchTab('favorites')" id="nav-favorites" class="nav-item flex-1 h-full flex flex-col items-center justify-center gap-1">
+                <i class="fa-solid fa-heart text-xl"></i>
+                <span class="text-[9px] font-bold uppercase tracking-wider">รายการโปรด</span>
             </button>
         </div>
     </nav>
 
     <script>
-        // --- Variables ---
-        let books = [];
-        let currentFilter = 'all';
-        let filteredBooks = [];
-        let currentPage = 1;
-        const itemsPerPage = 20; 
-        let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || [];
-        let localViews = JSON.parse(localStorage.getItem('interlib_views')) || {}; 
-        let currentTab = 'home';
-        let searchTimeout = null; 
+        // --- CSV CONFIG ---
+        const CSV_ORIGINALS = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR5Fum_p5Qqbw58C-SAjYEtXZKbZkdIuVMUQ6B8FYeCTCE7Ra9_MMOjq71N7qLiQyZD8IZK6oNhaKnp/pub?output=csv';
+        const CSV_VIDEOS = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSLTwuiIALKLTBYyIEtt9FNjGDgcyAxXAta2qw6kfZsDdtCLcNKRATPGQU3ycCIO2m1a-f4Ax4vYKh1/pub?output=csv';
 
-        // --- Elements ---
-        const bookGrid = document.getElementById('bookGrid');
-        const favGrid = document.getElementById('favGrid');
-        const searchInput = document.getElementById('searchInput');
-        const noResults = document.getElementById('noResults');
-        const noFavs = document.getElementById('noFavs');
-        const paginationContainer = document.getElementById('paginationContainer');
-        const pageInfo = document.getElementById('pageInfo');
-        const homeView = document.getElementById('homeView');
-        const favoritesView = document.getElementById('favoritesView');
-        const navHome = document.getElementById('nav-home');
-        const navFav = document.getElementById('nav-fav');
-        const selectionModal = document.getElementById('selectionModal');
-        const categoryFiltersContainer = document.getElementById('categoryFilters');
-        const videoModal = document.getElementById('videoModal');
-        const youtubeIframe = document.getElementById('youtubeIframe');
+        let originalsData = [];
+        let videosData = [];
+        let favorites = JSON.parse(localStorage.getItem('interlib_favs')) || { books: [], videos: [] };
+        
+        let currentTab = 'originals';
+        let originalsPage = 1;
+        const itemsPerPage = 10;
 
-        // --- Utility Functions for Views ---
-        function parseReadsCount(reads) {
-            if (!reads) return 0;
-            const str = String(reads).toLowerCase();
-            if (str.endsWith('k')) return parseFloat(str) * 1000;
-            if (str.endsWith('m')) return parseFloat(str) * 1000000;
-            return parseInt(str) || 0;
-        }
-
-        function formatReadsCount(num) {
-            if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'm';
-            if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
-            return num.toString();
-        }
-
-        // --- Init & Fetch ---
+        // --- FETCH ---
         async function init() {
+            await Promise.all([fetchOriginals(), fetchVideos()]);
+            renderOriginals();
+            renderClips();
+            renderFavorites();
+        }
+
+        async function fetchOriginals() {
             try {
-                const response = await fetch('books.json');
-                if (!response.ok) throw new Error('ไม่พบไฟล์ books.json (HTTP ' + response.status + ')');
-                
-                let textData = await response.text();
-                textData = textData.replace(/,\s*([\]}])/g, '$1');
-                
-                const jsonData = JSON.parse(textData);
-                books = [...jsonData];
-                
-                generateCategoryFilters(); // สร้างปุ่มหมวดหมู่อัตโนมัติ
-
-                filteredBooks = [...books];
-                renderBooks();
-
-            } catch (error) {
-                console.error("เกิดข้อผิดพลาด:", error);
-                
-                let errorMessage = "เกิดข้อผิดพลาดในการโหลดข้อมูล";
-                if (error instanceof SyntaxError) {
-                    errorMessage = "ไฟล์ books.json มีรูปแบบผิดพลาดขั้นรุนแรง (โปรดตรวจสอบเครื่องหมายปีกกาและลูกน้ำ)";
-                }
-
-                bookGrid.innerHTML = `
-                    <div class="col-span-full text-center py-20 text-rose-500">
-                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-3 opacity-80"></i>
-                        <p class="font-bold text-lg">${errorMessage}</p>
-                        <p class="text-sm text-slate-500 mt-2">โปรดตรวจสอบโค้ดในไฟล์ <b>books.json</b> ของคุณอีกครั้ง</p>
-                        <p class="text-xs text-slate-400 mt-1 break-all">${error.message}</p>
-                    </div>
-                `;
-                paginationContainer.innerHTML = '';
-            }
+                const response = await fetch(CSV_ORIGINALS);
+                const text = await response.text();
+                originalsData = parseCSV(text);
+            } catch (e) { console.error(e); }
         }
 
-        // --- Auto Generate Category Filters ---
-        function generateCategoryFilters() {
-            const uniqueCategories = [...new Set(books.map(b => b.category || "ทั่วไป"))].filter(c => c.trim() !== "").sort();
+        async function fetchVideos() {
+            try {
+                const response = await fetch(CSV_VIDEOS);
+                const text = await response.text();
+                videosData = parseCSV(text);
+            } catch (e) { console.error(e); }
+        }
 
-            let html = `<button class="filter-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-slate-800 text-white whitespace-nowrap" data-filter="all">ทั้งหมด</button>`;
-            
-            uniqueCategories.forEach(category => {
-                html += `<button class="filter-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-slate-600 border border-slate-200 whitespace-nowrap" data-filter="${category}">${category}</button>`;
-            });
-
-            categoryFiltersContainer.innerHTML = html;
-
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.filter-btn').forEach(b => {
-                        b.classList.remove('active', 'bg-slate-800', 'text-white');
-                        b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-                    });
-                    btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-                    btn.classList.add('active', 'bg-slate-800', 'text-white');
-                    
-                    currentFilter = btn.dataset.filter;
-                    filterBooks();
+        function parseCSV(csv) {
+            const lines = csv.split('\n');
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+            const result = [];
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                const obj = {};
+                const currentLine = lines[i].split(',');
+                headers.forEach((header, index) => {
+                    obj[header] = currentLine[index] ? currentLine[index].trim() : "";
                 });
-            });
+                result.push(obj);
+            }
+            return result;
         }
 
-        // --- Render Functions ---
-        function createBookCard(book) {
-            const liked = isLiked(book.id);
-            const heartClass = liked ? 'fa-solid text-rose-500' : 'fa-regular text-slate-400';
-            
-            const authorText = book.author ? book.author.replace(/["\\]/g, '') : "ไม่ระบุผู้แต่ง"; 
-            const categoryText = book.category || "ทั่วไป";
-            const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
-            
-            const baseReads = parseReadsCount(book.reads);
-            const totalReads = baseReads + (localViews[book.id] || 0);
-            const displayReads = formatReadsCount(totalReads);
-            
-            return `
-                <div class="book-card-wrapper h-full" onclick="openModal(${book.id})">
-                    <div class="book-card group cursor-pointer relative">
-                        <!-- Image -->
-                        <div class="relative w-full aspect-[2/3] bg-slate-50 border-b border-slate-100">
-                            <img src="${imgUrl}" alt="${book.title}" loading="lazy" class="w-full h-full object-cover">
-                            
-                            <!-- Category Badge -->
-                            <div class="absolute top-1 left-1">
-                                <span class="category-badge px-1.5 py-0.5 rounded text-[9px] font-bold shadow-sm">
-                                    ${categoryText}
-                                </span>
-                            </div>
+        // --- RENDERING ---
 
-                            <!-- Like Button -->
-                            <button onclick="event.stopPropagation(); toggleFavorite(${book.id})" 
-                                class="like-btn like-btn-${book.id} absolute top-1 right-1 w-7 h-7 rounded-full flex items-center justify-center bg-white/90 shadow-sm z-10">
-                                <i class="${heartClass} fa-heart text-xs"></i>
-                            </button>
+        function renderOriginals() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const grid = document.getElementById('grid-originals');
+            
+            const filtered = originalsData.filter(item => 
+                (item.title || "").toLowerCase().includes(query) || (item.author || "").toLowerCase().includes(query)
+            );
+
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            const currentBatch = filtered.slice((originalsPage - 1) * itemsPerPage, originalsPage * itemsPerPage);
+
+            document.getElementById('currentPageNum').innerText = originalsPage;
+            document.getElementById('totalPageNum').innerText = totalPages;
+            document.getElementById('prevBtn').disabled = originalsPage === 1;
+            document.getElementById('nextBtn').disabled = originalsPage >= totalPages;
+
+            grid.innerHTML = currentBatch.map(item => createBookCard(item)).join('');
+        }
+
+        function createBookCard(item) {
+            const isFav = favorites.books.some(f => f.html === item.html);
+            return `
+                <div class="book-card flex flex-col group relative">
+                    <div class="relative overflow-hidden rounded-2xl shadow-sm border border-slate-200 bg-slate-100 aspect-[2/3] cursor-pointer" onclick="openWithTranslate('${item.html}')">
+                        <img src="${item.image || 'https://via.placeholder.com/200x300'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                            <i class="fa-solid fa-language text-white text-3xl"></i>
                         </div>
-                        
-                        <!-- Content -->
-                        <div class="p-2 flex flex-col flex-grow">
-                            <h3 class="text-xs font-bold text-slate-800 leading-tight mb-1 line-clamp-2 h-8 font-body">${book.title}</h3>
-                            <p class="text-[10px] text-slate-500 mb-2 truncate">${authorText}</p>
-                            
-                            <div class="mt-auto flex items-center justify-between border-t border-slate-50 pt-2">
-                                <span class="text-[9px] text-slate-400 flex items-center gap-1">
-                                    <i class="fa-solid fa-eye text-blue-400"></i> <span class="view-count-${book.id}">${displayReads}</span>
-                                </span>
-                                <span class="text-[9px] font-bold text-slate-600 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
-                                    อ่าน
-                                </span>
-                            </div>
-                        </div>
+                    </div>
+                    <button onclick="toggleFav('book', '${encodeURIComponent(JSON.stringify(item))}')" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-sm flex items-center justify-center z-10 transition-all ${isFav ? 'text-fav' : 'text-slate-300'}">
+                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                    </button>
+                    <div class="mt-3">
+                        <h3 class="text-xs font-bold line-clamp-2 leading-snug font-body">${item.title || 'ไม่มีชื่อ'}</h3>
+                        <p class="text-[9px] text-slate-400 mt-1 truncate uppercase tracking-widest">${item.author || 'ไม่ระบุ'}</p>
                     </div>
                 </div>
             `;
         }
 
-        function renderBooks() {
-            bookGrid.innerHTML = '';
+        function renderClips() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const container = document.getElementById('video-sections-container');
+            const emptyState = document.getElementById('empty-clips');
             
-            if (filteredBooks.length === 0) {
-                noResults.classList.remove('hidden');
-                paginationContainer.innerHTML = "";
+            const filtered = videosData.filter(item => 
+                (item.title || "").toLowerCase().includes(query) || (item.category || "").toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = "";
+                emptyState.classList.remove('hidden');
                 return;
-            } else {
-                noResults.classList.add('hidden');
             }
+            emptyState.classList.add('hidden');
 
-            const startIndex = (currentPage - 1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            const currentBatch = filteredBooks.slice(startIndex, endIndex);
-            
-            currentBatch.forEach(book => {
-                bookGrid.insertAdjacentHTML('beforeend', createBookCard(book));
-            });
+            // Group by category
+            const grouped = filtered.reduce((acc, item) => {
+                const cat = item.category || 'ทั่วไป';
+                if (!acc[cat]) acc[cat] = [];
+                acc[cat].push(item);
+                return acc;
+            }, {});
 
-            const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
-            if(pageInfo) pageInfo.innerText = `${currentPage} / ${totalPages}`;
+            container.innerHTML = Object.keys(grouped).map(cat => {
+                const clips = grouped[cat];
+                return `
+                    <div class="category-row-section mb-10">
+                        <div class="flex items-center justify-between mb-2 px-1">
+                            <h3 class="font-bold text-sm text-slate-800 border-l-4 border-accent pl-2">${cat}</h3>
+                            <span class="text-[9px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-widest">${clips.length} คลิป</span>
+                        </div>
+                        <div class="video-row no-scrollbar px-1">
+                            ${clips.map(item => createVideoCard(item)).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
-            renderPagination();
+        function createVideoCard(item) {
+            const videoId = getYTId(item.url);
+            const thumb = videoId ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : `https://via.placeholder.com/480x270`;
+            const isFav = favorites.videos.some(f => f.url === item.url);
+
+            return `
+                <div class="video-item bg-white rounded-3xl overflow-hidden shadow-sm group relative border border-slate-100 flex flex-col">
+                    <div class="relative aspect-video cursor-pointer overflow-hidden" onclick="playVideo('${item.url}')">
+                        <img src="${thumb}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-all">
+                            <div class="w-10 h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-xl">
+                                <i class="fa-solid fa-play text-white text-lg ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="toggleFav('video', '${encodeURIComponent(JSON.stringify(item))}')" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/40 text-white shadow-sm flex items-center justify-center z-10 backdrop-blur-sm transition-all ${isFav ? 'text-fav' : 'text-white/70'}">
+                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-xs"></i>
+                    </button>
+                    <div class="p-4 flex-grow">
+                        <h3 class="font-bold text-slate-800 text-[13px] line-clamp-2 leading-relaxed font-body">${item.title || 'ไม่มีชื่อวิดีโอ'}</h3>
+                    </div>
+                </div>
+            `;
         }
 
         function renderFavorites() {
-            favGrid.innerHTML = '';
-            
-            if (favorites.length === 0) {
-                noFavs.classList.remove('hidden');
-                return;
+            document.getElementById('fav-books-grid').innerHTML = favorites.books.length === 0 
+                ? `<p class="col-span-full text-center py-10 text-slate-300 text-xs italic">ยังไม่มีหนังสือที่บันทึกไว้</p>` 
+                : favorites.books.map(item => createBookCard(item)).join('');
+
+            document.getElementById('fav-videos-grid').innerHTML = favorites.videos.length === 0 
+                ? `<p class="col-span-full text-center py-10 text-slate-300 text-xs italic">ยังไม่มีวิดีโอที่บันทึกไว้</p>` 
+                : favorites.videos.map(item => createVideoCard(item)).join('');
+        }
+
+        // --- ACTIONS ---
+
+        function toggleFav(type, dataStr) {
+            const data = JSON.parse(decodeURIComponent(dataStr));
+            if (type === 'book') {
+                const idx = favorites.books.findIndex(f => f.html === data.html);
+                if (idx > -1) favorites.books.splice(idx, 1); else favorites.books.push(data);
             } else {
-                noFavs.classList.add('hidden');
+                const idx = favorites.videos.findIndex(f => f.url === data.url);
+                if (idx > -1) favorites.videos.splice(idx, 1); else favorites.videos.push(data);
             }
-
-            favorites.forEach(book => {
-                favGrid.insertAdjacentHTML('beforeend', createBookCard(book));
-            });
+            localStorage.setItem('interlib_favs', JSON.stringify(favorites));
+            renderOriginals(); renderClips(); renderFavorites();
         }
 
-        // --- Modal Logic & View Tracking ---
-
-        // ฟังก์ชันจัดการเมื่อคลิกลิงก์ (แสดง UI โหลด และป้องกันการกดปุ่มอื่น แต่ไม่ทำ Cache เพื่อเลี่ยงการติด CORS)
-        function handleLinkClick(e, url, btnId) {
-            e.preventDefault();
-            
-            const btn = document.getElementById(btnId);
-            const icon = document.getElementById(btnId + 'Icon');
-            const span = btn.querySelector('span');
-            
-            const originalIconClass = icon.className;
-            const originalText = span.innerText;
-            
-            const btnThai = document.getElementById('btnThai');
-            const btnOriginal = document.getElementById('btnOriginal');
-            const btnVideo = document.getElementById('btnVideo');
-            
-            // ป้องกันการกดปุ่มอื่น และลดความสว่างของปุ่มที่ไม่ได้กด
-            [btnThai, btnOriginal, btnVideo].forEach(b => {
-                b.style.pointerEvents = 'none';
-                if(b.id !== btnId && b.hasAttribute('href')) {
-                    b.classList.add('opacity-40', 'transition-opacity');
-                }
-            });
-
-            // แสดงสถานะหมุนโหลด
-            icon.className = 'fa-solid fa-spinner fa-spin text-current';
-            span.innerText = 'รอโหลดสักครู่...';
-
-            const restoreUI = () => {
-                [btnThai, btnOriginal, btnVideo].forEach(b => {
-                    b.style.pointerEvents = '';
-                    b.classList.remove('opacity-40', 'transition-opacity');
-                });
-                icon.className = originalIconClass;
-                span.innerText = originalText;
-            };
-
-            // หน่วงเวลาเล็กน้อยเพื่อให้เห็น UI จากนั้นเปิดลิงก์ทันที
-            setTimeout(() => {
-                window.open(url, '_blank');
-                
-                // หลังจากสั่งเปิดแล้วให้รอสักพักเพื่อคืนค่าปุ่มกลับมาเหมือนเดิม
-                setTimeout(() => {
-                    restoreUI();
-                }, 500);
-            }, 600);
+        function openWithTranslate(url) {
+            if (!url) return;
+            window.open(`https://translate.google.com/translate?sl=auto&tl=th&u=${encodeURIComponent(url)}`, '_blank');
         }
 
-        function openModal(bookId) {
-            const book = books.find(b => b.id === bookId);
-            if (!book) return;
-
-            localViews[bookId] = (localViews[bookId] || 0) + 1;
-            localStorage.setItem('interlib_views', JSON.stringify(localViews));
-            
-            const baseReads = parseReadsCount(book.reads);
-            const newTotal = baseReads + localViews[bookId];
-            document.querySelectorAll(`.view-count-${bookId}`).forEach(el => {
-                el.innerText = formatReadsCount(newTotal);
-            });
-
-            const imgUrl = book.image || "https://via.placeholder.com/150x225/e2e8f0/64748b?text=No+Cover";
-            document.getElementById('modalBookImage').src = imgUrl;
-            document.getElementById('modalBookTitle').innerText = book.title;
-            
-            const btnThai = document.getElementById('btnThai');
-            const btnThaiIcon = document.getElementById('btnThaiIcon');
-            const btnThaiSpan = btnThai.querySelector('span');
-
-            const btnOriginal = document.getElementById('btnOriginal');
-            const btnOriginalIcon = document.getElementById('btnOriginalIcon');
-            const btnOriginalSpan = btnOriginal.querySelector('span');
-
-            const btnVideo = document.getElementById('btnVideo');
-            const btnVideoIcon = document.getElementById('btnVideoIcon');
-            const btnVideoSpan = btnVideo.querySelector('span');
-
-            [btnThai, btnOriginal, btnVideo].forEach(b => {
-                b.style.pointerEvents = '';
-                b.classList.remove('opacity-40', 'transition-opacity');
-            });
-
-            btnThaiSpan.innerText = 'อ่านฉบับแปลไทย';
-            if (book.thaihtml && book.thaihtml.trim() !== "") {
-                btnThai.href = book.thaihtml;
-                btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold shadow-sm transition-all";
-                btnThaiIcon.className = "fa-solid fa-language text-blue-200";
-                btnThai.onclick = (e) => handleLinkClick(e, book.thaihtml, 'btnThai');
-            } else {
-                btnThai.removeAttribute('href');
-                btnThai.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-70";
-                btnThaiIcon.className = "fa-solid fa-language text-slate-400";
-                btnThai.onclick = (e) => e.preventDefault();
-            }
-
-            btnOriginalSpan.innerText = 'อ่านฉบับต้นฉบับ';
-            if (book.html && book.html.trim() !== "") {
-                btnOriginal.href = book.html;
-                btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
-                btnOriginalIcon.className = "fa-solid fa-book text-slate-500";
-                btnOriginal.onclick = (e) => handleLinkClick(e, book.html, 'btnOriginal');
-            } else {
-                btnOriginal.removeAttribute('href');
-                btnOriginal.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
-                btnOriginalIcon.className = "fa-solid fa-book text-slate-400";
-                btnOriginal.onclick = (e) => e.preventDefault();
-            }
-
-            btnVideoSpan.innerText = 'พอตแคส';
-            if (book.video_link && book.video_link.trim() !== "") {
-                btnVideo.href = book.video_link;
-                btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-white border border-slate-200 active:bg-slate-50 text-slate-700 rounded-xl font-bold transition-all";
-                btnVideoIcon.className = "fa-solid fa-play text-red-500";
-                btnVideo.onclick = (e) => {
-                    e.preventDefault();
-                    openVideoModal(book.video_link);
-                };
-            } else {
-                btnVideo.removeAttribute('href');
-                btnVideo.className = "flex items-center justify-center gap-2 w-full py-3 bg-slate-100 border border-slate-100 text-slate-400 rounded-xl font-bold cursor-not-allowed opacity-60";
-                btnVideoIcon.className = "fa-solid fa-play text-slate-400";
-                btnVideo.onclick = (e) => e.preventDefault();
-            }
-            
-            selectionModal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            selectionModal.classList.add('hidden');
-        }
-
-        selectionModal.addEventListener('click', (e) => {
-            if (e.target === selectionModal) closeModal();
-        });
-
-        // --- Video Modal Logic ---
-        function getYouTubeId(url) {
-            // ฟังก์ชันสกัด ID จากลิงก์รูปแบบต่างๆ ของ YouTube
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|\/shorts\/)([^#&?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        function openVideoModal(url) {
-            const videoId = getYouTubeId(url);
+        function playVideo(url) {
+            const videoId = getYTId(url);
             if (videoId) {
-                // ปิด Modal เลือกอ่าน แล้วเปิด Modal เล่นวิดีโอแทน
-                closeModal();
-                youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                videoModal.classList.remove('hidden');
-            } else {
-                // ถ้าไม่ใช่ลิงก์ YouTube ให้เปิดแท็บใหม่ตามปกติ (Fallback)
-                window.open(url, '_blank');
-            }
+                document.getElementById('videoIframe').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                document.getElementById('videoModal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else window.open(url, '_blank');
         }
 
         function closeVideoModal() {
-            videoModal.classList.add('hidden');
-            youtubeIframe.src = ''; // เคลียร์ src เพื่อหยุดการเล่นวิดีโอ
+            document.getElementById('videoModal').classList.add('hidden');
+            document.getElementById('videoIframe').src = "";
+            document.body.style.overflow = '';
         }
 
-        videoModal.addEventListener('click', (e) => {
-            // ปิดเมื่อผู้ใช้คลิกพื้นที่สีดำรอบๆ วิดีโอ
-            if (e.target === videoModal) closeVideoModal();
-        });
+        function getYTId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|\/shorts\/)([^#&?]*).*/;
+            const match = (url || "").match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
 
         function switchTab(tab) {
             currentTab = tab;
-            if (tab === 'home') {
-                homeView.classList.remove('hidden');
-                favoritesView.classList.add('hidden');
-                navHome.classList.add('active');
-                navFav.classList.remove('active');
-                window.scrollTo({ top: 0, behavior: 'auto' }); 
-            } else {
-                homeView.classList.add('hidden');
-                favoritesView.classList.remove('hidden');
-                navHome.classList.remove('active');
-                navFav.classList.add('active');
-                renderFavorites();
-                window.scrollTo({ top: 0, behavior: 'auto' });
-            }
-        }
-
-        function toggleFavorite(bookId) {
-            const bookIndex = favorites.findIndex(b => b.id === bookId);
-            if (bookIndex > -1) {
-                favorites.splice(bookIndex, 1);
-            } else {
-                const bookToAdd = books.find(b => b.id === bookId);
-                if (bookToAdd) favorites.push(bookToAdd);
-            }
-            localStorage.setItem('interlib_favs', JSON.stringify(favorites));
-            updateHeartIcon(bookId);
-            if (currentTab === 'favorites') renderFavorites();
-        }
-
-        function isLiked(id) {
-            return favorites.some(b => b.id === id);
-        }
-
-        function updateHeartIcon(id) {
-            const buttons = document.querySelectorAll(`.like-btn-${id}`);
-            buttons.forEach(btn => {
-                const icon = btn.querySelector('i');
-                const liked = isLiked(id);
-                
-                if (liked) {
-                    icon.className = 'fa-solid fa-heart text-rose-500 text-xs transition-colors';
-                } else {
-                    icon.className = 'fa-regular fa-heart text-slate-400 text-xs transition-colors';
-                }
-            });
-        }
-
-        function renderPagination() {
-            const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
-            paginationContainer.innerHTML = '';
-            if (totalPages <= 1) return;
-
-            const createBtn = (html, onClick, disabled = false, active = false) => {
-                const btn = document.createElement('button');
-                btn.className = `pagination-btn ${active ? 'active' : ''}`;
-                btn.innerHTML = html;
-                btn.disabled = disabled;
-                if (!disabled) btn.onclick = onClick;
-                return btn;
-            };
-
-            paginationContainer.appendChild(createBtn('<i class="fa-solid fa-chevron-left text-[10px]"></i>', () => changePage(currentPage - 1), currentPage === 1));
-
-            let startPage = Math.max(1, currentPage - 1);
-            let endPage = Math.min(totalPages, currentPage + 1);
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.getElementById(`page-${tab}`).classList.remove('hidden');
+            document.getElementById(`nav-${tab}`).classList.add('active');
             
-            if (startPage > 1) paginationContainer.appendChild(createBtn('1', () => changePage(1)));
-            if (startPage > 2) paginationContainer.appendChild(createBtn('...', () => {}, true));
-
-            for (let i = startPage; i <= endPage; i++) {
-                paginationContainer.appendChild(createBtn(i, () => changePage(i), false, i === currentPage));
-            }
-
-            if (endPage < totalPages - 1) paginationContainer.appendChild(createBtn('...', () => {}, true));
-            if (endPage < totalPages) paginationContainer.appendChild(createBtn(totalPages, () => changePage(totalPages)));
-
-            paginationContainer.appendChild(createBtn('<i class="fa-solid fa-chevron-right text-[10px]"></i>', () => changePage(currentPage + 1), currentPage === totalPages));
+            if(tab === 'originals') originalsPage = 1;
+            renderOriginals(); renderClips(); renderFavorites();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function changePage(page) {
-            currentPage = page;
-            renderBooks();
-            window.scrollTo({ top: 0, behavior: 'auto' });
+        function changeOriginalsPage(offset) {
+            originalsPage += offset;
+            renderOriginals();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function filterBooks() {
-            const query = searchInput.value.toLowerCase();
-            filteredBooks = books.filter(book => {
-                const authorStr = book.author ? book.author.toLowerCase() : "";
-                const cat = book.category || "ทั่วไป"; 
-                return (book.title.toLowerCase().includes(query) || authorStr.includes(query)) &&
-                       (currentFilter === 'all' || cat === currentFilter);
-            });
-            currentPage = 1;
-            renderBooks();
-        }
-
-        searchInput.addEventListener('input', () => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                filterBooks();
-            }, 300); 
+        document.getElementById('searchInput').addEventListener('input', () => {
+            originalsPage = 1;
+            if(currentTab === 'originals') renderOriginals(); 
+            else if(currentTab === 'clips') renderClips();
         });
 
-        init();
+        document.getElementById('videoModal').addEventListener('click', function(e) { if(e.target === this) closeVideoModal(); });
 
+        window.onload = init;
     </script>
 </body>
 </html>
-
-
-
