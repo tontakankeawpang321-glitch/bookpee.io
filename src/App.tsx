@@ -106,6 +106,9 @@ export default function App() {
       });
       if (result.allBooks && result.allBooks.length > 0) {
         setDocBooks(result.allBooks);
+        try {
+          localStorage.setItem('interlib_cached_doc_books', JSON.stringify(result.allBooks));
+        } catch (e) {}
       }
     } catch (err) {
       console.warn('Home page sheet refresh error:', err);
@@ -123,6 +126,9 @@ export default function App() {
 
       if (result.thaiBooks && result.thaiBooks.length > 0) {
         setDocBooks(result.thaiBooks);
+        try {
+          localStorage.setItem('interlib_cached_doc_books', JSON.stringify(result.thaiBooks));
+        } catch (e) {}
       }
       if (result.englishBooks && result.englishBooks.length > 0) {
         setEnglishBooks(result.englishBooks);
