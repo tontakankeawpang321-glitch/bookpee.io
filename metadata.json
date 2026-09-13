@@ -1,0 +1,6 @@
+{
+  "name": "InterLib V2",
+  "description": "แอพมือถือคลังนิยายเล่าเรื่องแบบพอตแคส คลังหนังสือแปลไทย Google Docs และต้นฉบับภาษาอังกฤษ",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
